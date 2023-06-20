@@ -17,20 +17,24 @@ from django.http import HttpResponseRedirect, JsonResponse
 from .models import Profile, Recipe
 from .forms import ProfileForm, RecipeForm
 from django.contrib.auth.models import User
+from django.shortcuts import render
 
 # Create your views here.
+
+
 class RecipeListView(ListView):
     model = Recipe
-    template_name = 'recipe_collection/home.html'
+    template_name = template_name = 'home.html'
     context_object_name = 'recipes'
     paginate_by = 10
 
     def get_queryset(self):
         return Recipe.objects.order_by('-id')
 
+
 class RecipeDetailView(DetailView):
     model = Recipe
-    template_name = 'recipe_collection/recipe_detail.html'
+    template_name = 'recipe_detail.html'
     context_object_name = 'recipe'
 
     def get_context_data(self, **kwargs):
@@ -47,7 +51,7 @@ class RecipeDetailView(DetailView):
 class RecipeCreateView(LoginRequiredMixin, CreateView):
     model = Recipe
     form_class = RecipeForm
-    template_name = 'recipe_collection/create.html'
+    template_name = 'create.html'
     success_url = '/'
     
     def dispatch(self, request, *args, **kwargs):
@@ -73,8 +77,8 @@ class RecipeCreateView(LoginRequiredMixin, CreateView):
 class RecipeUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Recipe
     form_class = RecipeForm
-    template_name = 'recipe_collection/update.html'
-    success_url = 'recipe_collection/home.html'  
+    template_name = 'update.html'
+    success_url = 'home.html'  
 
     def form_valid(self, form):
         form.instance.posted_by = self.request.user
@@ -93,7 +97,7 @@ class RecipeUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     
 class RecipeDeleteView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, DeleteView):
     model = Recipe
-    template_name = 'recipe_collection/delete.html'
+    template_name = 'delete.html'
     success_url = '/'
     success_message = "Recipe deleted successfully."
 
@@ -149,10 +153,10 @@ class CustomPasswordChangeView(SuccessMessageMixin, PasswordChangeView):
 
 class CustomPasswordResetCompleteView(PasswordResetCompleteView):
     #email_template_name = 'recipe_collection/password_reset_email.html'
-    template_name = 'recipe_collection/password_reset.html'
+    template_name = 'password_reset.html'
 
 class CustomPasswordResetConfirmView(PasswordResetConfirmView):
-    template_name = 'recipe_collection/password_reset_confirm.html'
+    template_name = 'password_reset_confirm.html'
 
 # def signup_view(request):
 #     if request.method == 'POST':
@@ -173,12 +177,12 @@ def signup_view(request):
             return redirect('login')  # Redirect to the login page after successful signup???
     else:
         form = UserCreationForm()
-    return render(request, 'recipe_collection/signup.html', {'form': form})
+    return render(request, 'signup.html', {'form': form})
 
 class ProfileUpdateView(LoginRequiredMixin, UpdateView):
     model = Profile
     form_class = ProfileForm
-    template_name = 'recipe_collection/profile_update.html'
+    template_name = 'profile_update.html'
     
     def get_success_url(self):
         return reverse_lazy('profile', kwargs={'pk': self.request.user.pk})
@@ -194,7 +198,7 @@ class ProfileUpdateView(LoginRequiredMixin, UpdateView):
 
 class ProfileDetailView(LoginRequiredMixin, DetailView):
     model = Profile
-    template_name = 'recipe_collection/profile.html'
+    template_name = 'profile.html'
     context_object_name = 'profile'
 
     def get_context_data(self, **kwargs):
@@ -206,7 +210,7 @@ class ProfileDetailView(LoginRequiredMixin, DetailView):
     
 class RecipeSearchView(ListView):
     model = Recipe
-    template_name = 'recipe_collection/search_results.html'
+    template_name = 'search_results.html'
     context_object_name = 'recipes'
 
     def get_queryset(self):
