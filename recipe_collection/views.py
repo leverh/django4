@@ -160,7 +160,8 @@ class CustomPasswordResetCompleteView(PasswordResetCompleteView):
 
 
 class CustomPasswordResetConfirmView(PasswordResetConfirmView):
-    template_name = 'password_reset_confirm.html'
+    def get_success_url(self):
+        return reverse_lazy('password_reset_done')
 
 # def signup_view(request):
 #     if request.method == 'POST':
@@ -183,7 +184,6 @@ def signup_view(request):
     else:
         form = UserRegisterForm()
     return render(request, 'signup.html', {'form': form})
-
 
 
 class ProfileUpdateView(LoginRequiredMixin, UpdateView):

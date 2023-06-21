@@ -2,32 +2,34 @@
 {% load static %}  
 {% block content %}
 
-  <div class="container text-center">
-    <div class="py-4 px-3 hero-content" style="color: rgb(66, 70, 73);">
-      <h1 class="display-1 fw-bold">Make Healthy<br>Choices</h1>
-      
+<div class="container text-center">
+  <div class="py-4 px-3 hero-content" style="color: rgb(66, 70, 73);">
+    <h1 class="display-1 fw-bold">Make Healthy<br>Choices</h1>
+    
+    {% if not user.is_authenticated %}
       <a class="btn btn-dark" href="{% url 'signup' %}">Register now to join</a>
-    </div>
+    {% endif %}
   </div>
-  <img class="img-fluid d-md-none" src="{% static 'jacopo-maia--gOUx23DNks-unsplash.jpg' %}" alt="Plethora of vegetables in a farmer's market">
+</div>
+<img class="img-fluid d-md-none" src="{% static 'jacopo-maia--gOUx23DNks-unsplash.jpg' %}" alt="Plethora of vegetables in a farmer's market">
 </section>
 
 <section class="py-5 home-text">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 text-center">
-        <h3 class="display-5 fw-bold text-muted">Welcome to Recipe Collection!</h3>
-        <h4 class="display-6 fw-bold text-muted">Explore and share your favorite recipes.</h4>
-        <p class="fs-5 home-ps text-body">The new website for you to upload and share recipes with everyone.<br>Register for an account now</p>
-        {% if user.is_authenticated %}
-          <p class="home-ps text-body">Welcome, {{ user.username }}!</p>
-          <a href="{% url 'recipe-create' %}" class="btn btn-primary">Create a New Recipe</a>
-        {% else %}
-          <p class="home-ps text-body">Please <a href="{% url 'login' %}">login</a> or <a href="{% url 'signup' %}">Signup</a> to get started.</p>
-        {% endif %}
-      </div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <h3 class="display-5 fw-bold text-muted">Welcome to Recipe Collection!</h3>
+      <h4 class="display-6 fw-bold text-muted">Explore and share your favorite recipes.</h4>
+      <p class="fs-5 home-ps text-body">The new website for you to upload and share recipes with everyone.<br>Register for an account now</p>
+      {% if user.is_authenticated %}
+        <p class="home-ps text-body">Welcome, {{ user.username }}!</p>
+        <a href="{% url 'recipe-create' %}" class="btn btn-primary">Create a New Recipe</a>
+      {% else %}
+        <p class="home-ps text-body">Please <a href="{% url 'login' %}">login</a> or <a href="{% url 'signup' %}">Signup</a> to get started.</p>
+      {% endif %}
     </div>
   </div>
+</div>
 </section>
 
 <section class="py-5">
