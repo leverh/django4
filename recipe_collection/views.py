@@ -48,12 +48,13 @@ class RecipeDetailView(DetailView):
         recipe = super().get_object(queryset=queryset)
         return get_object_or_404(Recipe, pk=recipe.pk)
 
+
 class RecipeCreateView(LoginRequiredMixin, CreateView):
     model = Recipe
     form_class = RecipeForm
     template_name = 'create.html'
     success_url = '/'
-    
+ 
     def dispatch(self, request, *args, **kwargs):
         if not request.user.is_authenticated:
             return self.handle_no_permission()
@@ -112,10 +113,7 @@ class RecipeDeleteView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMi
         messages.success(self.request, self.success_message)
         return HttpResponseRedirect(success_url)
 
-
-
-
-    
+   
 def login_view(request):
     error_message = None  
     if request.method == 'POST':
@@ -124,7 +122,7 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('recipe-home')  
+            return redirect('home')  
         else:
             error_message = 'Invalid login credentials'
     return render(request, 'registration/login.html', {'error_message': error_message})
