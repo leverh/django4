@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>Create Recipe</h2>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Create Recipe</button>
+  </form>
+
+  <script>
+    $(document).ready(function() {
+      var message = "{{ messages }}";
+      if (message) {
+        alert(message);
+      }
+    });
+  </script>
+{% endblock %}

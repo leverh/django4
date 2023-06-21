@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Profile</h1>
+  <div class="profile-info">
+    <h2>{{ profile.user.username }}</h2>
+    <p>Email: {{ profile.user.email }}</p>
+    <p>Bio: {{ profile.bio }}</p>
+  </div>
+
+  {% if updated %}
+    <div class="alert alert-success" role="alert">
+      Profile updated successfully!
+    </div>
+  {% endif %}
+
+  {% if user.is_authenticated and user == profile.user %}
+    <a href="{% url 'profile-update' pk=profile.user.pk %}" class="btn btn-primary">Update Profile</a>
+    <a href="{% url 'password_change' %}" class="btn btn-primary">Change Password</a>
+    <a href="{% url 'password_reset' %}" class="btn btn-primary">Reset Password</a>
+  {% endif %}
+
+  <h2>Created Recipes</h2>
+  <ul>
+    {% for recipe in profile.user.recipes.all %}
+      <li><a href="{% url 'recipe-detail' pk=recipe.pk %}">{{ recipe.headline }}</a></li>
+    {% empty %}
+      <li>No recipes found.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

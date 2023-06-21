@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Update Recipe</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Update" class="btn btn-primary">
+    <button type="button" class="btn btn-danger" id="deleteBtn">Delete</button>
+  </form>
+  
+  <!-- Delete confirmation modal -->
+  <div class="modal" tabindex="-1" role="dialog" id="deleteModal">
+    <!-- Modal content -->
+  </div>
+
+  <!-- Update success modal -->
+  <div class="modal" tabindex="-1" role="dialog" id="updateSuccessModal">
+    <!-- Modal content -->
+  </div>
+
+  <script>
+    $(document).ready(function() {
+      $('#deleteBtn').on('click', function() {
+        $('#deleteModal').modal('show');
+      });
+
+      $('#confirmDeleteBtn').on('click', function() {
+        $.ajax({
+          url: '/recipe_collection/{{ recipe.id }}/delete',
+          method: 'DELETE',
+          success: function() {
+            window.location.href = '/';
+          }
+        });
+      });
+
+      // Get the update message from Django template context
+      var updateMessage = "{{ update_message }}";
+
+      // Show update success modal if the message is present
+      if (updateMessage) {
+        $('#updateSuccessModal').modal('show');
+      }
+    });
+  </script>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Search Results</h1>
+    {% if recipes %}
+        <ul>
+            {% for recipe in recipes %}
+                <li>
+                    <h2><a href="{% url 'recipe-detail' recipe.id %}">{{ recipe.headline }}</a></h2>
+                    <p>{{ recipe.description }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No recipes found.</p>
+    {% endif %}
+{% endblock %}
