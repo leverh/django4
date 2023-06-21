@@ -9,13 +9,12 @@ from django.contrib.auth.views import PasswordChangeView, PasswordResetCompleteV
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy, reverse
 from django.contrib import messages
-from .forms import RecipeForm
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from django.views import View
 from django.http import HttpResponseRedirect, JsonResponse
 from .models import Profile, Recipe
-from .forms import ProfileForm, RecipeForm
+from .forms import ProfileForm, RecipeForm, UserRegisterForm
 from django.contrib.auth.models import User
 from django.shortcuts import render
 
@@ -75,6 +74,7 @@ class RecipeCreateView(LoginRequiredMixin, CreateView):
             response.status_code = 278
         return response
     
+
 class RecipeUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Recipe
     form_class = RecipeForm
@@ -96,6 +96,7 @@ class RecipeUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         form_class.exclude = ['posted_by']  
         return form_class
     
+
 class RecipeDeleteView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, DeleteView):
     model = Recipe
     template_name = 'delete.html'
@@ -127,6 +128,7 @@ def login_view(request):
             error_message = 'Invalid login credentials'
     return render(request, 'registration/login.html', {'error_message': error_message})
 
+
 def logout_view(request):
     logout(request)
     return redirect('login')
@@ -135,12 +137,14 @@ def logout_view(request):
 
 def register(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = UserRegisterForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('login')  
+            user = form.save(commit=False)
+            user.email = form.cleaned_data['email']
+            user.save()
+            return redirect('login')
     else:
-        form = UserCreationForm()
+        form = UserRegisterForm()
     return render(request, 'registration/signup.html', {'form': form})
 
 
@@ -149,9 +153,11 @@ class CustomPasswordChangeView(SuccessMessageMixin, PasswordChangeView):
     success_url = reverse_lazy('login')
     success_message = "Your password has been changed successfully!"
 
+
 class CustomPasswordResetCompleteView(PasswordResetCompleteView):
     #email_template_name = 'recipe_collection/password_reset_email.html'
     template_name = 'password_reset.html'
+
 
 class CustomPasswordResetConfirmView(PasswordResetConfirmView):
     template_name = 'password_reset_confirm.html'
@@ -167,15 +173,18 @@ class CustomPasswordResetConfirmView(PasswordResetConfirmView):
 #         form = UserCreationForm()
 #     return render(request, 'recipe_collection/signup.html', {'form': form})
 
+
 def signup_view(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = UserRegisterForm(request.POST)
         if form.is_valid():
             user = form.save()
             return redirect('login')  # Redirect to the login page after successful signup???
     else:
-        form = UserCreationForm()
+        form = UserRegisterForm()
     return render(request, 'signup.html', {'form': form})
+
+
 
 class ProfileUpdateView(LoginRequiredMixin, UpdateView):
     model = Profile
