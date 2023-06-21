@@ -3,15 +3,18 @@
 {% block content %}
   <h2>Sign Up</h2>
   
-  {% if messages %}
-    {% for message in messages %}
-      <p class="success">{{ message }}</p>
-    {% endfor %}
-  {% endif %}
-  
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Sign Up</button>
+    <button type="submit" id="signup-button">Sign Up</button>
   </form>
+  
+  <script>
+    const button = document.getElementById('signup-button');
+    
+    button.addEventListener('click', function() {
+      alert('You have successfully registered and will be redirected to the login page.');
+    });
+  </script>
+  
 {% endblock %}
