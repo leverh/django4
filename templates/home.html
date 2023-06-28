@@ -2,17 +2,22 @@
 {% load static %}  
 {% block content %}
 
+<section style="color: #ffffff;">
 <div class="container text-center">
-  <div class="py-4 px-3 hero-content" style="color: rgb(66, 70, 73);">
-    <h1 class="display-1 fw-bold">Make Healthy<br>Choices</h1>
-    
+  <div class="text-center d-flex d-xl-flex flex-column justify-content-center align-items-center align-items-xl-center" data-bss-scroll-zoom="true" data-bss-scroll-zoom-speed="1" style="background-image: url(&quot;/static/Images/jacopo-maia--gOUx23DNks-unsplash.jpg&quot;);background-position: center;background-size: cover;">
+    <div class="py-4 px-3 hero-content" style="color: rgb(66, 70, 73);">
+        <h1 class="display-1 fw-bold">Make Healthy<br>Choices</h1><button class="btn btn-dark" type="button">register now to join</button>
+    </div>
+</div><img class="img-fluid d-md-none" src="/static/Images/jacopo-maia--gOUx23DNks-unsplash.jpg">
+      </section>   
     {% if not user.is_authenticated %}
       <a class="btn btn-dark" href="{% url 'signup' %}">Register now to join</a>
     {% endif %}
   </div>
 </div>
-<img class="img-fluid d-md" src="{% static '/Images/jacopo-maia--gOUx23DNks-unsplash.jpg' %}" alt="Plethora of vegetables in a farmer's market">
-</section>
+</div>
+
+
 
 <section class="py-5 home-text">
 <div class="container">
