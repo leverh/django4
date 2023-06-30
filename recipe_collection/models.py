@@ -7,7 +7,7 @@ from cloudinary_storage.storage import RawMediaCloudinaryStorage
 
 
 class Recipe(models.Model):
-    headline = models.CharField(max_length=200)
+    headline = models.CharField(max_length=400)
     description = models.TextField()
     ingredients = models.TextField()
     preparation = models.TextField()

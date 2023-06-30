@@ -1,6 +1,8 @@
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.conf.urls.static import static
+from django.conf.urls import handler404, handler500
+from recipe_collection.views import error_404, error_500
 from django.conf import settings
 from django.urls import path
 from recipe_collection.views import (
@@ -19,6 +21,8 @@ from recipe_collection.views import (
     signup_view,
     LikeView,
 )
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -41,3 +45,6 @@ urlpatterns = [
     path('search/', RecipeSearchView.as_view(), name='recipe-search'),
     path('recipe/<int:pk>/like/', LikeView.as_view(), name='like'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+handler404 = error_404
+handler500 = error_500

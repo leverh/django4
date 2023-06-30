@@ -74,6 +74,19 @@
     color: white !important;
   }
 
+ .btn-transparent {
+    color: white;
+    font-weight: 600;
+ }
+
+ .btn-transparent:hover {
+  background-color: #fff;
+ }
+
+ .card-img {
+  height: 400px;
+  object-fit: cover;
+ }
 
 
 

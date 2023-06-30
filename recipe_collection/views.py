@@ -235,3 +235,11 @@ class LikeView(LoginRequiredMixin, View):
         else:
             recipe.liked_by.add(request.user)
         return redirect('recipe-detail', pk=pk)
+
+
+def error_404(request, exception):
+    return render(request, '404.html', status=404)
+
+
+def error_500(request):
+    return render(request, '500.html', status=500)
