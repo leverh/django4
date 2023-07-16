@@ -22,8 +22,6 @@ from recipe_collection.views import (
     LikeView,
 )
 
-
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', RecipeListView.as_view(), name='home'),
@@ -42,9 +40,11 @@ urlpatterns = [
     path('register/', register, name='register'),
     path('profile/<int:pk>/', ProfileDetailView.as_view(), name='profile'),
     path('profile/<int:pk>/update/', ProfileUpdateView.as_view(), name='profile-update'),
+    path('profile/<int:pk>/', ProfileDetailView.as_view(), name='profile-detail'),
     path('search/', RecipeSearchView.as_view(), name='recipe-search'),
     path('recipe/<int:pk>/like/', LikeView.as_view(), name='like'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
 
 handler404 = error_404
 handler500 = error_500

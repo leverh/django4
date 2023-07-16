@@ -36,6 +36,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["recipe-collection-deea6c7fa662.herokuapp.com", '8000-leverh-django4-6gkm9tcwy20.ws-eu101.gitpod.io']
 
+LOGIN_URL = 'login'
+
+LOGIN_REDIRECT_URL = 'home'
 
 # Application definition
 

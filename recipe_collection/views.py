@@ -11,6 +11,7 @@ from django.urls import reverse_lazy, reverse
 from django.contrib import messages
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 from django.views import View
 from django.http import HttpResponseRedirect, JsonResponse
 from .models import Profile, Recipe
@@ -114,7 +115,7 @@ class RecipeDeleteView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMi
         messages.success(self.request, self.success_message)
         return HttpResponseRedirect(success_url)
 
-   
+  
 def login_view(request):
     error_message = None  
     if request.method == 'POST':
@@ -202,7 +203,7 @@ class ProfileUpdateView(LoginRequiredMixin, UpdateView):
         self.request.session['profile_updated'] = True
         return response
     
-
+@method_decorator(login_required, name='dispatch')
 class ProfileDetailView(LoginRequiredMixin, DetailView):
     model = Profile
     template_name = 'profile.html'
@@ -215,6 +216,7 @@ class ProfileDetailView(LoginRequiredMixin, DetailView):
         context['recipes'] = recipes
         return context
     
+
 class RecipeSearchView(ListView):
     model = Recipe
     template_name = 'search_results.html'
@@ -226,6 +228,7 @@ class RecipeSearchView(ListView):
             return Recipe.objects.filter(Q(headline__icontains=query) | Q(description__icontains=query))
         else:
             return Recipe.objects.all()
+        
         
 class LikeView(LoginRequiredMixin, View):
     def post(self, request, pk):
@@ -243,3 +246,5 @@ def error_404(request, exception):
 
 def error_500(request):
     return render(request, '500.html', status=500)
+
+
