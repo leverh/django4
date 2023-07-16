@@ -52,7 +52,7 @@
     <div class="row">
       {% for recipe in recipes %}
         <div class="col-sm-6 col-md-4 mb-4">
-          <a href="{% url 'recipe-detail' recipe.id %}" class="card">
+          <a href="{% url 'recipe-detail' recipe.id %}" class="card rec-card">
             {% if recipe.image %}
               <img src="{{ recipe.image.url }}" alt="Recipe Image" class="card-img-top card-img">
             {% endif %}

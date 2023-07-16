@@ -10,9 +10,10 @@
   <h2 class="">Ingredients:</h2>
   <p class="">{{ recipe.ingredients|linebreaksbr }}</p>  
 
-  <h2 class="">Preparation:</h2>
-  <p class="">{{ recipe.preparation|linebreaksbr }}</p>
-
+  <h2 class="prep-text">Preparation:</h2>
+  <div class="centered-text">
+  <p class="prep-text">{{ recipe.preparation|linebreaksbr }}</p>
+</div>
   <p class="">Created by: <a href="{% url 'profile' pk=recipe.posted_by.pk %}">{{ recipe.posted_by }}</a></p>
 
 

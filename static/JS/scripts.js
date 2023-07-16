@@ -92,3 +92,28 @@ document.addEventListener('DOMContentLoaded', function() {
 
 })();
 }, false);
+
+// Code to make recipe-prep text to align-left because boostrap rules prevent me from changing it
+document.addEventListener("DOMContentLoaded", function () {
+    // console.log("Script is running");
+
+    const prepElements = document.getElementsByClassName("prep-text");
+    console.log(prepElements.length);
+
+    for (let i = 0; i < prepElements.length; i++) {
+        prepElements[i].style.textAlign = "left";
+    }
+});
+
+// testing why js code wasn't working
+// const prepElements = document.getElementsByClassName("prep-text");
+// for (let i = 0; i < prepElements.length; i++) {
+//   prepElements[i].style.backgroundColor = "yellow";
+// }
+
+
+// const prepElements = document.getElementsByClassName("prep-text");
+//   for (let i = 0; i < prepElements.length; i++) {
+//     prepElements[i].style.textAlign = "left";
+//   }
+  
