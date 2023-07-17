@@ -45,7 +45,13 @@ urlpatterns = [
     path('search/', RecipeSearchView.as_view(), name='recipe-search'),
     path('recipe/<int:pk>/like/', LikeView.as_view(), name='like'),
     path('about/', about_view, name='about'),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] 
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+else:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT, show_indexes=True)
+
+# + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 
 handler404 = error_404
