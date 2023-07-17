@@ -248,3 +248,5 @@ def error_500(request):
     return render(request, '500.html', status=500)
 
 
+def about_view(request):
+    return render(request, 'about.html')

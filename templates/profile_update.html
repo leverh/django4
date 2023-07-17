@@ -1,10 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Update Profile</h1>
-  <form method="post" enctype="multipart/form-data">
+<div class="profile-update-cont profile-cont container mt-5 flex-column centered-text">
+  <h2 class="mb-5">Update Profile</h2>
+  <form method="post" enctype="multipart/form-data" class="update-form">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit" class="btn btn-primary">Update</button>
   </form>
+</div>
 {% endblock %}

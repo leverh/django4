@@ -20,6 +20,7 @@ from recipe_collection.views import (
     logout_view,
     signup_view,
     LikeView,
+    about_view,
 )
 
 urlpatterns = [
@@ -43,6 +44,7 @@ urlpatterns = [
     path('profile/<int:pk>/', ProfileDetailView.as_view(), name='profile-detail'),
     path('search/', RecipeSearchView.as_view(), name='recipe-search'),
     path('recipe/<int:pk>/like/', LikeView.as_view(), name='like'),
+    path('about/', about_view, name='about'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 

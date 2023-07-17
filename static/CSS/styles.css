@@ -144,3 +144,50 @@
       width: 100%;
     }
   }
+
+  /* PROFILE */
+
+  .prof-buttons {
+    display: flex;
+    gap: 1.2rem;
+  }
+
+  .prof-button {
+    width: auto;
+    padding: 0.7rem;
+    min-width: 12rem;
+  }
+
+  @media (max-width: 720px) {
+    .prof-buttons {
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+    }
+  }
+
+  /* UPDATE*/
+
+  .update-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 382px) {
+  .update-form input[type="text"],
+  .update-form input[type="email"],
+  .update-form textarea {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+
+/*PASSWORD RESET*/
+
+/* .pass-reset-cont h2{
+  font-size: 2rem;
+} */

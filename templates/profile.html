@@ -1,11 +1,16 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Profile</h1>
+<div class="profile-cont container mt-5 flex-column centered-text">
+  <h2 class="mb-5">User Profile</h2>
   <div class="profile-info">
-    <h2>{{ profile.user.username }}</h2>
+    <h3 class="mb-5">{{ profile.user.username }}</h3>
     <p>Email: {{ profile.user.email }}</p>
+    {% if profile.bio %}
     <p>Bio: {{ profile.bio }}</p>
+    {% else %}
+    <p>Bio: User hasn't updated their bio yet!</p>
+    {% endif %}
   </div>
 
   {% if updated %}
@@ -15,11 +20,14 @@
   {% endif %}
 
   {% if user.is_authenticated and user == profile.user %}
-    <a href="{% url 'profile-update' pk=profile.user.pk %}" class="btn btn-primary">Update Profile</a>
-    <a href="{% url 'password_change' %}" class="btn btn-primary">Change Password</a>
-    <a href="{% url 'password_reset' %}" class="btn btn-primary">Reset Password</a>
+    <div class="prof-buttons">
+    <a href="{% url 'profile-update' pk=profile.user.pk %}" class="btn btn-primary prof-button">Update Profile</a>
+    <a href="{% url 'password_change' %}" class="btn btn-primary prof-button">Change Password</a>
+    <a href="{% url 'password_reset' %}" class="btn btn-primary prof-button">Reset Password</a>
+  </div>
   {% endif %}
-
+</div>
+<div class="created-rec profile-cont container mt-5 flex-column centered-text">
   <h2>Created Recipes</h2>
   <ul>
     {% for recipe in profile.user.recipes.all %}
@@ -28,4 +36,5 @@
       <li>No recipes found.</li>
     {% endfor %}
   </ul>
+</div>
 {% endblock %}
