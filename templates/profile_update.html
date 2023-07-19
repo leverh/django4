@@ -3,6 +3,8 @@
 {% block content %}
 <div class="profile-update-cont profile-cont container mt-5 flex-column centered-text">
   <h2 class="mb-5">Update Profile</h2>
+  <p>Take control of your profile and keep it up to date. Fill in the fields below to modify your
+     information and ensure that your profile reflects the real you.</p>
   <form method="post" enctype="multipart/form-data" class="update-form">
     {% csrf_token %}
     {{ form.as_p }}

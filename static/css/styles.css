@@ -34,6 +34,12 @@
     cursor: pointer;
   }
 
+  /* LOGIN */
+
+  .login-text {
+    font-size: 1.5rem;
+  }
+
   /* .signup-container {
     display: flex;
     flex-direction: column;
