@@ -254,13 +254,9 @@
 
  .about-cont {
   background-image: url("https://res.cloudinary.com/dmtxhbwvw/image/upload/v1689628282/static/Images/lukas-blazek-f-TWhXOrLiU-unsplash%281%29.376b4b52df13.jpg");
-  max-width: 70%;
-}
-
-.about-cont img {
-  max-width: 70%;
-  height: 100vh;
-  object-fit: cover;
+  max-width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .about-text {
@@ -278,7 +274,6 @@
 .about-text p {
   font-weight: 500;
   width: 50%;
-  font-size: 2rem;
 }
 
 @media (max-width: 768px) {
