@@ -1,3 +1,46 @@
+/* GENERAL */
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background-color: #FFFFF0;
+}
+
+.btn {
+  font-size: 1.5rem;
+}
+
+h1 {
+  font-size: 6rem;
+}
+
+h2 {
+  font-size: 5rem;
+}
+
+h3 {
+  font-size: 4.5rem;
+}
+
+h4 {
+  font-size: 3rem;
+}
+
+h5 {
+  font-size: 2rem;
+}
+
+
+/* MODAL STYLES */
+
 #signup-success-modal {
     display: none;
     position: fixed;
@@ -32,6 +75,26 @@
     color: black;
     text-decoration: none;
     cursor: pointer;
+  }
+
+  /* BASE */
+
+  li.nav-item {
+    font-size: 1.5rem;
+  }
+
+  .back-btn {
+    background-color: inherit;
+  }
+
+  .navbar-brand {
+    font-size: 1.5rem;
+    margin-left: 1rem;
+  }
+
+  footer p {
+    font-size: 1.5rem;
+    text-align: center;
   }
 
   /* LOGIN */
@@ -99,7 +162,7 @@
   position: relative;
   object-fit: cover;
   width: 100%;
-  max-height: 30rem ;
+  max-height: 50rem;
   opacity: .8;
   transition: transform 2s ease;
   /* -webkit-mask-image:-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1.5)), to(rgba(0,0,0,.6))); */
@@ -113,8 +176,6 @@
   overflow: hidden;
 }
 
-
-
 .hero-content {
   position: absolute;
   top: 40%;
@@ -125,7 +186,7 @@
 }
 
 .hero-title {
-  font-size: 3rem;
+  font-size: 6rem;
   font-weight: bold;
   opacity: 1;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -135,10 +196,68 @@
   border: none;
 }
 
+.hero-btn {
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  background-color: #FFFFF0;
+}
+
 .btn-light:hover {
   background-color: black;
-  color: white;
+  color: #FFFFF0;
   
+}
+
+.a.btn.btn-dark {
+  border: none;
+}
+
+a.btn.btn-dark:hover {
+  background-color: #FFFFF0;
+  color: #000;
+  border: none;
+}
+
+.home-text {
+  opacity: 1;
+}
+
+.home-cont-text h3{
+  font-size: 4.5rem;
+}
+
+.home-cont-text h4 {
+  font-size: 3rem;
+}
+
+.home-cont-text p, .text-body {
+  font-size: 2rem !important;
+}
+
+.recipe-home-cont h3 {
+  text-align: center;
+}
+
+.card-body {
+  background-color: #FFFFF0;
+}
+
+@media (max-width: 780px) {
+  .hero-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+}
+
+@media (max-width: 445px) {
+  .hero-container h1 {
+    font-size: 3.5rem;
+  }
+
+  .hero-btn {
+    font-size: 1.2rem;
+  }
 }
   
   /* .hero-btn {
