@@ -117,3 +117,16 @@ document.addEventListener("DOMContentLoaded", function () {
 //     prepElements[i].style.textAlign = "left";
 //   }
   
+
+const image = document.getElementById('zoom-image');
+const observer = new IntersectionObserver(entries => {
+	entries.forEach(entry => {
+	  if (entry.isIntersecting) {
+		image.classList.add('zoomed');
+	  } else {
+		image.classList.remove('zoomed');
+	  }
+	});
+  });
+  
+  observer.observe(image);

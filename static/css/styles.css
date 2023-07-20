@@ -95,17 +95,29 @@
 
 /* HOME */
 
-.hero-img {
+ .hero-image {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  object-fit: cover;
+  width: 100%;
+  max-height: 30rem ;
+  opacity: .8;
+  transition: transform 2s ease;
+  /* -webkit-mask-image:-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1.5)), to(rgba(0,0,0,.6))); */
 }
+
+.hero-image.zoomed {
+  transform: scale(1.2);
+}
+
+.hero-image-cont {
+  overflow: hidden;
+}
+
+
 
 .hero-content {
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
@@ -115,9 +127,21 @@
 .hero-title {
   font-size: 3rem;
   font-weight: bold;
+  opacity: 1;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.btn-light {
+  border: none;
+}
+
+.btn-light:hover {
+  background-color: black;
+  color: white;
+  
 }
   
-  .hero-btn {
+  /* .hero-btn {
     display: inline-block;
     margin-top: 20px;
     padding: 10px 20px;
@@ -130,7 +154,7 @@
   .hero-btn:hover {
     background-color: white;
     color: black;
-  }
+  } */
   
   
 
@@ -289,3 +313,13 @@
     text-align: center;
   }
 }
+
+/* img.logo-img {
+  max-width: 2rem;
+  margin-right: .5rem;
+
+  
+  <div class="text-center d-flex d-xl-flex flex-column justify-content-center align-items-center align-items-xl-center hero-img" data-bss-scroll-zoom="true" data-bss-scroll-zoom-speed="1" style="background-image: linear-gradient(
+    rgba(0, 0, 0, 0.4),
+    rgba(0, 0, 0, 0.4)
+  ), url(https://res.cloudinary.com/dmtxhbwvw/image/upload/v1687943809/static/Images/jacopo-maia--gOUx23DNks-unsplash.4b3752b62710.jpg); background-position: center; background-size: cover;"> */

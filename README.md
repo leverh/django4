@@ -106,3 +106,10 @@ Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` f
 ---
 
 Happy coding!
+
+
+icons: <a href="https://www.flaticon.com/free-icons/radish" title="radish icons">Radish icons created by Futuer - Flaticon</a>
+
+documentaion for the js scroll effect: 
+https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserverEntry/isIntersecting
+http://scrollmagic.io/docs/
