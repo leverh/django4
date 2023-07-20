@@ -113,3 +113,6 @@ icons: <a href="https://www.flaticon.com/free-icons/radish" title="radish icons"
 documentaion for the js scroll effect: 
 https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserverEntry/isIntersecting
 http://scrollmagic.io/docs/
+
+about.html image: Photo by <a href="https://unsplash.com/@charlesdeluvio?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">charlesdeluvio</a> on <a href="https://unsplash.com/backgrounds/things/food?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+  

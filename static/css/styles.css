@@ -99,62 +99,64 @@ h5 {
 
   /* LOGIN */
 
+  .log-header {
+    font-size: 7rem;
+}
+
   .login-text {
-    font-size: 1.5rem;
-  }
+    font-size: 2rem;
+    max-width: 70%;
+    margin: 0 auto;
+  }  
 
-  /* .signup-container {
+  .user-login-cont {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
-  } */
-
-  /* Login Modal */
-/* #login-success-modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
   }
-  
-  #login-success-modal .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 300px;
+
+  .user-label {
+    font-size: 2rem;
+    display: inline-block;
+    width: 12rem;
+  }
+
+  #id_username  {
+    height: 2rem;
+    width: 20rem;
+  }
+
+  #id_password {
+    height: 2rem;
+    width: 20rem;
+  }
+
+  .log-last-p {
+    font-size: 2rem;
+    max-width: 70%;
+    margin: 0 auto;
     text-align: center;
   }
-  
-  #login-success-modal .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  
-  #login-success-modal .close:hover,
-  #login-success-modal .close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-  } */
-  /* .hero-title {
-    color: white !important;
+
+  .logger-btn:hover {
+    color: #000;
+    background-color: #FFFFF0;
+    border: none;
   }
 
-  .hero-img {
-    background-image: url(https://res.cloudinary.com/dmtxhbwvw/image/upload/v1687943809/static/Images/jacopo-maia--gOUx23DNks-unsplash.4b3752b62710.jpg);
-    width: 100%;
-    
-  } */
+  .log-err {
+    font-size: 1.7rem;
+    color: #B30000;
+  }
+
+  @media (max-width: 775px) {
+    .log-last-p {
+      width: 90%;
+    }
+
+    .login-text {
+      width: 90%;
+    }
+  }
 
 /* HOME */
 
@@ -259,27 +261,6 @@ a.btn.btn-dark:hover {
     font-size: 1.2rem;
   }
 }
-  
-  /* .hero-btn {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 10px 20px;
-    color: white;
-    background-color: transparent;
-    border: 2px solid white;
-    text-decoration: none;
-  }
-  
-  .hero-btn:hover {
-    background-color: white;
-    color: black;
-  } */
-  
-  
-
-
-
-
 
  .btn-transparent {
     color: white;
@@ -291,15 +272,15 @@ a.btn.btn-dark:hover {
  }
 
  .card-img {
-  height: 400px;
+  height: 40rem;
   object-fit: cover;
  }
 
 
- .recipe-image {
+ /* .recipe-image {
   max-height: 40rem;
   object-fit: cover;
- }
+ } */
 
  /*RESULTS*/
 
@@ -395,10 +376,12 @@ a.btn.btn-dark:hover {
 /* ABOUT */
 
  .about-cont {
-  background-image: url("https://res.cloudinary.com/dmtxhbwvw/image/upload/v1689628282/static/Images/lukas-blazek-f-TWhXOrLiU-unsplash%281%29.376b4b52df13.jpg");
+  background-image: url("https://res.cloudinary.com/dmtxhbwvw/image/upload/v1689864098/charlesdeluvio-y6TY0wEnWqU-unsplash_gkjfdw.jpg");
   max-width: 100%;
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: 45% 55%;
+
 }
 
 .about-text {
@@ -406,6 +389,18 @@ a.btn.btn-dark:hover {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.about-text h2 {
+  font-size: 5rem;
+}
+
+.about-text h3 {
+  font-size: 3.5rem;
+}
+
+.about-text p {
+  font-size: 2rem;
 }
 
 .about-text h2, p{

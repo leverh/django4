@@ -4,32 +4,32 @@
 <div class="container mt-4">
   <div class="row justify-content-center">
     <div class="col-12 text-center">
-      <h2>Login</h2>
+      <h2 class="log-header">Login</h2>
       <p class="login-text">Welcome back to the ultimate recipe collection! Please log in to access a world of culinary delights and create your personalized recipe book.</p>
       <p class="login-text">Already a member? Simply enter your login details below to continue your gastronomic journey.</p>
     </div>
   </div>
   
   {% if error_message %}
-    <p>{{ error_message }}</p>
+    <p class="text-center log-err">{{ error_message }}</p>
   {% endif %}
   
   <div class="container mt-4">
     <form method="post">
       {% csrf_token %}
   
-      <div class="row justify-content-center mb-3">
+      <div class="row justify-content-center mb-3 user-login-cont">
         <div class="col-auto">
-          <label for="id_username">Username:</label>
+          <label for="id_username" class="user-label">Username:</label>
         </div>
         <div class="col-auto">
           <input type="text" name="username" id="id_username">
         </div>
       </div>
   
-      <div class="row justify-content-center mb-3">
+      <div class="row justify-content-center mb-3 user-login-cont">
         <div class="col-auto">
-          <label for="id_password">Password:</label>
+          <label for="id_password" class="user-label">Password:</label>
         </div>
         <div class="col-auto">
           <input type="password" name="password" id="id_password">
@@ -38,12 +38,12 @@
   
       <div class="row justify-content-center">
         <div class="col-auto text-center">
-          <button type="submit" class="btn btn-primary">Login</button>
+          <button type="submit" class="btn btn-dark mt-3 logger-btn">Login</button>
         </div>
       </div>
     </form>
   </div>
-  <p>Not a member yet? No worries! Join our community of passionate food enthusiasts
+  <p class="log-last-p">Not a member yet? No worries! Join our community of passionate food enthusiasts
      by clicking on the "Sign Up" button above. Gain access to an extensive library of recipes,
      save your favorites, and share your own mouthwatering creations with fellow foodies.</p>
 </div>
