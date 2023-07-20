@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Roboto:wght@300;400;700&display=swap');
+
 /* GENERAL */
 
 * {
@@ -12,6 +14,7 @@ html {
 
 body {
   background-color: #FFFFF0;
+  font-family: 'Montserrat', sans-serif !important;
 }
 
 .btn {
@@ -36,6 +39,10 @@ h4 {
 
 h5 {
   font-size: 2rem;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Roboto', sans-serif !important;
 }
 
 
@@ -192,6 +199,7 @@ h5 {
   font-weight: bold;
   opacity: 1;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-family: 'Roboto', sans-serif;
 }
 
 .btn-light {
@@ -292,6 +300,7 @@ a.btn.btn-dark:hover {
 
  .results-cont h2 {
   text-align: center;
+  font-family: 'Roboto', sans-serif;
  }
 
  .results-cont ul {
@@ -315,6 +324,7 @@ a.btn.btn-dark:hover {
     font-size: 2.5rem;
     margin-bottom: 2rem;
     margin-top: 2rem;
+    font-family: 'Roboto', sans-serif;
   }
 
   @media (max-width: 368px) {
@@ -381,7 +391,6 @@ a.btn.btn-dark:hover {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 45% 55%;
-
 }
 
 .about-text {
@@ -393,14 +402,18 @@ a.btn.btn-dark:hover {
 
 .about-text h2 {
   font-size: 5rem;
+  font-family: 'Roboto', sans-serif !important;
 }
 
 .about-text h3 {
   font-size: 3.5rem;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
 }
 
 .about-text p {
   font-size: 2rem;
+  font-weight: 600 !important;
 }
 
 .about-text h2, p{
@@ -411,6 +424,7 @@ a.btn.btn-dark:hover {
 .about-text p {
   font-weight: 500;
   width: 50%;
+  font-family: 'Montserrat', sans-serif;
 }
 
 @media (max-width: 768px) {
@@ -425,15 +439,20 @@ a.btn.btn-dark:hover {
   .about-text h2 {
     width: 70%;
     text-align: center;
+    font-family: 'Roboto', sans-serif;
   }
 }
 
-/* img.logo-img {
-  max-width: 2rem;
-  margin-right: .5rem;
+/* SIGNUP */
 
-  
-  <div class="text-center d-flex d-xl-flex flex-column justify-content-center align-items-center align-items-xl-center hero-img" data-bss-scroll-zoom="true" data-bss-scroll-zoom-speed="1" style="background-image: linear-gradient(
-    rgba(0, 0, 0, 0.4),
-    rgba(0, 0, 0, 0.4)
-  ), url(https://res.cloudinary.com/dmtxhbwvw/image/upload/v1687943809/static/Images/jacopo-maia--gOUx23DNks-unsplash.4b3752b62710.jpg); background-position: center; background-size: cover;"> */
+.signup-cont {
+  justify-content: center;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  font-size: 1.3rem;
+}

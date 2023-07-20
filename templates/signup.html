@@ -2,10 +2,10 @@
 
 {% block content %}
 
-<div class="container mt-5 d-flex flex-column align-items-center">
+<div class="container mt-5 d-flex flex-column align-items-center signup-cont">
   <h2>Sign Up</h2>
   
-  <form method="post">
+  <form method="post" class="signup-form">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit" id="signup-button" class="btn btn-primary mt-3">Sign Up</button>
