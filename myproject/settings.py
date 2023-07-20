@@ -34,7 +34,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEBUG' in os.environ
 
-ALLOWED_HOSTS = ["recipe-collection-deea6c7fa662.herokuapp.com", '8000-leverh-django4-6gkm9tcwy20.ws-eu101.gitpod.io']
+ALLOWED_HOSTS = ["recipe-collection-deea6c7fa662.herokuapp.com", '8000-leverh-django4-6gkm9tcwy20.ws-eu102.gitpod.io']
 
 LOGIN_URL = 'login'
 

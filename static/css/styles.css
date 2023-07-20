@@ -93,36 +93,29 @@
     
   } */
 
+/* HOME */
 
+.hero-img {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
-  .hero-container {
-    position: relative;
-    height: 30rem;
-    width: 100%;
-  }
-  
-  
-  .hero-mg {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-  }
-  
-  .hero-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    color: white;
-  }
-  
-  .hero-title {
-    font-size: 3rem;
-    font-weight: bold;
-  }
+.hero-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: bold;
+}
   
   .hero-btn {
     display: inline-block;
