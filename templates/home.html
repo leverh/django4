@@ -36,7 +36,7 @@
       <p class="fs-5 home-ps text-body">The new website for you to upload and share recipes with everyone.<br>Register for an account now</p>
       {% if user.is_authenticated %}
         <p class="home-ps text-body">Welcome, {{ user.username }}!</p>
-        <a href="{% url 'recipe-create' %}" class="btn btn-primary">Create a New Recipe</a>
+        <a href="{% url 'recipe-create' %}" class="btn btn-primary btn-auth-user">Create a New Recipe</a>
       {% else %}
         <p class="home-ps text-body">Please <a href="{% url 'login' %}">login</a> or <a href="{% url 'signup' %}">Signup</a> to get started.</p>
       {% endif %}

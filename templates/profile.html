@@ -4,12 +4,12 @@
 <div class="profile-cont container mt-5 flex-column centered-text">
   <h2 class="mb-5">User Profile</h2>
   <div class="profile-info">
-    <h3 class="mb-5">{{ profile.user.username }}</h3>
-    <p>Email: {{ profile.user.email }}</p>
+    <h3 class="mb-5">User name: <span>{{ profile.user.username }}</span></h3>
+    <p>Email:  <span> {{ profile.user.email }}</span></p>
     {% if profile.bio %}
-    <p>Bio: {{ profile.bio }}</p>
+    <p>Bio: <span> {{ profile.bio }}</span></p>
     {% else %}
-    <p>Bio: User hasn't updated their bio yet!</p>
+    <p>Bio: <span> User hasn't updated their bio yet!</span></p>
     {% endif %}
   </div>
 

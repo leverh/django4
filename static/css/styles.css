@@ -289,6 +289,19 @@ a.btn.btn-dark:hover {
   -moz-box-shadow: 5px -6px 3px -2px rgba(0,0,0,0.4);
  }
 
+ .btn-auth-user {
+  background-color: #000;
+  color: #FFFFF0;
+  border: none;
+  border-radius: 5px;
+  padding: 1rem 1.2rem;
+ }
+
+ .btn-auth-user:hover {
+  background-color: #FFFFF0;
+  color: #000;
+ }
+
 
  /* .recipe-image {
   max-height: 40rem;
@@ -538,4 +551,78 @@ form.signup-form ul {
 
 .result-span {
   color:#FFA500;
+}
+
+/* RECIPE DETAIL*/
+
+.recipe-image-detail {
+  max-height: 70rem !important;
+  box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+  border-radius: 5px;
+}
+
+.rec-details-cont p {
+  font-size: 1.5rem;
+}
+
+.recipe-edit-btn{
+  font-size: 1.5rem;
+}
+
+.recipe-delete-btn {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  background-color: #28a745;
+  color: #FFFFF0;
+  border: none;
+  border-radius: 5px;
+  padding: .8rem;
+}
+
+.recipe-delete-btn:hover {
+  background-color: #105f23;
+}
+
+.recipe-like-btn {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  background-color: #ff69b4;
+  color: #FFFFF0;
+  border: none;
+  border-radius: 5px;
+  padding: .8rem 1rem;
+}
+
+.recipe-like-btn:hover {
+  background-color: #ff4e98;
+}
+
+/* PROFILE*/
+
+.profile-cont p {
+  font-size: 1.7rem;
+}
+
+.prof-button {
+  background-color: #28a745;
+  border: none;
+  border-radius: 5px;
+}
+
+.prof-button:hover {
+  background-color: #105f23;
+}
+
+/* .p-span {
+  color: #FFA500;
+} */
+
+.created-rec h2{
+  margin-bottom: 3rem;
+}
+
+.created-rec ul {
+  font-size: 1.7rem;
 }
