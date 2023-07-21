@@ -3,7 +3,7 @@
 {% block content %}
 <div class="rec-create">
   <h2>Create Recipe</h2>
-  <form method="post" enctype="multipart/form-data">
+  <form class="recipe-create-form" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Create Recipe</button>
