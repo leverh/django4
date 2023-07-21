@@ -18,6 +18,8 @@ from .models import Profile, Recipe
 from .forms import ProfileForm, RecipeForm, UserRegisterForm
 from django.contrib.auth.models import User
 from django.shortcuts import render
+from django.http import JsonResponse
+from django.db import IntegrityError
 
 # Create your views here.
 
@@ -181,9 +183,16 @@ def signup_view(request):
         form = UserRegisterForm(request.POST)
         if form.is_valid():
             user = form.save()
-            return redirect('login')  # Redirect to the login page after successful signup???
+            if user:
+                return JsonResponse({'success': True})
+            else:
+                return JsonResponse({'success': False, 'message': 'Failed to create an account.'})
+        else:
+            return JsonResponse({'success': False, 'message': 'Form validation failed.'})
+
     else:
         form = UserRegisterForm()
+
     return render(request, 'signup.html', {'form': form})
 
 
