@@ -234,7 +234,11 @@ class RecipeSearchView(ListView):
     def get_queryset(self):
         query = self.request.GET.get('q')
         if query:
-            return Recipe.objects.filter(Q(headline__icontains=query) | Q(description__icontains=query))
+            return Recipe.objects.filter(
+                Q(headline__icontains=query) |
+                Q(description__icontains=query) |
+                Q(ingredients__icontains=query)
+            )
         else:
             return Recipe.objects.all()
         
