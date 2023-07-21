@@ -2,6 +2,13 @@
 
 {% block content %}
 <div class="container mt-4">
+  {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
   <div class="row justify-content-center">
     <div class="col-12 text-center">
       <h2 class="log-header">Login</h2>
@@ -9,6 +16,7 @@
       <p class="login-text">Already a member? Simply enter your login details below to continue your gastronomic journey.</p>
     </div>
   </div>
+  
   
   {% if error_message %}
     <p class="text-center log-err">{{ error_message }}</p>

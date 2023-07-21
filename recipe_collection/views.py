@@ -157,6 +157,12 @@ class CustomPasswordChangeView(SuccessMessageMixin, PasswordChangeView):
     success_url = reverse_lazy('login')
     success_message = "Your password has been changed successfully!"
 
+    def form_valid(self, form):
+        form.save()
+        messages.info(self.request, "Your password has been changed successfully. You will be redirected to log in again.")
+        logout(self.request)
+        return super().form_valid(form)
+
 
 class CustomPasswordResetCompleteView(PasswordResetCompleteView):
     #email_template_name = 'recipe_collection/password_reset_email.html'

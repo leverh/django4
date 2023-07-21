@@ -335,18 +335,19 @@ a.btn.btn-dark:hover {
  }
 
  .btn-auth-user {
-  background-color: #000;
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  background-color: #28a745;
   color: #FFFFF0;
   border: none;
   border-radius: 5px;
-  padding: 1rem 1.2rem;
- }
+  padding: .8rem;
+}
 
- .btn-auth-user:hover {
-  background-color: #FFFFF0;
-  color: #000;
- }
-
+.btn-auth-user:hover {
+  background-color: #105f23;
+}
 
  /* .recipe-image {
   max-height: 40rem;
@@ -728,4 +729,57 @@ form.signup-form ul {
 
 .created-rec ul {
   font-size: 1.7rem;
+}
+
+/* PASSWORD CHANGE */
+
+.pass-change-cont p {
+  font-size: 1.5rem;
+  padding: 0;
+  margin-bottom: 2rem;
+}
+
+.pass-change-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.pass-change-form label {
+  font-size: 1.5rem;
+  display: block;
+}
+
+.pass-change-form ul {
+  font-size: 1.5rem;
+  margin-bottom: 0;
+}
+
+.pass-change-form input {
+  max-width: 35rem;
+  height: 2.5rem;
+  margin-top: 1rem;
+  border-radius: 4px;
+}
+
+.pass-change-form p {
+  padding: 0;
+}
+
+.pass-change-btn {
+  background-color: #28a745;
+  border: none;
+  border-radius: 5px;
+  padding: .7rem 1.5rem;
+  margin-top: 1rem;
+}
+
+.pass-change-btn:hover {
+  background-color: #105f23;
+}
+
+ul.messages.pass-change-success li{
+  font-size: 1rem !important;
+  color: #B30000 !important;
 }
