@@ -517,3 +517,25 @@ form.signup-form ul {
   font-size: 1.5rem;
   display: block;
 }
+
+/* SEARCH RESULTS*/
+
+.results-cont {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.results-cont h3 {
+  margin-bottom: 5rem;
+  margin-top: 3rem;
+}
+
+.results-cont li {
+  list-style: none;
+}
+
+.result-span {
+  color:#FFA500;
+}

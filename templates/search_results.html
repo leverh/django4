@@ -3,14 +3,17 @@
 {% block content %}
 
     <div class="results-cont">
-    <h2>Search Results</h2>
+    <h3>Search Results for <span class="result-span">"{{ search_query }}"</span></h3>
+    <p>Total results found: {{ total_results }}</p>
     {% if recipes %}
         <ul>
             {% for recipe in recipes %}
+              {% if recipe.pk %}  
                 <li>
-                    <h2><a href="{% url 'recipe-detail' recipe.id %}">{{ recipe.headline }}</a></h2>
+                    <h4><a href="{% url 'recipe-detail' recipe.pk %}">{{ recipe.headline }}</a></h4>
                     <p>{{ recipe.description }}</p>
                 </li>
+                {% endif %}
             {% endfor %}
         </ul>
     {% else %}

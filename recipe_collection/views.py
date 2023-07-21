@@ -10,6 +10,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy, reverse
 from django.contrib import messages
 from django.db.models import Q
+from django.db.models import Count
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.views import View
@@ -231,6 +232,22 @@ class RecipeSearchView(ListView):
     template_name = 'search_results.html'
     context_object_name = 'recipes'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        query = self.request.GET.get('q')
+        context['search_query'] = query
+
+        if query:
+            context['total_results'] = Recipe.objects.filter(
+                Q(headline__icontains=query) |
+                Q(description__icontains=query) |
+                Q(ingredients__icontains=query)
+            ).count()
+        else:
+            context['total_results'] = 0
+
+        return context
+
     def get_queryset(self):
         query = self.request.GET.get('q')
         if query:
@@ -240,7 +257,7 @@ class RecipeSearchView(ListView):
                 Q(ingredients__icontains=query)
             )
         else:
-            return Recipe.objects.all()
+            return Recipe.objects.none()
         
         
 class LikeView(LoginRequiredMixin, View):
