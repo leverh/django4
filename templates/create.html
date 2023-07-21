@@ -6,17 +6,9 @@
   <form class="recipe-create-form" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Create Recipe</button>
+    <button class="create-btn" type="submit">Create Recipe</button>
   </form>
 </div>
 
-  <script>
-    $(document).ready(function() {
-      var message = "{{ messages }}";
-      if (message) {
-        alert(message);
-      }
-    });
-  </script>
 {% endblock %}
 

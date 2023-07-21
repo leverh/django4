@@ -57,33 +57,78 @@ h1, h2, h3, h4, h5 {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(255, 255, 240, 0.9);
   }
   
   #signup-success-modal .modal-content {
     background-color: #fefefe;
     margin: 15% auto;
-    padding: 20px;
+    padding: 2rem;
     border: 1px solid #888;
-    width: 300px;
+    width: 30rem;
     text-align: center;
   }
   
   #signup-success-modal .close {
     color: #aaa;
     float: right;
-    font-size: 28px;
+    font-size: 2.8rem;
     font-weight: bold;
     cursor: pointer;
   }
   
   #signup-success-modal .close:hover,
   #signup-success-modal .close:focus {
-    color: black;
+    color: #000;
     text-decoration: none;
     cursor: pointer;
   }
 
+  #signup-success-modal .success-message {
+    color: #28a745; 
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  #signup-success-modal .success-btn {
+    background-color: #28a745; 
+    color: #fff;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+
+  #signup-success-modal .success-btn:hover {
+    background-color: #3cba92;
+  }
+
+  #signup-success-modal .secondary-btn {
+    background-color: #ff69b4;
+    color: #fff;
+    padding: .8rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    cursor: pointer;
+  }
+
+  #signup-success-modal .secondary-btn:hover {
+    background-color: #d459a4;
+  }
+
+  /* DJANGO ALERT */
+
+  .alert-success {
+    background-color: #28a745;
+    color: #fff;
+    border: 1px solid #3cba92;
+    padding: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  
   /* BASE */
 
   li.nav-item {
@@ -356,8 +401,12 @@ a.btn.btn-dark:hover {
   }
 
   #id_headline {
-    width: 30rem;
+    max-width: 30rem;
     height: 2.5rem;
+  }
+
+  .recipe-create-form input {
+    width: 200%;
   }
 
   .recipe-create-form input[name="headline"]::placeholder {
@@ -376,6 +425,14 @@ a.btn.btn-dark:hover {
     font-size: 1.3rem;
   }
 
+  @media (max-width: 310px) {
+    .recipe-create-form input,
+    .recipe-create-form textarea {
+      width: 100%; 
+    }
+  }
+
+
   @media (max-width: 368px) {
     .rec-create input[type="text"],
     .rec-create input[type="email"],
@@ -383,6 +440,21 @@ a.btn.btn-dark:hover {
     .rec-create textarea {
       width: 100%;
     }
+  }
+
+  .create-btn {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    background-color: #28a745;
+    color: #FFFFF0;
+    border: none;
+    border-radius: 5px;
+    padding: .8rem;
+  }
+
+  .create-btn:hover {
+    background-color: #105f23;
   }
 
   /* PROFILE */

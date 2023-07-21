@@ -2,6 +2,15 @@
 {% load static %}  
 {% block content %}
 
+{% if messages %}
+    <div class="alert alert-success">
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}
 <section>
 <div class="container text-center hero-container">
   <div class="hero-image-cont">
@@ -80,4 +89,5 @@
     </form>
   </div>
 </section>
+
 {% endblock %}
