@@ -1,13 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="update-rec-cont">
   <h1>Update Recipe</h1>
   <form class="update-recipe-form" method="post" action="{% url 'recipe-update' pk=recipe.id %}" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Update" class="btn btn-primary update-rec-btn">
-    <button type="button" class="btn btn-danger recipe-del-btn" id="deleteBtn">Delete</button>
+    <input class="recipe-delete-btn" type="submit" value="Delete Recipe" onclick="return confirm('Are you sure you want to delete this recipe?');">
   </form>
+</div>
   
   
   <!-- Delete confirmation modal -->
