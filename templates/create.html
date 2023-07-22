@@ -6,9 +6,33 @@
   <form class="recipe-create-form" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
+    <div>
+      <img id="image-preview" src="" alt="Recipe Image Preview">
+    </div>
     <button class="create-btn" type="submit">Create Recipe</button>
   </form>
 </div>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+  const fileInput = document.getElementById('id_image'); 
 
+  fileInput.addEventListener('change', function () {
+    const file = fileInput.files[0];
+    const imagePreview = document.getElementById('image-preview');
+
+    if (file) {
+      const reader = new FileReader();
+
+      reader.addEventListener('load', function () {
+        imagePreview.src = reader.result;
+      });
+
+      reader.readAsDataURL(file);
+    } else {
+      imagePreview.src = '';
+    }
+  });
+});
+</script>
 {% endblock %}
 
