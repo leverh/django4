@@ -79,11 +79,13 @@ class RecipeCreateView(LoginRequiredMixin, CreateView):
         return response
     
 
+from django.urls import reverse_lazy
+
 class RecipeUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Recipe
     form_class = RecipeForm
     template_name = 'update.html'
-    success_url = 'home.html'  
+    success_url = reverse_lazy('home')  # Use reverse_lazy to resolve the URL pattern
 
     def form_valid(self, form):
         form.instance.posted_by = self.request.user
@@ -97,7 +99,7 @@ class RecipeUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
     def get_form_class(self):
         form_class = super().get_form_class()
-        form_class.exclude = ['posted_by']  
+        form_class.exclude = ['posted_by']
         return form_class
     
 

@@ -14,7 +14,7 @@ class Recipe(models.Model):
     posted_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='recipes')
     liked_by = models.ManyToManyField(User, related_name='liked_recipes')
     date_posted = models.DateTimeField(auto_now_add=True)
-    image = models.ImageField(upload_to='recipe_images', storage=RawMediaCloudinaryStorage())
+    image = models.ImageField(upload_to='recipe_images', max_length=200, storage=RawMediaCloudinaryStorage())
 
     def get_likes_count(self):
         return self.liked_by.count()

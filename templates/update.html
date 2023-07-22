@@ -2,12 +2,13 @@
 
 {% block content %}
   <h1>Update Recipe</h1>
-  <form method="post">
+  <form class="update-recipe-form" method="post" action="{% url 'recipe-update' pk=recipe.id %}">
     {% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" value="Update" class="btn btn-primary">
-    <button type="button" class="btn btn-danger" id="deleteBtn">Delete</button>
+    <input type="submit" value="Update" class="btn btn-primary update-rec-btn">
+    <button type="button" class="btn btn-danger recipe-del-btn" id="deleteBtn">Delete</button>
   </form>
+  
   
   <!-- Delete confirmation modal -->
   <div class="modal" tabindex="-1" role="dialog" id="deleteModal">
