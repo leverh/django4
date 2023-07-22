@@ -79,17 +79,26 @@ class RecipeCreateView(LoginRequiredMixin, CreateView):
         return response
     
 
-from django.urls import reverse_lazy
-
 class RecipeUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Recipe
     form_class = RecipeForm
     template_name = 'update.html'
-    success_url = reverse_lazy('home')  # Use reverse_lazy to resolve the URL pattern
+    success_url = reverse_lazy('home') 
 
     def form_valid(self, form):
         form.instance.posted_by = self.request.user
+        recipe = self.get_object()
+        if 'image' in self.request.FILES:
+            if recipe.image:
+                recipe.image.delete()
+
+        recipe.image = self.request.FILES['image']
+
+        messages.success(self.request, 'Recipe has been updated successfully!')
         return super().form_valid(form)
+
+        form.save()
+        recipe.save()
 
     def test_func(self):
         recipe = self.get_object()
