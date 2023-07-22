@@ -79,11 +79,35 @@ class RecipeCreateView(LoginRequiredMixin, CreateView):
         return response
     
 
+class FormInvalidRedirectMixin:
+    def form_invalid(self, form):
+        # Redirect to the home page when the form is invalid (including when the user hasn't made any changes)
+        return redirect('home')
+
+
 class RecipeUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Recipe
     form_class = RecipeForm
     template_name = 'update.html'
     success_url = reverse_lazy('home') 
+
+    def has_form_changed(self, form):
+        # Helper function to check if the form has any changes
+        for field_name, field_value in form.cleaned_data.items():
+            if field_value != form.initial.get(field_name):
+                return True
+        return False
+
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        form = self.get_form()
+        if form.is_valid():
+            if self.has_form_changed(form):
+                return self.form_valid(form)
+            else:
+                return self.form_invalid(form)
+        else:
+            return self.form_invalid(form)
 
     def form_valid(self, form):
         form.instance.posted_by = self.request.user
@@ -99,7 +123,7 @@ class RecipeUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
         form.save()
         recipe.save()
-
+        
     def test_func(self):
         recipe = self.get_object()
         if self.request.user == recipe.posted_by:
