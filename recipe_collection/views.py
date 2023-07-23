@@ -21,18 +21,33 @@ from django.contrib.auth.models import User
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.db import IntegrityError
+from django.core.paginator import Paginator
+from math import ceil
 
 # Create your views here.
 
 
 class RecipeListView(ListView):
     model = Recipe
-    template_name = template_name = 'home.html'
+    template_name = 'home.html'
     context_object_name = 'recipes'
-    paginate_by = 10
+    paginate_by = 12
 
     def get_queryset(self):
         return Recipe.objects.order_by('-id')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        paginator = context['paginator']
+        page_numbers_range = 5  
+
+        num_pages = paginator.num_pages
+        current_page = context['page_obj'].number
+        start_page = max(current_page - page_numbers_range, 1)
+        end_page = min(current_page + page_numbers_range, num_pages)
+
+        context['page_range'] = range(start_page, end_page + 1)
+        return context
 
 
 class RecipeDetailView(DetailView):
@@ -89,7 +104,7 @@ class RecipeUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Recipe
     form_class = RecipeForm
     template_name = 'update.html'
-    success_url = reverse_lazy('home') 
+    success_url = reverse_lazy('home')
 
     def has_form_changed(self, form):
         # Helper function to check if the form has any changes
@@ -104,26 +119,24 @@ class RecipeUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         if form.is_valid():
             if self.has_form_changed(form):
                 return self.form_valid(form)
-            else:
-                return self.form_invalid(form)
-        else:
-            return self.form_invalid(form)
+        return self.form_invalid(form)
 
     def form_valid(self, form):
         form.instance.posted_by = self.request.user
         recipe = self.get_object()
-        if 'image' in self.request.FILES:
+
+        # Check if a new image is provided in the form
+        new_image = self.request.FILES.get('image')
+        if new_image:
+            # Delete the existing image, if any
             if recipe.image:
                 recipe.image.delete()
-
-        recipe.image = self.request.FILES['image']
+            # Update the image with the new one
+            recipe.image = new_image
 
         messages.success(self.request, 'Recipe has been updated successfully!')
         return super().form_valid(form)
 
-        form.save()
-        recipe.save()
-        
     def test_func(self):
         recipe = self.get_object()
         if self.request.user == recipe.posted_by:
@@ -134,6 +147,7 @@ class RecipeUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         form_class = super().get_form_class()
         form_class.exclude = ['posted_by']
         return form_class
+
     
 
 class RecipeDeleteView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, DeleteView):
