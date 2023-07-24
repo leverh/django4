@@ -5,7 +5,8 @@
   <h2 class="mb-5">User Profile</h2>
   <div class="profile-info">
     <h3 class="mb-5">User name: <span>{{ profile.user.username }}</span></h3>
-    <p>Email:  <span> {{ profile.user.email }}</span></p>
+    <p>Email: <a href="mailto:{{ profile.user.email }}">{{ profile.user.email }}</a></p>
+
     {% if profile.bio %}
     <p>Bio: <span> {{ profile.bio }}</span></p>
     {% else %}

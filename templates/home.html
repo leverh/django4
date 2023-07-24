@@ -64,10 +64,12 @@
             {% if recipe.image %}
               <img src="{{ recipe.image.url }}" alt="Recipe Image" class="card-img-top card-img">
             {% endif %}
-            <div class="card-body">
+          
+            <div class="card-body cardy-texty">
               <h5 class="card-title">{{ recipe.headline }}</h5>
+            </a>
+              <p class>Created by: <a href="{% url 'profile' pk=recipe.posted_by.pk %}">{{ recipe.posted_by }}</a></p>
             </div>
-          </a>
         </div>
       {% empty %}
         <div class="col">
