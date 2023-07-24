@@ -80,7 +80,7 @@
   </div>
 </section>
 
-<div class="pagination justify-content-center">
+<div class="pagination justify-content-center" id="pagination-links">
   <span class="step-links">
     {% if recipes.has_previous %}
       <a href="?page=1">&laquo; first</a>
@@ -89,11 +89,13 @@
 
     {% for page_num in page_range %}
       {% if recipes.number == page_num %}
-        <span class="current">
-          Page {{ recipes.number }} of {{ recipes.paginator.num_pages }}.
+        <span class="current-page">
+          Page {{ page_num }} of {{ recipes.paginator.num_pages }}.
         </span>
       {% else %}
-        <a href="?page={{ page_num }}">{{ page_num }}</a>
+        {% ifchanged %}
+          <a href="?page={{ page_num }}">{{ page_num }}</a>
+        {% endifchanged %}
       {% endif %}
     {% endfor %}
 
@@ -103,6 +105,7 @@
     {% endif %}
   </span>
 </div>
+
 
 <section class="py-5">
   <div class="container">
@@ -115,5 +118,21 @@
     </form>
   </div>
 </section>
+<script>
+  
+  document.addEventListener("DOMContentLoaded", function() {
+    const currentPage = new URLSearchParams(window.location.search).get("page");
+
+    const paginationLinks = document.getElementById("pagination-links");
+    const links = paginationLinks.getElementsByTagName("a");
+
+    for (const link of links) {
+      const page = parseInt(link.innerText);
+      if (page === parseInt(currentPage)) {
+        link.classList.add("current-page");
+      }
+    }
+  });
+</script>
 
 {% endblock %}

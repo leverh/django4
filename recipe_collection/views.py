@@ -148,7 +148,6 @@ class RecipeUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         form_class.exclude = ['posted_by']
         return form_class
 
-    
 
 class RecipeDeleteView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, DeleteView):
     model = Recipe
@@ -167,7 +166,7 @@ class RecipeDeleteView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMi
         messages.success(self.request, self.success_message)
         return HttpResponseRedirect(success_url)
 
-  
+
 def login_view(request):
     error_message = None  
     if request.method == 'POST':
