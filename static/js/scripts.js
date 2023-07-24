@@ -118,17 +118,24 @@ document.addEventListener("DOMContentLoaded", function () {
 //   }
   
 
-const image = document.getElementById('zoom-image');
-const observer = new IntersectionObserver(entries => {
-	entries.forEach(entry => {
-	  if (entry.isIntersecting) {
-		image.classList.add('zoomed');
-	  } else {
-		image.classList.remove('zoomed');
-	  }
-	});
-  });
+document.addEventListener('DOMContentLoaded', function () {
+	const heroImage = document.querySelector('.hero-image');
   
-  observer.observe(image);
-
+	if (heroImage) {
+	  function checkVisibility() {
+		const rect = heroImage.getBoundingClientRect();
+		const isVisible = (rect.top >= 0 && rect.bottom <= window.innerHeight);
+  
+		if (isVisible) {
+		  heroImage.classList.add('zoomed');
+		} else {
+		  heroImage.classList.remove('zoomed');
+		}
+	  }
+  
+	  window.addEventListener('scroll', checkVisibility);
+	  window.addEventListener('resize', checkVisibility);
+	  checkVisibility();
+	}
+  });
   
