@@ -4,14 +4,14 @@
 
     <div class="results-cont">
     <h3>Search Results for <span class="result-span">"{{ search_query }}"</span></h3>
-    <p>Total results found: {{ total_results }}</p>
+    <p>Total results found: <span class="results-span">{{ total_results }}</span></p>
     {% if recipes %}
         <ul>
             {% for recipe in recipes %}
               {% if recipe.pk %}  
                 <li>
                     <h4><a href="{% url 'recipe-detail' recipe.pk %}">{{ recipe.headline }}</a></h4>
-                    <p>{{ recipe.description }}</p>
+                    <p class="home-desc result-desc">{{ recipe.description }}</p>
                 </li>
                 {% endif %}
             {% endfor %}

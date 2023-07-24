@@ -47,6 +47,7 @@ class RecipeListView(ListView):
         end_page = min(current_page + page_numbers_range, num_pages)
 
         context['page_range'] = range(start_page, end_page + 1)
+        context['current_page'] = current_page 
         return context
 
 

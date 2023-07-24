@@ -182,6 +182,11 @@ h1, h2, h3, h4, h5 {
     text-align: center;
   }
 
+  .logo-img {
+    max-width: 3.3rem;
+    height: auto;
+  }
+
   /* LOGIN */
 
   .log-header {
@@ -338,6 +343,19 @@ a.btn.btn-dark:hover {
 
 .card-body p {
   font-size: 1.5rem;
+  color: #6c757d;
+}
+
+.home-desc {
+  padding: .7rem 1rem;
+  background-color: #d8f7dd;
+  border-radius: 5px;
+  font-size: 1.3rem !important;
+  font-weight: 600;
+}
+
+.home-create {
+  padding-top: 0;
 }
 
  .btn-transparent {
@@ -572,6 +590,11 @@ a.btn.btn-dark:hover {
     gap: 1.5rem;
   }
 
+  .update-form label {
+    display: block;
+    margin-bottom: 1rem;
+  }
+
   @media (max-width: 382px) {
   .update-form input[type="text"],
   .update-form input[type="email"],
@@ -581,12 +604,15 @@ a.btn.btn-dark:hover {
   }
 }
 
-
-/*PASSWORD RESET*/
-
-/* .pass-reset-cont h2{
-  font-size: 2rem;
-} */
+  .update-prof-btn {
+    background-color: #28a745;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .update-prof-btn:hover {
+    background-color: #105f23;
+  }
 
 /* ABOUT */
 
@@ -727,6 +753,16 @@ form.signup-form ul {
   align-items: center;
 }
 
+.results-cont p {
+  font-size: 1.7rem;
+}
+
+.results-span {
+  color:#FFA500;
+  font-weight: 600;
+  margin-left: 1rem;
+}
+
 .results-cont h3 {
   margin-bottom: 5rem;
   margin-top: 3rem;
@@ -738,6 +774,24 @@ form.signup-form ul {
 
 .result-span {
   color:#FFA500;
+}
+
+.results-cont a {
+  color: #1c7430;
+  text-decoration: none;
+}
+
+.results-cont a:visited {
+  color: #4B0082;
+}
+
+.results-cont a:hover {
+  text-decoration: underline;
+  color: #0d521e;
+}
+
+.results-cont a:active {
+  color: #FF6347;
 }
 
 /* RECIPE DETAIL*/

@@ -57,19 +57,29 @@
 <section class="py-5">
   <div class="container recipe-home-cont">
     <h3 class="mb-4">Latest Recipes</h3>
-    <div class="row">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
       {% for recipe in recipes %}
-        <div class="col-sm-6 col-md-4 mb-4">
-          <a href="{% url 'recipe-detail' recipe.id %}" class="card rec-card">
+        <div class="col">
+          <div class="card rec-card">
             {% if recipe.image %}
-              <img src="{{ recipe.image.url }}" alt="Recipe Image" class="card-img-top card-img">
+              <a href="{% url 'recipe-detail' recipe.id %}">
+                <img src="{{ recipe.image.url }}" alt="Recipe Image" class="card-img-top card-img">
+              </a>
             {% endif %}
-          
             <div class="card-body cardy-texty">
-              <h5 class="card-title">{{ recipe.headline }}</h5>
-            </a>
-              <p class>Created by: <a href="{% url 'profile' pk=recipe.posted_by.pk %}">{{ recipe.posted_by }}</a></p>
+              <h5 class="card-title">
+                <a href="{% url 'recipe-detail' recipe.id %}">
+                  {{ recipe.headline }}
+                </a>
+              </h5>
+              <div class="description-wrapper">
+                <div class="description-box">
+                  <p class="home-desc">{{ recipe.description }}</p>
+                </div>
+              </div>
+              <p class="home-create">Created by: <a href="{% url 'profile' pk=recipe.posted_by.pk %}">{{ recipe.posted_by }}</a></p>
             </div>
+          </div>
         </div>
       {% empty %}
         <div class="col">
@@ -89,13 +99,9 @@
 
     {% for page_num in page_range %}
       {% if recipes.number == page_num %}
-        <span class="current-page">
-          Page {{ page_num }} of {{ recipes.paginator.num_pages }}.
-        </span>
+        <a href="?page={{ page_num }}" class="current-page">{{ page_num }}</a>
       {% else %}
-        {% ifchanged %}
-          <a href="?page={{ page_num }}">{{ page_num }}</a>
-        {% endifchanged %}
+        <a href="?page={{ page_num }}">{{ page_num }}</a>
       {% endif %}
     {% endfor %}
 
@@ -105,6 +111,7 @@
     {% endif %}
   </span>
 </div>
+
 
 
 <section class="py-5">
@@ -120,19 +127,17 @@
 </section>
 <script>
   
-  document.addEventListener("DOMContentLoaded", function() {
-    const currentPage = new URLSearchParams(window.location.search).get("page");
+  const currentPage = '{{ current_page }}';
 
-    const paginationLinks = document.getElementById("pagination-links");
-    const links = paginationLinks.getElementsByTagName("a");
+  const paginationLinks = document.getElementById('pagination-links');
+  const links = paginationLinks.getElementsByTagName('a');
 
-    for (const link of links) {
-      const page = parseInt(link.innerText);
-      if (page === parseInt(currentPage)) {
-        link.classList.add("current-page");
-      }
+  for (const link of links) {
+    const page = parseInt(link.innerText);
+    if (page === parseInt(currentPage)) {
+      link.classList.add('current-page');
     }
-  });
+  }
 </script>
 
 {% endblock %}
