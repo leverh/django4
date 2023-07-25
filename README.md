@@ -15,7 +15,7 @@ The Recipe Collection web application is a comprehensive Django project with a f
 
 ### Overview
 
-Recipe Collection is designed with the user in mind, offering a seamless and enjoyable experience for both cooking enthusiasts and casual visitors. The platform's user experience centers around simplicity, accessibility, and interactivity, ensuring that users can effortlessly navigate through the site and discover inspiring recipes. Below are key aspects of the user experience and the corresponding user stories.
+Recipe Collection is designed with the user in mind, offering an enjoyable experience for both cooking enthusiasts and casual visitors. The platform's user experience centers around simplicity, accessibility, and interactivity, ensuring that users can effortlessly navigate through the site and discover inspiring recipes. Below are key aspects of the user experience and the corresponding user stories.
 
 #### Viewing and Navigation
 * Users can explore Recipe Collection on various devices, ensuring a consistent experience regardless of screen size.
@@ -54,15 +54,13 @@ Recipe Collection is designed with the user in mind, offering a seamless and enj
 
 #### base.html
 
-**base.html** serves as the foundational template for the Healthy Choices web application, providing a cohesive structure and consistent design across all pages. This reusable template incorporates essential elements, such as a navigation bar, footer, and login/signup options, to enhance user experience and streamline navigation.
+**base.html** serves as the foundational template for the Healthy Choices web application, providing a structure and consistent design across all pages. This reusable template incorporates essential elements, such as a navigation bar, footer, and login/signup options, to enhance user experience and streamline navigation.
 
-The top **navigation** bar features the Healthy Choices logo, a captivating red radish emblem, reinforcing the app's theme of healthy living. The navigation bar remains collapsible on smaller screens to optimize space and create a user-friendly experience. Users can effortlessly navigate through various sections, including the Home and About pages, ensuring easy access to essential information.
+The top **navigation** bar features the Healthy Choices logo, a red radish emblem, reinforcing the app's theme of healthy living. The navigation bar is collapsible on smaller screens to optimize space and create a user-friendly experience. Users can navigate through various sections, including the Home and About pages, ensuring easy access to essential information.
 
 Healthy Choices **empowers** its users to contribute and engage actively with the community. Unauthenticated users are encouraged to register and create an account, enabling access to exclusive features. Authenticated users have the privilege to add their choices, fostering a sense of belonging and personalization.
 
 The app's clean and **responsive** layout ensures a seamless experience across devices of different sizes. From the landing page, users can explore the latest posts, staying updated with a vibrant community. A detailed view of each post provides in-depth information and an opportunity to like recipes, encourages interaction and participation.
-
-Once **logged in**, users can access their personalized profile pages, where they have the freedom to change their profile bio, making their presence unique and identifiable.
 
 The **footer** presents essential copyright information and credits the creative minds behind Healthy Choices. The footer also includes convenient social media contact links, allowing users to reach out to the app's creator effortlessly, as well as fellow users that are also connected to the app one Facebook/Instagram.
 
@@ -76,13 +74,69 @@ The home page is the first page visitors see on the site so it needed to be **vi
 
 Interactive elements on the Home page enrich user engagement. For example, the recipe image hover effect is intersting and attracts user interaction. Authenticated users can easily move to create new recipes by clicking the **create recipe button**. User interactions are further personalized with dynamic greetings- Authenticated users are addressed by their usernames, creating a sense of belonging and enhancing the platform's friendly ambiance.
 
-The Home page utilizes a responsive **pagination** system to efficiently manage recipe listings. Users can navigate through multiple pages of recipes effortlessly, ensuring optimal performance and user satisfaction, regardless of the volume of content.
+The Home page utilizes a responsive **pagination** system to efficiently manage recipe listings. Users can navigate through multiple pages of recipes, ensuring optimal performance and user satisfaction, regardless of the volume of content.
 
 Advanced **search functionality** empowers users to find recipes based on specific keywords. The Home page processes search queries and delivers relevant results promptly. The intuitive search bar and efficient backend mechanisms ensure a smooth search experience.
 
-**User data**, including profile images, is securely managed by the application's back-end. Password encryption, data validation, and user authentication mechanisms safeguard sensitive information, ensuring user privacy and data integrity.
+**User data**, is securely managed by the application's back-end. Password encryption, data validation, and user authentication mechanisms safeguard sensitive information, ensuring user privacy and data integrity.
 
 The **hero image** on the Home page has an interactive effect, dynamically scaling upon user interaction. The effect, implemented using JavaScript and the Intersection Observer API, creates, I hope, an eye-catching visual element.
+
+#### My profile page
+
+Once **logged in**, users can access their personalized profile pages, where they have the freedom to change their profile bio, making their presence unique and identifiable. On the profile page users also have the buttons and links to update their profile, change or reset their passwords, and access their posted recipes. This enables users to use the website as an electronic paperless recipe-database.
+
+#### Search results page
+
+The search functionality is open to both registered and non-registered users. The page itself will present all the recipes that include the key word the user searched for, as well as display the number of results found. The user can then simply click on the link and be redirected to the appropriate recipe. 
+
+#### Signup and login pages
+
+These pages contains simple responsive forms for registration/logging in. On the registration page is again a small text promoting the app and encouraging users to join- and for ease of registration, users are only required to input a username, email address, and a password. 
+
+#### Create a new recipe page
+
+This page contains a simple recipe creation form with a headline, description, ingredients, and preparation input boxes (with placeholders so that users know what each input box is for) as well as the requirement to upload a recipe image. Once a user uses the browse button to choose an image, the preview image will show up on the page.
+
+#### Recipe pages
+
+Individual recipe pages contain an image, headline, description, ingredients, preparation instructions, name of the recipe's author, the date and time it was posted and the amount of likes the recipe got. Authenticated users will also see a like button. Authenicated users that authored the recipe will also see a link to edit the recipe, and delete the recipe. 
+
+#### Update Recipe page
+The update recipe is only accessible to an authenticated recipe author. They are able to edit the recipe, or change the image. This page will also give them the option to delete the recipe if they wish to do so. If the user chooses to delete the recipe, a modal window will open up requesting confirmation. If nothing had been updated and the user clicked on update, the page will simply reload.
+
+## CRUD functionality 
+
+This web application allows registered users to view, create, delete, or update recipes. The updates take place immediately. Site adminidtrators have the 'superpower' the control other users' recipes too in addition to the above mentioned capabilities. 
+
+## Technologies, tools, and frameworks Used
+
+### Languages:
+* Python
+* JavaScript
+* HTML5
+* CSS3
+
+### Frameworks:
+* Django
+* Bootstrap
+
+### Deployment: 
+* [Heroku](https://heroku.com/)
+
+### Version control:
+* [Git](https://github.com/) - version control and respository hub
+
+### IDE's: 
+* [Gitpod](https://gitpod.io/)
+* Visual Studio Code
+
+### Media and static storage:
+*[Cloudinary](https://cloudinary.com/)
+
+### Tools:
+* [Google Fonts](https://fonts.google.com/)
+* [Flaticons](https://www.flaticon.com/)
 
 
 
