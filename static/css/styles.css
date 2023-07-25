@@ -802,8 +802,20 @@ form.signup-form ul {
   border-radius: 5px;
 }
 
+.rec-details-cont {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .rec-details-cont p {
-  font-size: 1.5rem;
+  font-size: 1.7rem;
+  letter-spacing: .1rem;
+}
+
+.rec-detail-prep {
+  max-width: 70rem;
 }
 
 .recipe-edit-btn{
@@ -840,6 +852,24 @@ form.signup-form ul {
   background-color: #ff4e98;
 }
 
+.rec-details-cont a {
+  color: #1c7430;
+  text-decoration: none;
+}
+
+.rec-details-cont a:visited {
+  color: #4B0082;
+}
+
+.rec-details-cont a:hover {
+  text-decoration: underline;
+  color: #0d521e;
+}
+
+.rec-details-cont a:active {
+  color: #FF6347;
+}
+
 /* PROFILE*/
 
 .profile-cont p {
@@ -855,10 +885,6 @@ form.signup-form ul {
 .prof-button:hover {
   background-color: #105f23;
 }
-
-/* .p-span {
-  color: #FFA500;
-} */
 
 .created-rec h2{
   margin-bottom: 3rem;

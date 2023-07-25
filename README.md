@@ -109,6 +109,13 @@ The update recipe is only accessible to an authenticated recipe author. They are
 
 This web application allows registered users to view, create, delete, or update recipes. The updates take place immediately. Site adminidtrators have the 'superpower' the control other users' recipes too in addition to the above mentioned capabilities. 
 
+## Design
+
+### Colors
+
+![color palette of usage]
+
+
 ## Technologies, tools, and frameworks Used
 
 ### Languages:
@@ -139,6 +146,74 @@ This web application allows registered users to view, create, delete, or update 
 * [Flaticons](https://www.flaticon.com/)
 
 
+## Tests
+
+container gave itself a boostrap !important that i cannot override since it's not in my css but in the bootstrap - tried to use JS to figure out the issue and did some tests to see if i could apply styles: 
+
+const prepElements = document.getElementsByClassName("prep-text");
+for (let i = 0; i < prepElements.length; i++) {
+  prepElements[i].style.backgroundColor = "yellow";
+} 
+and:
+const prepElements = document.getElementsByClassName("prep-text");
+for (let i = 0; i < prepElements.length; i++) {
+  prepElements[i].style.textAlign = "left !important";
+}
+Still had no luck to checked to see if i can see console.log statements using the following code:  
+console.log("Script is running");
+
+const prepElements = document.getElementsByClassName("prep-text");
+console.log(prepElements.length);
+for (let i = 0; i < prepElements.length; i++) {
+  prepElements[i].style.textAlign = "left";
+}
+That didn't work either so tried the next test along: 
+ document.addEventListener("DOMContentLoaded", function () {
+    console.log("Script is running");
+  });
+
+  and : 
+  document.addEventListener("DOMContentLoaded", function () {
+            console.log("Script is running");
+            const prepElements = document.getElementsByClassName("prep-text");
+            console.log(prepElements.length);
+            for (let i = 0; i < prepElements.length; i++) {
+                prepElements[i].style.textAlign = "left";
+            }
+        });
+
+discovered it was a cache issue after all 
+
+After switching debug to false, got a 400 Bad Request page. Developer tools console showed nothing. to debug i did the following: 
+1. Check server logs. But i couldn't find anything.
+2. Enabling error logging by importing logging and then the code logging.basicConfig(level=logging.INFO)
+3. when that failed i asked for tutor support. 
+
+Discovered a bug. A modal window opens with the js message at the bottom even if the user has not successfully created an account. the message should appear only if there was an account successfully created. if not, it should provide the user with an error message. after several tries i fixed the functionality, but got a "Error: SyntaxError: JSON.parse: unexpected character at line 2 column 1 of the JSON data". I then used log comments to try and figure out the bug: 
+fetch('{% url "signup" %}', {
+      method: 'POST',
+      body: new FormData(document.querySelector('.signup-form')),
+    })
+    .then(response => {
+      **console.log('Response:', response);**
+      return response.json();
+That indicated the server returned a successful respone but there was an issue with data being returned. So i added another console.log:
+**console.log('Content-Type:', response.headers.get('Content-Type'));** to check for a content-type and then a:
+.then(data => {
+  console.log('Data:', data); 
+  return JSON.parse(data);
+})
+Eventually after about 20 tests i gathered that the server response was being receieved as text/html instead of the expected application/json.
+After a few tries (and a lot of hair pulling) and a git hard reset I managed to fix the issue.
+
+
+Another bug discovered when i set success_url to a string, which caused an incorrect redirection after a successful form submission. Instead of using it as a string, i tried using the jinje {% %} which worked.
+
+Another bug i discovered was an error due to an image name being too long:DataError: value too long for type character varying(100) 
+It took me a while to diagnose the issue but after extensive online searches i discovered it was due to the max length of characters. I then looked for a solution for this issue and discovered the truncate_chars and checked it in my code: image_filename = form.cleaned_data['image'].name
+        truncated_image_filename = truncate_chars(image_filename, 100)
+        form.instance.image = truncated_image_filename
+That didn't fix the issue either. After several tries of different combinations of code and another hard reset i found a fragile status quo that didn't bug. 
 
 
 icons: <a href="https://www.flaticon.com/free-icons/radish" title="radish icons">Radish icons created by Futuer - Flaticon</a>

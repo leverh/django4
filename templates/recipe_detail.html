@@ -4,17 +4,17 @@
 <div class="container mt-5 d-flex flex-column align-items-center text-center rec-details-cont">
   <img src="{{ recipe.image.url }}" alt="{{ recipe.headline }}" class="recipe-image recipe-image-detail img-fluid mb-5">
   
-  <h2 class="">{{ recipe.headline }}</h2>
-  <p class="">{{ recipe.description }}</p>
+  <h2>{{ recipe.headline }}</h2>
+  <p class="home-desc">{{ recipe.description }}</p>
 
-  <h2 class="">Ingredients:</h2>
-  <p class="">{{ recipe.ingredients|linebreaksbr }}</p>  
+  <h2 >Ingredients:</h2>
+  <p class="rec-detail-ing">{{ recipe.ingredients|linebreaksbr }}</p>  
 
   <h2 class="prep-text">Preparation:</h2>
-  <div class="centered-text">
+  <div class="centered-text rec-detail-prep">
   <p class="prep-text">{{ recipe.preparation|linebreaksbr }}</p>
 </div>
-  <p class="">Created by: <a href="{% url 'profile' pk=recipe.posted_by.pk %}">{{ recipe.posted_by }}</a></p>
+  <p class="rec-detail-link">Created by: <a href="{% url 'profile' pk=recipe.posted_by.pk %}">{{ recipe.posted_by }}</a></p>
 
 
 
