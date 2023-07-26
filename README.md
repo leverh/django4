@@ -125,8 +125,8 @@ This web application allows registered users to view, create, delete, or update 
 * CSS3
 
 ### Frameworks:
-* Django
-* Bootstrap
+* [Django](https://www.djangoproject.com/)
+* [Bootstrap](https://getbootstrap.com/)
 
 ### Deployment: 
 * [Heroku](https://heroku.com/)
@@ -379,20 +379,29 @@ def test_recipe_search_view(self):
         self.assertEqual(response.status_code, 200)
 ```
 
+## Credits
 
+* Icons: <a href="https://www.flaticon.com/free-icons/radish" title="radish icons">Radish icons created by Futuer - Flaticon</a>
 
-
-
-
-
-
-
-
-icons: <a href="https://www.flaticon.com/free-icons/radish" title="radish icons">Radish icons created by Futuer - Flaticon</a>
-
-documentaion for the js scroll effect: 
+* Documentaion for the js scroll effect: 
 https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserverEntry/isIntersecting
 http://scrollmagic.io/docs/
 
-about.html image: Photo by <a href="https://unsplash.com/@charlesdeluvio?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">charlesdeluvio</a> on <a href="https://unsplash.com/backgrounds/things/food?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
-  
+* about.html image: Photo by <a href="https://unsplash.com/@charlesdeluvio?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">charlesdeluvio</a> on <a href="https://unsplash.com/backgrounds/things/food?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+
+* [Jamie Oliver](https://www.jamieoliver.com/recipes/category/special-diets/vegan/) recipe images and recipes.
+
+* [Feasting At Home](https://www.feastingathome.com/vegan-dinner-recipes/) recipe images and recipes.
+
+* [Maangchi](https://www.maangchi.com/recipe/chaesik-kimchi) recipe image and recipe.
+
+* [Code Institue](https://codeinstitute.net/) Django Walkthrough for project setup and deployment.
+
+### Acknoledgements
+
+[Code Institue](https://codeinstitute.net/) tutors: 
+* Alan that always has patience for even the silliest of questions, 
+
+and,
+
+* Oisin for figuring out in less than one minute an error in the code. 
