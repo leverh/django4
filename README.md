@@ -405,3 +405,5 @@ http://scrollmagic.io/docs/
 and,
 
 * Oisin for figuring out in less than one minute an error in the code. 
+
+* Gemma for sorting out more gitpod hours! 
