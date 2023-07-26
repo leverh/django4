@@ -150,16 +150,171 @@ This web application allows registered users to view, create, delete, or update 
 
 container gave itself a boostrap !important that i cannot override since it's not in my css but in the bootstrap - tried to use JS to figure out the issue and did some tests to see if i could apply styles: 
 
+## Bugs and bug fixes
+
+As I went along with the project, I realised something very important that I will be more aware of in the next big projects: rather than planning ahead logically, I coded and built my app according to the features and the final result in my head. Coding with the 'feel' rather than the 'logic' can lead to constant bugs, some of which i list below:
+
+* I discovered the following bug:  a modal window opens with the js message at the bottom even if the user has not successfully created an account. the message should appear only if there was an account successfully created. If not, it should provide the user with an error message. after several tries I fixed the functionality, but got a **"Error: SyntaxError: JSON.parse: unexpected character at line 2 column 1 of the JSON data".** I then used log comments to try and figure out the bug: 
+```javascript
+fetch('{% url "signup" %}', {
+      method: 'POST',
+      body: new FormData(document.querySelector('.signup-form')),
+    })
+    .then(response => {
+      **console.log('Response:', response);**
+      return response.json();
+```
+That indicated the server returned a successful respone but there was an issue with data being returned. So I added another console.log: 
+```javascript 
+console.log('Content-Type:', response.headers.get('Content-Type'));
+```  
+to check for a content-type and then a:
+```javascript
+.then(data => {
+  console.log('Data:', data); 
+  return JSON.parse(data);
+})
+```
+Eventually after about 20 tests I gathered that the server response was being receieved as text/html instead of the expected application/json.
+After a few tries (and a lot of hair pulling) and a Git hard reset I managed to fix the issue.
+
+
+* After switching debug to false, got a 400 Bad Request page. Developer tools console showed nothing. to debug i did the following: 
+1. Check server logs. But i couldn't find anything.
+2. Enabling error logging by importing logging and then the code: 
+```python 
+logging.basicConfig(level=logging.INFO)
+```
+3. when that failed i asked for tutor support. 
+
+* A bug was discovered when I set success_url to a string, which caused an incorrect redirection after a successful form submission. Instead of using it as a string, i tried using the jinja {% %} which worked.
+
+* I discovered a bug to do with an error due to an image name being too long:
+**DataError: value too long for type character varying(100)**. 
+It took me a while to diagnose the issue but after extensive online searches i discovered it was due to the max length of characters. I then looked for a solution for this issue and discovered the [truncatechars](https://docs.djangoproject.com/en/4.2/ref/templates/builtins/#truncatechars) and checked it in my code: 
+```python 
+image_filename = form.cleaned_data['image'].name
+        truncated_image_filename = truncate_chars(image_filename, 100)
+        form.instance.image = truncated_image_filename
+```
+That didn't fix the issue either. After several tries of different combinations of code and another hard reset i found a fragile status quo that didn't bug. 
+
+* Then i discovered the I forgot to add functionality to my delete button and used an existing delete button to fix the issue and updated the JS to include the delete functionality: 
+```javascript
+$(document).ready(function() {
+    $('#deleteBtn').on('click', function() {
+      var confirmMessage = "Are you sure you want to delete this recipe?";
+      if (confirm(confirmMessage)) {
+        var deleteUrl = $(this).data('url');
+        $.ajax({
+          url: deleteUrl,
+          method: 'DELETE',
+          success: function() {
+            window.location.href = '/';
+          }
+        });
+      }
+    });
+  ```
+
+  * Paginator bug: System was not recognizing the current paginator class, preventing the user from knowing what page numbert they were on. I tried several methods for fixing the issue until I decided to go for the JS solution. The JS code took a few tries until i finally got the right combination: 
+  ```javascript
+  document.addEventListener("DOMContentLoaded", function() {
+    const currentPage = new URLSearchParams(window.location.search).get("page");
+
+    const paginationLinks = document.getElementById("pagination-links");
+    const links = paginationLinks.getElementsByTagName("a");
+
+    for (const link of links) {
+      const page = parseInt(link.innerText);
+      if (page === parseInt(currentPage)) {
+        link.classList.add("current-page");
+      }
+    }
+  }); 
+  ```
+  This lead to another bug which I tried to combat by adding a custom_filters.py file and this code for django: 
+  ```python
+  @register.filter(name='add_class')
+def add_class(value, css_class):
+    return value.as_widget(attrs={'class': css_class})
+  ```
+That didn't work either unfortunately. Eventually i resolved it by adding: 
+```python
+context['current_page'] = current_page
+```  
+to my recipelistview and: 
+```python
+const paginationLinks = document.getElementById('pagination-links');
+const links = paginationLinks.getElementsByTagName('a');  
+```
+to my script.
+
+* A bug with the [IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) (according to documentation it's a bug related to target element not being a valid DOM element). I tried switching to a 
+```javascript
+document.querySelector()
+``` 
+instead of 
+```javascript
+getElementById
+```
+In the end to simplify the process I added a class to the appropriate element, and to the js code a check to ensure that heroImage is not null before proceeding with the checkVisibility logic. It worked!
+
+---
+
+There were many more bugs but I learned to: 
+
+1. Not be dismayed- most things can be fixed by looking at it from a different perspective.
+2. If my Python doesn't work- employ JavaScript.
+3. Sometimes changing the logic to a different logic can give me a much simpler and clearer solution to a problem. 
+
+
+
+## Testing
+
+### Manual tests
+
+I tested all the functionalities of the app and went about fixing all the bugs that arose (a few of which i listed above in the bugs section). I used Firefox developer tools to inspect my pages and console, and my terminal for error logs.
+
+#### The tests: 
+| Expected                                      | Test Performed                                | Result  |
+| --------------------------------------------- | --------------------------------------------- | ------- |
+| Buttons checked for functionality            | Clicked every button in the app              | Passed  |
+| Form required fields not being filled prevent form from being submitted | Tested every form | Passed  |
+| Modal window or Django message upon form submission| Tested every form for success or other alert messages| Passed  |
+| Search function returns the expected data     | Tested multiple keywords                    | Passed  |
+| All links redirect users to the appropriate destination | Clicked every link to check | Passed|
+| User authentication works as expected. Non-authenticated users cannot view certain elements authenticated users can | Created several user profile and tested all functionalities | Passed |
+| User profile can be updated as expected by changing bio or email info | Tested the different buttons on the user profile page to make sure all are functional | Passed |
+| Recipe creation, update and deletion working as expected | Created several recipes which I then attempted to edit by using different text or a different image | Passed |
+| Non-recipe-authors should not be able to edit or delete recipes | Checked to see that the options are not available to non-author authenticated and non-authenticated users | Passed |
+| Data transfer to Cloudinary to work seamlessly | Checked all images are uploaded to Cloudinary. Checked the time required for upload | Passed |
+| Responsiveness of webpages | Checked all pages using the Firefox developer tools | Passed |
+| Like button functions | Clicked the Like button on several recipes | Passed |
+
+
+---
+---
+### Automated testing:
+
+* As shown in the bug and bug fixing section, I used automated code testing regularly to try and figure out why things were not working as expected. Here are a couple more instances where I used automated tests:
+
+* I couldn't get the styles I wrote for a certain page to appear and decided to use JS to test and maybe overcome the issue: 
+```javascript
 const prepElements = document.getElementsByClassName("prep-text");
 for (let i = 0; i < prepElements.length; i++) {
   prepElements[i].style.backgroundColor = "yellow";
 } 
+```
 and:
+```javascript
 const prepElements = document.getElementsByClassName("prep-text");
 for (let i = 0; i < prepElements.length; i++) {
   prepElements[i].style.textAlign = "left !important";
 }
-Still had no luck to checked to see if i can see console.log statements using the following code:  
+```
+Still had no luck so checked to see if I can see console.log statements using the following code: 
+```javascript 
 console.log("Script is running");
 
 const prepElements = document.getElementsByClassName("prep-text");
@@ -167,12 +322,15 @@ console.log(prepElements.length);
 for (let i = 0; i < prepElements.length; i++) {
   prepElements[i].style.textAlign = "left";
 }
-That didn't work either so tried the next test along: 
+```
+That didn't work either so tried the next test along:
+```javascript 
  document.addEventListener("DOMContentLoaded", function () {
     console.log("Script is running");
   });
-
-  and : 
+```
+  and: 
+  ```javascript
   document.addEventListener("DOMContentLoaded", function () {
             console.log("Script is running");
             const prepElements = document.getElementsByClassName("prep-text");
@@ -181,39 +339,53 @@ That didn't work either so tried the next test along:
                 prepElements[i].style.textAlign = "left";
             }
         });
+```
+In the end i realised it was just a cache issue... :face_palm:
 
-discovered it was a cache issue after all 
+* I used the- 
+```python
+python manage.py test
+``` 
+for the following tests: 
 
-After switching debug to false, got a 400 Bad Request page. Developer tools console showed nothing. to debug i did the following: 
-1. Check server logs. But i couldn't find anything.
-2. Enabling error logging by importing logging and then the code logging.basicConfig(level=logging.INFO)
-3. when that failed i asked for tutor support. 
+```python
+class RecipeTestCase(TestCase):
+    def setUp(self):
+        self.client = Client()
 
-Discovered a bug. A modal window opens with the js message at the bottom even if the user has not successfully created an account. the message should appear only if there was an account successfully created. if not, it should provide the user with an error message. after several tries i fixed the functionality, but got a "Error: SyntaxError: JSON.parse: unexpected character at line 2 column 1 of the JSON data". I then used log comments to try and figure out the bug: 
-fetch('{% url "signup" %}', {
-      method: 'POST',
-      body: new FormData(document.querySelector('.signup-form')),
-    })
-    .then(response => {
-      **console.log('Response:', response);**
-      return response.json();
-That indicated the server returned a successful respone but there was an issue with data being returned. So i added another console.log:
-**console.log('Content-Type:', response.headers.get('Content-Type'));** to check for a content-type and then a:
-.then(data => {
-  console.log('Data:', data); 
-  return JSON.parse(data);
-})
-Eventually after about 20 tests i gathered that the server response was being receieved as text/html instead of the expected application/json.
-After a few tries (and a lot of hair pulling) and a git hard reset I managed to fix the issue.
+    def test_recipe_list_view(self):
+        response = self.client.get(reverse('home'))
+        self.assertEqual(response.status_code, 200)
+```
+to check the app returns a 200 status code. I created a fake recipe:
+```python
+def test_recipe_detail_view(self):
+        recipe = Recipe.objects.create(
+            headline='Test Recipe',
+            description='This is a test recipe.',
+            ingredients='Ingredient 1, Ingredient 2',
+            posted_by_id=1)
+```
+and to check if the recipe detail view returns a 200 respone for an existing recipe:
+```python
+response = self.client.get(reverse('recipe-detail', args=[recipe.pk]))
+        self.assertEqual(response.status_code, 200)
+```
+and another test for the recipe search view: 
+
+```python
+def test_recipe_search_view(self):
+        response = self.client.get(reverse('recipe-search'))
+        self.assertEqual(response.status_code, 200)
+```
 
 
-Another bug discovered when i set success_url to a string, which caused an incorrect redirection after a successful form submission. Instead of using it as a string, i tried using the jinje {% %} which worked.
 
-Another bug i discovered was an error due to an image name being too long:DataError: value too long for type character varying(100) 
-It took me a while to diagnose the issue but after extensive online searches i discovered it was due to the max length of characters. I then looked for a solution for this issue and discovered the truncate_chars and checked it in my code: image_filename = form.cleaned_data['image'].name
-        truncated_image_filename = truncate_chars(image_filename, 100)
-        form.instance.image = truncated_image_filename
-That didn't fix the issue either. After several tries of different combinations of code and another hard reset i found a fragile status quo that didn't bug. 
+
+
+
+
+
 
 
 icons: <a href="https://www.flaticon.com/free-icons/radish" title="radish icons">Radish icons created by Futuer - Flaticon</a>

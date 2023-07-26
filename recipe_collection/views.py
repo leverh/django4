@@ -185,7 +185,7 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return redirect('login')
-    #return render(request, 'recipe_collection/logout.html')
+# return render(request, 'recipe_collection/logout.html')
 
 
 def register(request):
@@ -214,7 +214,7 @@ class CustomPasswordChangeView(SuccessMessageMixin, PasswordChangeView):
 
 
 class CustomPasswordResetCompleteView(PasswordResetCompleteView):
-    #email_template_name = 'recipe_collection/password_reset_email.html'
+    # email_template_name = 'recipe_collection/password_reset_email.html'
     template_name = 'password_reset.html'
 
 
