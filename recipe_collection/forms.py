@@ -22,6 +22,7 @@ class UserUpdateForm(forms.ModelForm):
 
 class ProfileForm(forms.ModelForm):
     email = forms.EmailField(required=True)
+    profile_image = forms.ImageField(required=False, widget=forms.ClearableFileInput(attrs={'class': 'custom-file-input'}))
 
     class Meta:
         model = Profile

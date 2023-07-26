@@ -264,9 +264,13 @@ class ProfileUpdateView(LoginRequiredMixin, UpdateView):
         return self.request.user.profile
 
     def form_valid(self, form):
-        response = super().form_valid(form)
-        self.request.session['profile_updated'] = True
-        return response
+        if self.request.user.is_authenticated:
+            profile_image = self.request.FILES.get('profile_image')
+            if profile_image:
+                self.request.user.profile.profile_image = profile_image
+                self.request.user.profile.save()
+
+        return super().form_valid(form)
     
 @method_decorator(login_required, name='dispatch')
 class ProfileDetailView(LoginRequiredMixin, DetailView):

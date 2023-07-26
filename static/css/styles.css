@@ -193,7 +193,7 @@ h1, h2, h3, h4, h5 {
 
   .social-link {
     font-size: 2.5rem;
-    color: #28a745;
+    color: #28a745 !important;
     padding: 1rem;
   }
   
@@ -202,7 +202,7 @@ h1, h2, h3, h4, h5 {
   }
 
   .social-link:hover {
-    color: #1c7430;
+    color: #1c7430 !important;
   }
 
   /* LOGIN */
@@ -578,6 +578,21 @@ a.btn.btn-dark:hover {
     min-width: 12rem;
   }
 
+  .profile-cont {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .profile-info {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
   .created-rec a:hover {
     color: #105f23;
   }
@@ -600,11 +615,31 @@ a.btn.btn-dark:hover {
     color: #FF6347;
   }
 
+  .prof-img {
+    width: 30rem;
+    height: auto;
+    object-fit: cover;
+  }
+
   @media (max-width: 720px) {
     .prof-buttons {
       flex-direction: column;
       justify-content: center;
-      align-items: flex-start;
+      align-items: normal;
+    }
+  }
+
+  @media (max-width: 495px) {
+    .profile-cont h3 {
+      font-size: 3rem;
+    }
+
+    .bio-text {
+      text-align: center;
+    }
+
+    .created-rec h2 {
+      font-size: 3rem;
     }
   }
 
@@ -685,7 +720,6 @@ a.btn.btn-dark:hover {
   font-family: 'Roboto', sans-serif;
   font-weight: 700;
   color: #fff;
-  text-shadow:
 }
 
 .about-text p {

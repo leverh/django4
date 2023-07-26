@@ -8,7 +8,30 @@
   <form method="post" enctype="multipart/form-data" class="update-form">
     {% csrf_token %}
     {{ form.as_p }}
+    <img id="image-preview" src="{% if profile.profile_image %}{{ profile.profile_image.url }}{% endif %}" alt="Profile Image Preview" style="max-width: 200px; max-height: 200px;">
     <button type="submit" class="btn btn-primary update-prof-btn">Update</button>
   </form>
 </div>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const fileInput = document.getElementById('id_profile_image');
+    const imagePreview = document.getElementById('image-preview');
+
+    fileInput.addEventListener('change', function () {
+      const file = fileInput.files[0];
+
+      if (file) {
+        const reader = new FileReader();
+
+        reader.addEventListener('load', function () {
+          imagePreview.src = reader.result;
+        });
+
+        reader.readAsDataURL(file);
+      } else {
+        imagePreview.src = '';
+      }
+    });
+  });
+</script>
 {% endblock %}

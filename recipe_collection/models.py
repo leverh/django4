@@ -27,6 +27,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(max_length=500, blank=True)
     favorite_recipes = models.ManyToManyField(Recipe, related_name='favorited_by')
+    profile_image = CloudinaryField('profile_images', null=True, blank=True)
 
     def __str__(self):
         return self.user.username
