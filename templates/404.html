@@ -1,7 +1,13 @@
 {% extends "base.html" %}
-{% load static %}  
 {% block content %}
-
-<h2>Error error error! Page isn't found! Please go back...</h2>
-
+<div class="container d-flex justify-content-center align-items-center centered-container error-cont">
+    <div class="d-flex flex-column align-items-center">
+    <div class="error-gif">
+        <iframe src="https://giphy.com/embed/UHAYP0FxJOmFBuOiC2" width="280" height="161" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/gengar-jijidraws-jiji-knight-UHAYP0FxJOmFBuOiC2">via GIPHY</a></p>
+    </div>
+<h2 class="text-center">Error error error! Page isn't found! Please go back...</h2>
+<p class="display-4 text-center">Please check the URL or hurry back to the homepage!</p>
+<a href="{% url 'home' %}" class="btn btn-primary reg-btn-second">Back to Homepage</a>
+</div>
+</div>
 {% endblock %}

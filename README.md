@@ -395,6 +395,12 @@ http://scrollmagic.io/docs/
 
 * [Maangchi](https://www.maangchi.com/recipe/chaesik-kimchi) recipe image and recipe.
 
+* [BudgetBytes](https://www.budgetbytes.com/category/recipes/vegetarian/) recipe images and recipes.
+
+* [Delish](https://www.delish.com/cooking/g1486/healthy-vegetarian-dinner-recipes/) recipe images and recipes.
+
+* [GoodFood (BBC)](https://www.bbcgoodfood.com/recipes/collection/vegetarian-dinner-recipes) recipe images and recipes.
+
 * [Code Institue](https://codeinstitute.net/) Django Walkthrough for project setup and deployment.
 
 ### Acknoledgements
