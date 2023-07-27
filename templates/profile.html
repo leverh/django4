@@ -3,9 +3,11 @@
 {% block content %}
 <div class="profile-cont container mt-5 flex-column centered-text">
   <h2 class="mb-5">User Profile</h2>
+  {% if profile.profile_image %}
   <div class="profile-image">
     <img src="{{ profile.profile_image.url }}" alt="{{ profile.user.username }} Profile Image" class="prof-img">
   </div>
+  {% endif %}
   <div class="profile-info">
     <h3 class="mb-5">User name: <span>{{ profile.user.username }}</span></h3>
     <p>Email: <a href="mailto:{{ profile.user.email }}">{{ profile.user.email }}</a></p>

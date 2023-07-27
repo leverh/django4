@@ -45,7 +45,21 @@ h5 {
 h1, h2, h3, h4, h5 {
   font-family: 'Roboto', sans-serif !important;
 }
+ 
+/*  GENERAL BUTTON RULES:
 
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    background-color: #28a745;
+    color: #FFFFF0;
+    border: none;
+    border-radius: 5px;
+    padding: .8rem;
+
+    hover 
+    background-color: #105f23;
+*/
 
 /* MODAL STYLES */
 
@@ -172,6 +186,22 @@ h1, h2, h3, h4, h5 {
     background-color: inherit;
   }
 
+  .base-log-btn {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    background-color: #28a745;
+    color: #FFFFF0;
+    border: none;
+    border-radius: 5px;
+    padding: .8rem;
+  }
+
+  .base-log-btn:hover {
+    background-color: #105f23 !important;
+    color: #FFFFF0 !important;
+  }
+
   .navbar-brand {
     font-size: 1.5rem;
     margin-left: 1rem;
@@ -289,15 +319,32 @@ h1, h2, h3, h4, h5 {
     text-align: center;
   }
 
-  .logger-btn:hover {
-    color: #000;
-    background-color: #FFFFF0;
+  .logger-btn {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    background-color: #28a745;
+    color: #FFFFF0;
     border: none;
+    border-radius: 5px;
+    padding: .8rem;
+  }
+
+  .logger-btn:hover {
+    background-color: #105f23;
   }
 
   .log-err {
     font-size: 1.7rem;
     color: #B30000;
+  }
+
+  #id_username {
+    height: 2.5rem;
+  }
+
+  #id_password {
+    height: 2.5rem;
   }
 
   @media (max-width: 775px) {
@@ -353,6 +400,12 @@ h1, h2, h3, h4, h5 {
 .hero-btn {
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   background-color: #FFFFF0;
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  border: none;
+  border-radius: 5px;
+  padding: .8rem;
 }
 
 .btn-light:hover {
@@ -369,6 +422,22 @@ a.btn.btn-dark:hover {
   background-color: #FFFFF0;
   color: #000;
   border: none;
+}
+
+.reg-btn-second {
+  font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    background-color: #28a745;
+    color: #FFFFF0;
+    border: none;
+    border-radius: 5px;
+    padding: .8rem;
+}
+
+.reg-btn-second:hover {
+    background-color: #105f23 !important;
+    color: #FFFFF0 !important;
 }
 
 .home-text {
@@ -1109,6 +1178,12 @@ ul.messages.pass-change-success li{
   color: #B30000 !important;
 }
 
+/* PASSWORD RESET*/
+
+.pass-reset-cont p {
+  font-size: 2.5rem;
+}
+
 /* UPDATE RECIPE*/
 
 .update-rec-cont {
@@ -1189,3 +1264,8 @@ ul.messages.pass-change-success li{
 .reset-btn:hover {
   background-color: #990000;
 }
+
+.messages {
+  display: none;
+}
+
