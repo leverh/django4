@@ -10,7 +10,7 @@
   {% endif %}
   <div class="profile-info">
     <h3 class="mb-5">User name: <span>{{ profile.user.username }}</span></h3>
-    <p>Email: <a href="mailto:{{ profile.user.email }}">{{ profile.user.email }}</a></p>
+    <p>Email: <a class="prof-email" href="mailto:{{ profile.user.email }}">{{ profile.user.email }}</a></p>
 
     {% if profile.bio %}
     <p class="bio-text">Bio: <span> {{ profile.bio }}</span></p>

@@ -740,6 +740,10 @@ a.btn.btn-dark:hover {
     object-fit: cover;
   }
 
+  a.prof-email  {
+    text-decoration: none !important;
+  }
+
   @media (max-width: 720px) {
     .prof-buttons {
       flex-direction: column;
