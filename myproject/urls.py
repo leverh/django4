@@ -35,17 +35,32 @@ urlpatterns = [
     path('password_reset/', auth_views.PasswordResetView.as_view(
         template_name='registration/password_reset.html'
     ), name='password_reset'),
-
-    path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name='registration/password_reset_confirm.html'), name='password_reset_confirm'),
-    path('reset/done/', auth_views.PasswordResetCompleteView.as_view(template_name='registration/password_reset_complete.html'), name='password_reset_done'),
+    path('reset/<uidb64>/<token>/',
+         auth_views.PasswordResetConfirmView.as_view(
+             template_name='registration/password_reset_confirm.html'
+         ),
+         name='password_reset_confirm'),
+    path('reset/done/',
+         auth_views.PasswordResetCompleteView.as_view(
+            template_name='registration/password_reset_complete.html'
+         ),
+         name='password_reset_done'),
     path('recipe/<int:pk>/', RecipeDetailView.as_view(), name='recipe-detail'),
     path('recipe/new/', RecipeCreateView.as_view(), name='recipe-create'),
-    path('recipe/<int:pk>/update/', RecipeUpdateView.as_view(), name='recipe-update'),
-    path('recipe/<int:pk>/delete/', RecipeDeleteView.as_view(), name='recipe-delete'),
+    path('recipe/<int:pk>/update/',
+         RecipeUpdateView.as_view(),
+         name='recipe-update'),
+    path('recipe/<int:pk>/delete/',
+         RecipeDeleteView.as_view(),
+         name='recipe-delete'),
     path('register/', register, name='register'),
     path('profile/<int:pk>/', ProfileDetailView.as_view(), name='profile'),
-    path('profile/<int:pk>/update/', ProfileUpdateView.as_view(), name='profile-update'),
-    path('profile/<int:pk>/', ProfileDetailView.as_view(), name='profile-detail'),
+    path('profile/<int:pk>/update/',
+         ProfileUpdateView.as_view(),
+         name='profile-update'),
+    path('profile/<int:pk>/',
+         ProfileDetailView.as_view(),
+         name='profile-detail'),
     path('search/', RecipeSearchView.as_view(), name='recipe-search'),
     path('recipe/<int:pk>/like/', LikeView.as_view(), name='like'),
     path('about/', about_view, name='about'),

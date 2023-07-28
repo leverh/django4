@@ -47,8 +47,14 @@ class RecipeForm(forms.ModelForm):
     ingredients = forms.CharField(widget=forms.Textarea)
     preparation = forms.CharField(widget=forms.Textarea)
 
-    headline = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Enter a name for your recipe'}))
-    description = forms.CharField(widget=forms.Textarea(attrs={'placeholder': 'Let us know whether your recipe is vegan, vegetarian, gluten-free, etc'}))
+    headline = forms.CharField(
+        widget=forms.TextInput(
+            attrs={'placeholder': 'Enter a name for your recipe'}
+            )
+    )
+    description = forms.CharField(
+        widget=forms.Textarea(
+            attrs={'placeholder': 'Let us know whether your recipe is vegan, vegetarian, gluten-free, etc'}))
     ingredients = forms.CharField(widget=forms.Textarea(attrs={'placeholder': 'Please list your ingredients'}))
     preparation = forms.CharField(widget=forms.Textarea(attrs={'placeholder': 'This is where you explain how to prepare the recipe'}))
 
