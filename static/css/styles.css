@@ -744,6 +744,10 @@ a.btn.btn-dark:hover {
     text-decoration: none !important;
   }
 
+  .bio-text {
+    font-size: 3rem;
+  }
+
   @media (max-width: 720px) {
     .prof-buttons {
       flex-direction: column;
