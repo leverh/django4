@@ -38,7 +38,8 @@ DEBUG = False
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
-ALLOWED_HOSTS = ["recipe-collection-deea6c7fa662.herokuapp.com", '8000-leverh-django4-rtbo3accjom.ws-eu102.gitpod.io']
+ALLOWED_HOSTS = ["recipe-collection-deea6c7fa662.herokuapp.com",
+                 '8000-leverh-django4-rtbo3accjom.ws-eu102.gitpod.io']
 
 LOGIN_URL = 'login'
 

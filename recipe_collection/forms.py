@@ -22,11 +22,13 @@ class UserUpdateForm(forms.ModelForm):
 
 class ProfileForm(forms.ModelForm):
     email = forms.EmailField(required=True)
-    profile_image = forms.ImageField(required=False, widget=forms.ClearableFileInput(attrs={'class': 'custom-file-input'}))
+    profile_image = forms.ImageField(
+        required=False,
+        widget=forms.ClearableFileInput(attrs={'class': 'custom-file-input'}))
 
     class Meta:
         model = Profile
-        fields = ['email', 'bio']  
+        fields = ['email', 'bio']
         widgets = {
             'bio': forms.Textarea(attrs={'rows': 4}),
         }
@@ -49,9 +51,7 @@ class RecipeForm(forms.ModelForm):
     description = forms.CharField(widget=forms.Textarea(attrs={'placeholder': 'Let us know whether your recipe is vegan, vegetarian, gluten-free, etc'}))
     ingredients = forms.CharField(widget=forms.Textarea(attrs={'placeholder': 'Please list your ingredients'}))
     preparation = forms.CharField(widget=forms.Textarea(attrs={'placeholder': 'This is where you explain how to prepare the recipe'}))
-    
+
     class Meta:
         model = Recipe
         fields = ['headline', 'description', 'ingredients', 'preparation', 'image']
-
-    

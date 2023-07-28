@@ -30,8 +30,12 @@ urlpatterns = [
     path('login/', login_view, name='login'),
     path('logout/', logout_view, name='logout'),
     path('signup/', signup_view, name='signup'),
-    path('password_change/', CustomPasswordChangeView.as_view(), name='password_change'),
-    path('password_reset/', auth_views.PasswordResetView.as_view(template_name='registration/password_reset.html'), name='password_reset'),
+    path('password_change/', CustomPasswordChangeView.as_view(),
+         name='password_change'),
+    path('password_reset/', auth_views.PasswordResetView.as_view(
+        template_name='registration/password_reset.html'
+    ), name='password_reset'),
+
     path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name='registration/password_reset_confirm.html'), name='password_reset_confirm'),
     path('reset/done/', auth_views.PasswordResetCompleteView.as_view(template_name='registration/password_reset_complete.html'), name='password_reset_done'),
     path('recipe/<int:pk>/', RecipeDetailView.as_view(), name='recipe-detail'),
@@ -48,9 +52,11 @@ urlpatterns = [
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 # if settings.DEBUG:
-#     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+#     urlpatterns += static(settings.STATIC_URL,
+#  document_root=settings.STATIC_ROOT)
 # else:
-#     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT, show_indexes=True)
+#     urlpatterns += static(settings.STATIC_URL,
+#  document_root=settings.STATIC_ROOT, show_indexes=True)
 
 
 handler404 = error_404

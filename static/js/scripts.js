@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 
 if (window.innerWidth < 768) {
 	[].slice.call(document.querySelectorAll('[data-bss-disabled-mobile]')).forEach(function (elem) {
@@ -16,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	if (!('requestAnimationFrame' in window)) return;
 
 	var backgrounds = [];
-	var backgroundToSpeed = new WeakMap;
+	var backgroundToSpeed = new WeakMap();
 	var parallaxBackgrounds = document.querySelectorAll('[data-bss-scroll-zoom]');
 
 	for (var el of parallaxBackgrounds) {
@@ -122,7 +123,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	const heroImage = document.querySelector('.hero-image');
   
 	if (heroImage) {
-	  function checkVisibility() {
+		const checkVisibility = function () {
 		const rect = heroImage.getBoundingClientRect();
 		const isVisible = (rect.top >= 0 && rect.bottom <= window.innerHeight);
   
@@ -131,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		} else {
 		  heroImage.classList.remove('zoomed');
 		}
-	  }
+	  };
   
 	  window.addEventListener('scroll', checkVisibility);
 	  window.addEventListener('resize', checkVisibility);

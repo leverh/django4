@@ -11,10 +11,13 @@ class Recipe(models.Model):
     description = models.TextField()
     ingredients = models.TextField()
     preparation = models.TextField()
-    posted_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='recipes')
+    posted_by = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name='recipes')
     liked_by = models.ManyToManyField(User, related_name='liked_recipes')
     date_posted = models.DateTimeField(auto_now_add=True)
-    image = models.ImageField(upload_to='recipe_images', max_length=200, storage=RawMediaCloudinaryStorage())
+    image = models.ImageField(
+        upload_to='recipe_images', max_length=200,
+        storage=RawMediaCloudinaryStorage())
 
     def get_likes_count(self):
         return self.liked_by.count()
@@ -26,7 +29,8 @@ class Recipe(models.Model):
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(max_length=500, blank=True)
-    favorite_recipes = models.ManyToManyField(Recipe, related_name='favorited_by')
+    favorite_recipes = models.ManyToManyField(
+        Recipe, related_name='favorited_by')
     profile_image = CloudinaryField('profile_images', null=True, blank=True)
 
     def __str__(self):
