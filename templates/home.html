@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}  
 {% block content %}
-
+<div class="test-back">
 {% if messages %}
     <div class="alert alert-success">
         <ul>
@@ -118,6 +118,7 @@
     </form>
   </div>
 </section>
+</div>
 <script>
   /*jshint esversion: 6 */
   const currentPage = '{{ current_page }}';
