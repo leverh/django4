@@ -54,7 +54,7 @@ Recipe Collection is designed with the user in mind, offering an enjoyable exper
 
 #### base.html
 
-**base.html** serves as the foundational template for the Healthy Choices web application, providing a structure and consistent design across all pages. This reusable template incorporates essential elements, such as a navigation bar, footer, and login/signup options, to enhance user experience and streamline navigation.
+**base.html** serves as the foundational template for the Healthy Choices web application, providing a structure and consistent design across all pages. This reusable template incorporates essential elements, such as a navigation bar, footer, and login/signup options, to enhance user experience and streamline navigation. **base.html** ensures that each page within the Healthy Choices web application adheres to a consistent and visually appealing design.
 
 The top **navigation** bar features the Healthy Choices logo, a red radish emblem, reinforcing the app's theme of healthy living. The navigation bar is collapsible on smaller screens to optimize space and create a user-friendly experience. Users can navigate through various sections, including the Home and About pages, ensuring easy access to essential information.
 
@@ -64,7 +64,6 @@ The app's clean and **responsive** layout ensures a seamless experience across d
 
 The **footer** presents essential copyright information and credits the creative minds behind Healthy Choices. The footer also includes convenient social media contact links, allowing users to reach out to the app's creator effortlessly, as well as fellow users that are also connected to the app one Facebook/Instagram.
 
-**base.html** ensures that each page within the Healthy Choices web application adheres to a consistent and visually appealing design, providing a memorable and delightful user experience.
 
 #### home.html
 
@@ -111,9 +110,22 @@ This web application allows registered users to view, create, delete, or update 
 
 ## Design
 
+The sites are vibrant and visually appealing to all things to do with food and cooking. 
+
+The background contains a warm shade of #FFFFF0- this choice not only provides a cozy and comfortable ambiance but also makes the images users post stand out.
+I thought the greens I use for the buttons are playful, as well as sufficiently soft to be attractive and inviting. 
+
+I chose pink for the like button because it stands out from the rest and hopefully makes users feel friendly towards one another. 
+
+The text colors of #333 and #6c757d feel elegant as users read through the recipes. 
+
+But the True colors of this website are the colorful images of food that accompany each and every recipe. From vibrant fruits and veggies in the hero image, to mouth-watering dessers and savory dishes- hopefully inspire users (and make them hungry). 
+
 ### Colors
 
-![color palette of usage]
+![color palette of usage](https://res.cloudinary.com/dmtxhbwvw/image/upload/v1690813121/Screenshot_2023-07-31_at_16-17-19_Color_wheel_a_color_palette_generator_Adobe_Color_ljismf.png)
+
+I tried to stick to the above colors whenever possible to keep a uniformed look for the app. I believe that even when i used different shades (that aren't listed above), I made every page look like it was part of a system rather than a stand-alone element.. 
 
 
 ## Technologies, tools, and frameworks Used
@@ -139,7 +151,7 @@ This web application allows registered users to view, create, delete, or update 
 * Visual Studio Code
 
 ### Media and static storage:
-*[Cloudinary](https://cloudinary.com/)
+* [Cloudinary](https://cloudinary.com/)
 
 ### Tools:
 * [Google Fonts](https://fonts.google.com/)
@@ -261,7 +273,7 @@ getElementById
 In the end to simplify the process I added a class to the appropriate element, and to the js code a check to ensure that heroImage is not null before proceeding with the checkVisibility logic. It worked!
 
 
-* I encountered a bug with the password reset option where a user could enter any email address and receieve a reset email. When looking for a fix (approx. 3 days to fix and several tries) i discovered I wasn't using the Django built-in password reset option properly. I incorporated it eventually in my code and it works just fine now:
+* I encountered a bug with the password reset option where a user could enter any email address and receieve a reset email. When looking for a fix (approx. 3 days to fix and several tries) I discovered I wasn't using the Django built-in password reset option ([Password Reset tutorial](https://simpleisbetterthancomplex.com/tutorial/2016/09/19/how-to-create-password-reset-view.html) and [another](https://django-password-reset.readthedocs.io/en/latest/)) properly. I incorporated it eventually in my code and it works just fine now:
 ```python
 class CustomPasswordResetView(PasswordResetView):
     template_name = 'registration/password_reset.html'
@@ -318,7 +330,9 @@ I tested all the functionalities of the app and went about fixing all the bugs t
 | Data transfer to Cloudinary to work seamlessly | Checked all images are uploaded to Cloudinary. Checked the time required for upload | Passed |
 | Responsiveness of webpages | Checked all pages using the Firefox developer tools | Passed |
 | Like button functions | Clicked the Like button on several recipes | Passed |
-| User password manipulation |  Changing passwords multiple times, trying to reset passwords |  Partially passed - user password could be changed- however reset didn't work as expected. Please see the bugs section for more details on how I fixed the issue.
+| User password manipulation |  Changing passwords multiple times, trying to reset passwords |  Partially passed - user password could be changed- however reset didn't work as expected. Please see the bugs section for more details on how I fixed the issue |
+| Password functionality | Re-testing password functionalities (change password, reset password) | Passed |
+
 
 ---
 ---
@@ -414,6 +428,8 @@ def test_recipe_search_view(self):
 https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserverEntry/isIntersecting
 http://scrollmagic.io/docs/
 
+### Media
+
 * about.html image: Photo by <a href="https://unsplash.com/@charlesdeluvio?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">charlesdeluvio</a> on <a href="https://unsplash.com/backgrounds/things/food?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
 
 * [Jamie Oliver](https://www.jamieoliver.com/recipes/category/special-diets/vegan/) recipe images and recipes.
@@ -429,6 +445,8 @@ http://scrollmagic.io/docs/
 * [GoodFood (BBC)](https://www.bbcgoodfood.com/recipes/collection/vegetarian-dinner-recipes) recipe images and recipes.
 
 * [Gordon Frampy](https://www.deviantart.com/thegothengine/gallery) by TheGothEngine
+
+### Last But Not Least
 
 * [Code Institue](https://codeinstitute.net/) Django Walkthrough for project setup and deployment.
 
