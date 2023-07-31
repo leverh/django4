@@ -7,7 +7,14 @@ The Recipe Collection web application is a comprehensive Django project with a f
 * Recipe Database: The heart of the application lies in its extensive recipe database. I have designed a database structure to store recipes contributed by users. Each recipe is stored with essential details, such as ingredients, preparation steps, cooking time, and an image.
 * User Authentication: To provide a personalized experience, I have implemented user authentication features. Users can register, log in, and create their profiles, allowing them to save their favorite recipes and submit new recipes.
 * Recipe Submission: As part of the user experience, I have integrated a recipe submission feature. Authenticated users can easily submit their unique recipes, complete with images and additional notes. These contributions enrich the platform and encourage the exchange of diverse culinary creations.
+* User alerts: I have incorporated Django alerts for various actions: recipe creation, recipe updates, profile updates, etc. 
+
+![Image of Django user alerts](./readme-images/Screenshot%202023-07-31%20at%2017-12-12%20Recipe%20Collection.png)
 * Search Functionality: To facilitate recipe discovery, I have implemented a search feature. Users can search for recipes based on specific ingredients, cuisines, etc.
+
+![Image of search results](./readme-images/Screenshot%202023-07-31%20at%2023-48-43%20Recipe%20Collection.png)
+
+The results will show the keyword searched again, as well as a total results found. All results are naturally clickable and will direct the users to their recipe of choice.
 * User Interaction: I have included an interactive feature that allows authenticated users to 'like' other recipes posted.
 * Responsive Design: Recognizing the importance of a seamless user experience across devices, I have ensured that the web application is responsive and mobile-friendly. Users can access Recipe Collection on various devices without compromising usability.
 
@@ -42,6 +49,7 @@ Recipe Collection is designed with the user in mind, offering an enjoyable exper
 9. As a registered user, I can create my own posts, contributing my content to the platform.
 10. If I'm logged in, I have the privilege to edit and delete my created posts, maintaining control over my contributions.
 11. I expect to see appropriate error messages when I encounter issues or attempt to access forbidden links, guiding me to correct actions.
+12. For security purposes, I have the option to change my password.
 
 ### Site owner stories:
 1. I want to restrict access to certain sections of the app to unauthenticated users, ensuring basic standards of data protection and privacy.
@@ -58,11 +66,21 @@ Recipe Collection is designed with the user in mind, offering an enjoyable exper
 
 The top **navigation** bar features the Healthy Choices logo, a red radish emblem, reinforcing the app's theme of healthy living. The navigation bar is collapsible on smaller screens to optimize space and create a user-friendly experience. Users can navigate through various sections, including the Home and About pages, ensuring easy access to essential information.
 
+![navbar image](./readme-images/Screenshot%202023-07-31%20at%2023-55-04%20Recipe%20Collection.png)
+
+or the responsive version for small screens: 
+
+![navbar image for small screens](./readme-images/Screenshot%202023-07-31%20at%2023-56-25%20Recipe%20Collection.png)
+
 Healthy Choices **empowers** its users to contribute and engage actively with the community. Unauthenticated users are encouraged to register and create an account, enabling access to exclusive features. Authenticated users have the privilege to add their choices, fostering a sense of belonging and personalization.
 
 The app's clean and **responsive** layout ensures a seamless experience across devices of different sizes. From the landing page, users can explore the latest posts, staying updated with a vibrant community. A detailed view of each post provides in-depth information and an opportunity to like recipes, encourages interaction and participation.
 
-The **footer** presents essential copyright information and credits the creative minds behind Healthy Choices. The footer also includes convenient social media contact links, allowing users to reach out to the app's creator effortlessly, as well as fellow users that are also connected to the app one Facebook/Instagram.
+![Image of responsive layout for medium sized screens](./readme-images/Screenshot%202023-07-31%20at%2023-59-54%20Recipe%20Collection.png)
+
+The **footer** presents essential copyright information and credits the creative minds behind Healthy Choices. The footer also includes convenient social media contact links, allowing users to reach out to the app's creator effortlessly, as well as fellow users that are also connected to the app one Facebook/Instagram. The year in the copyright will update automatically.
+
+![image of footer with social links and copyright info](./readme-images/Screenshot%202023-08-01%20at%2000-01-14%20Recipe%20Collection.png)
 
 
 #### home.html
@@ -75,7 +93,11 @@ Interactive elements on the Home page enrich user engagement. For example, the r
 
 The Home page utilizes a responsive **pagination** system to efficiently manage recipe listings. Users can navigate through multiple pages of recipes, ensuring optimal performance and user satisfaction, regardless of the volume of content.
 
+![image of pagination on the home page](./readme-images/Screenshot%202023-08-01%20at%2000-03-28%20Recipe%20Collection.png)
+
 Advanced **search functionality** empowers users to find recipes based on specific keywords. The Home page processes search queries and delivers relevant results promptly. The intuitive search bar and efficient backend mechanisms ensure a smooth search experience.
+
+![Image of search bar](./readme-images/Screenshot%202023-07-31%20at%2023-47-19%20Recipe%20Collection.png)
 
 **User data**, is securely managed by the application's back-end. Password encryption, data validation, and user authentication mechanisms safeguard sensitive information, ensuring user privacy and data integrity.
 
@@ -93,6 +115,8 @@ The search functionality is open to both registered and non-registered users. Th
 
 These pages contains simple responsive forms for registration/logging in. On the registration page is again a small text promoting the app and encouraging users to join- and for ease of registration, users are only required to input a username, email address, and a password. 
 
+![Image of signup page](./readme-images/Screenshot%202023-08-01%20at%2000-06-28%20Recipe%20Collection.png)
+
 #### Create a new recipe page
 
 This page contains a simple recipe creation form with a headline, description, ingredients, and preparation input boxes (with placeholders so that users know what each input box is for) as well as the requirement to upload a recipe image. Once a user uses the browse button to choose an image, the preview image will show up on the page.
@@ -100,6 +124,8 @@ This page contains a simple recipe creation form with a headline, description, i
 #### Recipe pages
 
 Individual recipe pages contain an image, headline, description, ingredients, preparation instructions, name of the recipe's author, the date and time it was posted and the amount of likes the recipe got. Authenticated users will also see a like button. Authenicated users that authored the recipe will also see a link to edit the recipe, and delete the recipe. 
+
+![Image of recipe page](./readme-images/Screenshot%202023-08-01%20at%2000-07-58%20Recipe%20Collection.png)
 
 #### Update Recipe page
 The update recipe is only accessible to an authenticated recipe author. They are able to edit the recipe, or change the image. This page will also give them the option to delete the recipe if they wish to do so. If the user chooses to delete the recipe, a modal window will open up requesting confirmation. If nothing had been updated and the user clicked on update, the page will simply reload.
@@ -125,7 +151,7 @@ But the True colors of this website are the colorful images of food that accompa
 
 ![color palette of usage](https://res.cloudinary.com/dmtxhbwvw/image/upload/v1690813121/Screenshot_2023-07-31_at_16-17-19_Color_wheel_a_color_palette_generator_Adobe_Color_ljismf.png)
 
-I tried to stick to the above colors whenever possible to keep a uniformed look for the app. I believe that even when i used different shades (that aren't listed above), I made every page look like it was part of a system rather than a stand-alone element.. 
+I tried to stick to the above colors whenever possible to keep a uniformed look for the app. I believe that even when i used different shades (that aren't listed above), I made every page look like it was part of a system rather than a stand-alone element. That being said, I think a webpage is dynamic and needs to convey a mood- so subtle changes are welcome in my opinion.
 
 
 ## Technologies, tools, and frameworks Used
@@ -157,10 +183,6 @@ I tried to stick to the above colors whenever possible to keep a uniformed look 
 * [Google Fonts](https://fonts.google.com/)
 * [Flaticons](https://www.flaticon.com/)
 
-
-## Tests
-
-container gave itself a boostrap !important that i cannot override since it's not in my css but in the bootstrap - tried to use JS to figure out the issue and did some tests to see if i could apply styles: 
 
 ## Bugs and bug fixes
 
@@ -298,7 +320,6 @@ class CustomPasswordResetConfirmView(PasswordResetConfirmView):
 class CustomPasswordResetCompleteView(PasswordResetCompleteView):
     template_name = 'registration/password_reset_complete.html'
 ```
-
 ---
 
 There were many more bugs but I learned to: 
@@ -381,7 +402,7 @@ That didn't work either so tried the next test along:
             }
         });
 ```
-In the end i realised it was just a cache issue... :face_palm:
+In the end i realised it was just a cache issue... 🤦
 
 * I used the- 
 ```python
@@ -425,8 +446,9 @@ def test_recipe_search_view(self):
 * Icons: <a href="https://www.flaticon.com/free-icons/radish" title="radish icons">Radish icons created by Futuer - Flaticon</a>
 
 * Documentaion for the js scroll effect: 
-https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserverEntry/isIntersecting
-http://scrollmagic.io/docs/
+[Mozilla](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserverEntry/isIntersecting) and [scrollmagic](http://scrollmagic.io/docs/). 
+
+
 
 ### Media
 
@@ -446,6 +468,8 @@ http://scrollmagic.io/docs/
 
 * [Gordon Frampy](https://www.deviantart.com/thegothengine/gallery) by TheGothEngine
 
+* Photo by <a href="https://unsplash.com/@dosejuice?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Dose Juice</a> on <a href="https://unsplash.com/images/food?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+
 ### Last But Not Least
 
 * [Code Institue](https://codeinstitute.net/) Django Walkthrough for project setup and deployment.
@@ -462,9 +486,6 @@ and,
 * Gemma for sorting out more gitpod hours! 
 
 * Sarah who calmed me down when everything seemed to fail!
-
-Photo by <a href="https://unsplash.com/@dosejuice?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Dose Juice</a> on <a href="https://unsplash.com/images/food?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
-  
 
   <p>
 <a href="http://jigsaw.w3.org/css-validator/check/referer">
