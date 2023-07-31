@@ -8,7 +8,7 @@ from django.views.generic import (
 )
 from .models import Recipe, Profile
 from django.contrib.auth.views import (
-    PasswordChangeView, PasswordResetCompleteView, PasswordResetConfirmView
+    PasswordChangeView, PasswordResetCompleteView, PasswordResetConfirmView, PasswordResetView
 )
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy, reverse
@@ -225,14 +225,28 @@ class CustomPasswordChangeView(SuccessMessageMixin, PasswordChangeView):
         return super().form_valid(form)
 
 
-class CustomPasswordResetCompleteView(PasswordResetCompleteView):
-    # email_template_name = 'recipe_collection/password_reset_email.html'
-    template_name = 'password_reset.html'
+class CustomPasswordResetView(PasswordResetView):
+    template_name = 'registration/password_reset.html'
+    email_template_name = 'registration/password_reset_email.html'
+    success_url = reverse_lazy('password_reset_done')
 
 
 class CustomPasswordResetConfirmView(PasswordResetConfirmView):
-    def get_success_url(self):
-        return reverse_lazy('password_reset_done')
+    template_name = 'registration/password_reset_confirm.html'
+    success_url = reverse_lazy('password_reset_complete')
+
+    def form_valid(self, form):
+        print("CustomPasswordResetConfirmView - form is valid")
+        response = super().form_valid(form)
+        return response
+
+    def form_invalid(self, form):
+        print("CustomPasswordResetConfirmView - form is invalid")
+        return super().form_invalid(form)
+
+
+class CustomPasswordResetCompleteView(PasswordResetCompleteView):
+    template_name = 'registration/password_reset_complete.html'
 
 # def signup_view(request):
 #     if request.method == 'POST':
