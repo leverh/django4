@@ -1288,3 +1288,19 @@ ul.messages.pass-change-success li{
   display: none;
 }
 
+/* PASSWORD RESET DONE */
+
+.pass_res_done {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3rem;
+  margin-bottom: 4rem;
+  color: #333;
+  text-align: center;
+}
+
+.pass_res_done p {
+  font-size: 1.7rem;
+}
