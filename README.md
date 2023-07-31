@@ -260,6 +260,33 @@ getElementById
 ```
 In the end to simplify the process I added a class to the appropriate element, and to the js code a check to ensure that heroImage is not null before proceeding with the checkVisibility logic. It worked!
 
+
+* I encountered a bug with the password reset option where a user could enter any email address and receieve a reset email. When looking for a fix (approx. 3 days to fix and several tries) i discovered I wasn't using the Django built-in password reset option properly. I incorporated it eventually in my code and it works just fine now:
+```python
+class CustomPasswordResetView(PasswordResetView):
+    template_name = 'registration/password_reset.html'
+    email_template_name = 'registration/password_reset_email.html'
+    success_url = reverse_lazy('password_reset_done')
+
+
+class CustomPasswordResetConfirmView(PasswordResetConfirmView):
+    template_name = 'registration/password_reset_confirm.html'
+    success_url = reverse_lazy('password_reset_complete')
+
+    def form_valid(self, form):
+        print("CustomPasswordResetConfirmView - form is valid")
+        response = super().form_valid(form)
+        return response
+
+    def form_invalid(self, form):
+        print("CustomPasswordResetConfirmView - form is invalid")
+        return super().form_invalid(form)
+
+
+class CustomPasswordResetCompleteView(PasswordResetCompleteView):
+    template_name = 'registration/password_reset_complete.html'
+```
+
 ---
 
 There were many more bugs but I learned to: 
@@ -291,7 +318,7 @@ I tested all the functionalities of the app and went about fixing all the bugs t
 | Data transfer to Cloudinary to work seamlessly | Checked all images are uploaded to Cloudinary. Checked the time required for upload | Passed |
 | Responsiveness of webpages | Checked all pages using the Firefox developer tools | Passed |
 | Like button functions | Clicked the Like button on several recipes | Passed |
-
+| User password manipulation |  Changing passwords multiple times, trying to reset passwords |  Partially passed - user password could be changed- however reset didn't work as expected. Please see the bugs section for more details on how I fixed the issue.
 
 ---
 ---
