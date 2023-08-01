@@ -213,6 +213,22 @@ h1, h2, h3, h4, h5 {
     color: #FFFFF0 !important;
   }
 
+  .nav-search {
+    margin-right: 1rem;
+    display: flex;
+  }
+
+  .nav-search-btn {
+    font-size: 1.5rem;
+    padding: .8rem;
+    border-radius: 5px;
+  }
+
+  .nav-search-input {
+    max-width: 40rem;
+    border-radius: 5px;
+  }
+
   .navbar-brand {
     font-size: 1.5rem;
     margin-left: 1rem;
@@ -283,6 +299,31 @@ h1, h2, h3, h4, h5 {
   .pink { color: #ff1d8e }
   .gray { color: #a1a1a1 }
   .darkgray { color: #777 }
+
+
+  @media (max-width: 760px) {
+    .nav-search {
+      flex-direction: row-reverse;
+      align-items: flex-start;
+      justify-content: center;
+      
+    }
+    .nav-search-btn {
+      border-top-left-radius: 5px !important;
+      border-bottom-left-radius: 5px !important;
+      border-bottom-right-radius: 0;
+      border-top-right-radius: 0;
+    }
+
+    .nav-search-input {
+      padding: 1rem;
+      max-width: 100%;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+  }
 
   @media (max-width: 380px) {
     .personal-signature {
