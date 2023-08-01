@@ -183,6 +183,9 @@ I tried to stick to the above colors whenever possible to keep a uniformed look 
 * [Google Fonts](https://fonts.google.com/)
 * [Flaticons](https://www.flaticon.com/)
 
+## Agile Work Plans
+
+
 
 ## Bugs and bug fixes
 
@@ -440,6 +443,12 @@ def test_recipe_search_view(self):
         response = self.client.get(reverse('recipe-search'))
         self.assertEqual(response.status_code, 200)
 ```
+
+### Validators
+
+The validator page can be found [here](./READMEVALIDATORS.md).
+
+
 
 ## Credits
 

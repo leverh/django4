@@ -14,12 +14,12 @@
   <div class="centered-text rec-detail-prep">
   <p class="prep-text">{{ recipe.preparation|linebreaksbr }}</p>
 </div>
-  <p class="rec-detail-link">Created by: <a href="{% url 'profile' pk=recipe.posted_by.pk %}">{{ recipe.posted_by }}</a></p>
+  <p class="rec-detail-link det-text-helper">Created by: <a href="{% url 'profile' pk=recipe.posted_by.pk %}">{{ recipe.posted_by }}</a></p>
 
 
 
-  <p>Posted on: {{ recipe.date_posted }}</p>
-  <p>Likes: {{ likes_count }}</p>
+  <p class="det-text-helper">Posted on: {{ recipe.date_posted }}</p>
+  <p class="det-text-helper">Likes: {{ likes_count }}</p>
   <div class="rec-user-option">
   {% if user.is_authenticated %}
     {% if user == recipe.posted_by %}
@@ -37,7 +37,7 @@
     {% else %}
       <form action="{% url 'like' recipe.pk %}" method="POST">
         {% csrf_token %}
-        <button type="submit" class="recipe-like-btn">Like</button>
+        <button type="submit" class="recipe-like-btn"><span>Like</span><i class="fa fa-heart"></i></button>
       </form>
     
     {% endif %}

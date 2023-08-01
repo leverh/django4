@@ -15,7 +15,7 @@ html {
 body {
   background-color: #FFFFF0;
   font-family: 'Montserrat', sans-serif !important;
-  color: #6c757d;
+  color: #333;
 }
 
 .btn {
@@ -44,6 +44,7 @@ h5 {
 
 h1, h2, h3, h4, h5 {
   font-family: 'Roboto', sans-serif !important;
+  color: #333;
 }
  
 /*  GENERAL BUTTON RULES:
@@ -120,7 +121,7 @@ h1, h2, h3, h4, h5 {
   }
 
   #signup-success-modal .secondary-btn {
-    background-color: #ff69b4;
+    background-color: #020202;
     color: #fff;
     padding: .8rem 1.5rem;
     border: none;
@@ -186,6 +187,10 @@ h1, h2, h3, h4, h5 {
 
   li.nav-item {
     font-size: 1.5rem;
+  }
+
+  .navbar-light .navbar-nav .nav-link {
+    color: #333;
   }
 
   .back-btn {
@@ -393,7 +398,7 @@ h1, h2, h3, h4, h5 {
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  color: white;
+  color: white !important;
 }
 
 .hero-title {
@@ -402,6 +407,7 @@ h1, h2, h3, h4, h5 {
   opacity: 1;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   font-family: 'Roboto', sans-serif;
+  color: white !important;
 }
 
 .btn-light {
@@ -455,12 +461,14 @@ a.btn.btn-dark:hover {
   opacity: 1;
 }
 
-.home-cont-text h3{
+.home-cont-text h3 {
   font-size: 4.5rem;
+  color: #333 !important;
 }
 
 .home-cont-text h4 {
   font-size: 3rem;
+  color: #333 !important;
 }
 
 .home-cont-text p, .text-body {
@@ -494,6 +502,7 @@ a.btn.btn-dark:hover {
   border-radius: 5px;
   font-size: 1.3rem !important;
   font-weight: 600;
+  color: #333 !important;
 }
 
 .home-create {
@@ -1059,6 +1068,10 @@ form.signup-form ul {
   align-items: center;
 }
 
+.rec-details-cont h2 {
+  color: #333;
+}
+
 .rec-details-cont p {
   font-size: 1.7rem;
   letter-spacing: .1rem;
@@ -1066,6 +1079,21 @@ form.signup-form ul {
 
 .rec-detail-prep {
   max-width: 70rem;
+  color: #333;
+  font-weight: 600;
+}
+
+.rec-detail-ing {
+  color: #333;
+  font-weight: 600;
+}
+
+.det-text-helper {
+  color: #333;
+}
+
+.home-desc {
+  font-weight: 700;
 }
 
 .recipe-edit-btn{
@@ -1095,11 +1123,15 @@ form.signup-form ul {
   color: #FFFFF0;
   border: none;
   border-radius: 5px;
-  padding: .8rem 1rem;
+  padding:  .8rem 2rem;
 }
 
 .recipe-like-btn:hover {
   background-color: #ff4e98;
+}
+
+.recipe-like-btn span {
+  margin-right: 1rem;
 }
 
 .rec-details-cont a {
