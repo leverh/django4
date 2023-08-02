@@ -147,11 +147,217 @@ The text colors of #333 and #6c757d feel elegant as users read through the recip
 
 But the True colors of this website are the colorful images of food that accompany each and every recipe. From vibrant fruits and veggies in the hero image, to mouth-watering dessers and savory dishes- hopefully inspire users (and make them hungry). 
 
+### Wireframes
+
+These are some of the general ideas i drew up before building my HTML templates:
+
+#### Home.html:
+
+![wireframe for the home.html page](./readme-images/home%20wireframe.png)
+
+#### Login page:
+
+![wireframe for the login page](./readme-images/New%20Wireframe%201(1).png)
+
+#### Individual Recipe page (guest view):
+
+![wireframe for recipe detail page](./readme-images/New%20Wireframe%201(2).png)
+
+#### Profile page:
+![wireframe for profile page](./readme-images/New%20Wireframe%201(3).png)
+
+---
 ### Colors
 
 ![color palette of usage](https://res.cloudinary.com/dmtxhbwvw/image/upload/v1690813121/Screenshot_2023-07-31_at_16-17-19_Color_wheel_a_color_palette_generator_Adobe_Color_ljismf.png)
 
 I tried to stick to the above colors whenever possible to keep a uniformed look for the app. I believe that even when i used different shades (that aren't listed above), I made every page look like it was part of a system rather than a stand-alone element. That being said, I think a webpage is dynamic and needs to convey a mood- so subtle changes are welcome in my opinion.
+
+
+## Flowcharts
+
+* I did some research on how to create proper code flow charts and I tried to create one for models.py based on: 
+
+1. Recipe:
+* Fields: headline, description, ingredients, preparation, posted_by, liked_by, date_posted, image.
+
+* Relationships:
+* Many-to-one with User through posted_by.
+* Many-to-many with User through liked_by.
+
+2. Profile: 
+* Fields: user, bio, favorite_recipes, profile_image.
+
+* relationships: 
+* One-to-one with User.
+* Many-to-many with Recipe through favorite_recipes.
+
+
+This is my feeble attempt at trying to visualize it:
+
+![flow chart of the models.py file](./readme-images/Blank%20diagram.png)
+
+1 means there is exactly one instance on that side of the relationship. 
+
+M means that there can be many instances on that side of the relationship.
+
+* In my case, the one-to-one relationship between User and Profile is represented as "1:1." This means that each User is associated with exactly one Profile, and each Profile is associated with exactly one User.
+
+* The many-to-one relationship between Recipe and User (for posted_by) can be represented as "m:1." This means that many Recipe objects can be posted by one User, but each Recipe is posted by exactly one User.
+
+* The many-to-many relationship between Recipe and User (for liked_by) can be represented as "m:m"." This means that many Recipe objects can be liked by many User objects, and vice versa.
+
+* Following is the logic HTML basic structure:
+
+![HTML flowchart for project](./readme-images/Recipe%20Collection.png)
+
+## Deployment
+
+The App was deployed to Heroku using the following steps: 
+
+1. In Heroku (account needed):
+* From the dashboard select "New" followed by "Create New App"
+* Choose the correct region
+* Input the App name
+* Click "Create App"
+* Go to the "Resources" section and search for Heroku Postgres and submit 
+* In the settings tab click "Reveal Config Vars", then:
+  * Add config var for SECRET_KEY: [[Your Secret Key]]
+  * Add Cloudinary_URL: [Your Cloudinary API Key]
+  * Add DISABLE_COLLECTSTATIC: [1]
+  * DATABASE_URL should already be there having installed Postgres in previous steps
+* Click the "Deploy" section, then "Connect to GitHub" and sign-in if asked to do so  
+* Choose the repository you would like to deploy and click "Connect"
+* You can choose between "Manual Deploy" and "Automatic Deploy" and choose the correct branch.
+* Once Heroku finalizes the deploy, you can click on "Deploy" and a new tab will open with the deployed app.
+
+2. In your project folder:
+
+* Create an env.py file in the root diectory of your project
+* in your env.py file add the following:
+    * import os (at the very top of file)
+    * os.environ["DATABASE_URL"] = "postgres://.... (your postgres URL)
+    * os.environ["SECRET_KEY"] = (your secret key)
+    * os.environ["CLOUDINARY_URL"] = "cloudinary://... (your cloudinary URL)
+    * os.environ['DEBUG'] = '1'
+
+
+**VERY IMPORTANT:**
+  * If no .gitignore file is present, you should create one and add your env.py to it before you push your project to GitHub. The file should look something like this: 
+  ``` python
+  core.Microsoft*
+core.mongo*
+core.python*
+env.py
+__pycache__/
+*.py[cod]
+node_modules/
+.github/
+cloudinary_python.txt
+  ```
+
+* In the project's **settings.py** file add the following: 
+```python
+  from pathlib import Path
+import os
+import dj_database_url
+
+if os.path.isfile("env.py"):
+    import env
+```
+* Change your SECRET_KEY (**settings.py**) to: 
+
+```python
+SECRET_KEY = os.environ.get('SECRET_KEY')
+```
+
+* Add the Heroku URL to the ALLOWED_HOSTS (**settings.py**) like this: 
+
+```python
+ALLOWED_HOSTS = ["URL of Heroku App", ]
+```
+
+* Add your new DATABASES (**settings.py**):
+
+```python
+DATABASES = {
+   'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+} 
+``` 
+
+* Add Cloudinary to INSTALLED_APPS (**settings.py**) so:
+```python
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'cloudinary_storage',
+    'django.contrib.staticfiles',
+    'cloudinary',
+    'recipe_collection',
+]
+```
+
+* Add the Cloudinary to the following (**settings.py**): 
+```python
+STATIC_URL = '/static/'
+STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+MEDIA_URL = '/media/'
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+```
+Following that, run the command Run 'python3 manage.py collectstatic' in your terminal.
+
+* Create a Procfile in the root directory and add the following to the file:
+```python
+web: gunicorn myproject.wsgi
+```
+
+* Create a requirments.txt file using the command: **pip3 freeze --local > requirements.txt** in your terminal. Your new file will look similar to this: 
+```python
+asgiref==3.7.2
+cloudinary==1.33.0
+dj-database-url==0.5.0
+dj3-cloudinary-storage==0.0.6
+Django==3.2.19
+gunicorn==20.1.0
+psycopg2==2.9.6
+pytz==2023.3
+sqlparse==0.4.4
+urllib3==1.26.15
+Pillow==8.4.0
+```
+It contains all the apps/databases/helpers you're using in your project.
+
+* Migrate your project by typing: **python manage.py migrate** in your terminal.
+
+* Finally you can git add, git commit, and git push all the changes made. 
+
+3. Prior to final deployment: 
+
+* In settings.py make sure to make the following change:
+```python
+DEBUG = False
+```
+
+* In the Heroku config vars remove DISABLE_COLLECTSTATIC
+
+* Go to the deploy tab on Heroku and follow the same steps as before:
+  * Click the "Deploy" section, then "Connect to GitHub" and sign-in if asked to do so
+  * Choose the repository you would like to deploy and click "Connect"
+  * You can choose between "Manual Deploy" and "Automatic Deploy" and choose the correct branch.
+  * Once Heroku finalizes the deploy, you can click on "Deploy" and a new tab will open with the deployed app.
+
+## Version Control
+
+You will find I actually used 2 repositories for this project- Initially I started the project on [Django-Project-One](https://github.com/leverh/Django-Project-One) but found that I made some mistakes during the setup. I decided then to start again for the setup procedure and started a new repository- [Djano4](https://github.com/leverh/django4). Once i had the setup and first deployment working (And Cloudinary which caused most of the issues), I copied and pasted the code I had already created from Django-Project-One into the Django4 respository. 
+
+I used version control on so many occasions in this project to do hard resets due to rabbit hole bugs, or branch out to test new things. The final branch (appropriately named) [mondaytry](https://github.com/leverh/django4/tree/mondaytry) is the project i actually ended up deploying. 
+
 
 
 ## Technologies, tools, and frameworks Used
@@ -185,7 +391,9 @@ I tried to stick to the above colors whenever possible to keep a uniformed look 
 
 ## Agile Work Plans
 
+This project utilized GitHub's Project feature for the planning. Since I was working on this project alone, it was a good way for me to structure my to-do's, return to ongoing issues, and debug. Tou can find the info [here on GitHub Projects](https://github.com/users/leverh/projects/1/views/1). 
 
+I think that I particularly used the **Sprint Development Cycle** of defining clearly the requirements, developing them, and immediately testing and deploying them. 
 
 ## Bugs and bug fixes
 
@@ -443,6 +651,11 @@ def test_recipe_search_view(self):
         response = self.client.get(reverse('recipe-search'))
         self.assertEqual(response.status_code, 200)
 ```
+* Below is a screenshot of the Django backend email password reset functionality:
+
+![screenshot of terminal's Django backend's password reset email](./readme-images/2023-08-02%20(2).png)
+
+
 
 ### Validators
 

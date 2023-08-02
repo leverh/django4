@@ -63,3 +63,9 @@
 
 #### Logged In Home and Base pages
 ![image of html validator results](./readme-images/validator-%20home%20+%20base.png)
+
+## Accessibility 
+
+### Contrasts
+
+## Like button 
