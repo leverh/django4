@@ -1,6 +1,13 @@
-<!-- 1. [Key Features](#key-features)
+# Recipe Collection
 
-2. [User Experience](#ux)
+The Recipe Collection web application is a comprehensive Django project with a focus on creating a platform for food enthusiasts to explore, share, and discover their favorite recipes. Throughout this project, I have utilized various technologies and implemented key functionalities to create a seamless and engaging user experience.
+
+# Table of Contents
+
+
+1. [Key-Features](#key-features)
+
+2. [User-Experience](#ux)
    - [Viewing and Navigation](#viewing-and-navigation)
    - [Searching](#searching)
    - [Accounts](#accounts)
@@ -49,14 +56,10 @@
    - [Automated Testing](#automated-testing)
    - [Validators](#validators)
 
-15. [Credits](#credits) -->
+15. [Credits](#credits)
 
-# Recipe Collection
-[toc]
-The Recipe Collection web application is a comprehensive Django project with a focus on creating a platform for food enthusiasts to explore, share, and discover their favorite recipes. Throughout this project, I have utilized various technologies and implemented key functionalities to create a seamless and engaging user experience.
+### Key Features <a name="key-features"></a>
 
-### Key Features {#key-features}
-<!-- {:toc} -->
 * Recipe Database: The heart of the application lies in its extensive recipe database. I have designed a database structure to store recipes contributed by users. Each recipe is stored with essential details, such as ingredients, preparation steps, cooking time, and an image.
 * User Authentication: To provide a personalized experience, I have implemented user authentication features. Users can register, log in, and create their profiles, allowing them to save their favorite recipes and submit new recipes.
 * Recipe Submission: As part of the user experience, I have integrated a recipe submission feature. Authenticated users can easily submit their unique recipes, complete with images and additional notes. These contributions enrich the platform and encourage the exchange of diverse culinary creations.
@@ -71,36 +74,35 @@ The results will show the keyword searched again, as well as a total results fou
 * User Interaction: I have included an interactive feature that allows authenticated users to 'like' other recipes posted.
 * Responsive Design: Recognizing the importance of a seamless user experience across devices, I have ensured that the web application is responsive and mobile-friendly. Users can access Recipe Collection on various devices without compromising usability.
 
-## User Experience {#ux}
-<!-- {:toc} -->
+## User Experience <a name="ux"></a>
+
 
 ### Overview
 
 Recipe Collection is designed with the user in mind, offering an enjoyable experience for both cooking enthusiasts and casual visitors. The platform's user experience centers around simplicity, accessibility, and interactivity, ensuring that users can effortlessly navigate through the site and discover inspiring recipes. Below are key aspects of the user experience and the corresponding user stories.
 
-#### Viewing and Navigation {#viewing-and-navigation}
-<!-- {:toc} -->
+#### Viewing and Navigation <a name="viewing-and-navigation"></a>
+
 
 * Users can explore Recipe Collection on various devices, ensuring a consistent experience regardless of screen size.
 * A user-friendly home page welcomes visitors, showcasing the site's goal and motivating them to sign up.
 * The registration process is straightforward, allowing users to quickly create an account and gain access to the site's features.
 
-#### Searching {#searching}
-<!-- {:toc} -->
+#### Searching <a name="searching"></a>
+
 
 * Recipe Collection offers a search feature, allowing users to find recipes based on ingredients, categories, or specific keywords.
 * Users also have the option to browse the pages of posted recipes and click on images of recipes that they find interesting- those are open for viewing also for non-registered users. 
 
-#### Accounts {#accounts}
-<!-- {:toc} -->
+#### Accounts <a name="accounts"></a>
+
 
 * Each user has a personalized user profile, showcasing their culinary achievements and uploaded recipes.
 
-### User Stories {#user-stories}
-<!-- {:toc} -->
+### User Stories <a name="user-stories"></a>
 
-#### As site user: {#as-site-user}
-<!-- {:toc} -->
+#### As site user: <a name="as-site-user"></a>
+
 
 1. I want the app's navigation to be intuitive and user-friendly so that I can easily explore the content and features.
 2. I expect clear and concise information about the app's purpose and functionality, enabling me to utilize it effectively for mutual benefit. I also want it to be simple to use.
@@ -115,20 +117,20 @@ Recipe Collection is designed with the user in mind, offering an enjoyable exper
 11. I expect to see appropriate error messages when I encounter issues or attempt to access forbidden links, guiding me to correct actions.
 12. For security purposes, I have the option to change my password.
 
-### Site owner stories: {#site-owner-stories}
-<!-- {:toc} -->
+### Site owner stories: <a name="site-owner-stories"></a>
+
 
 1. I want to restrict access to certain sections of the app to unauthenticated users, ensuring basic standards of data protection and privacy.
 2. Authenticated users should have full access to the web app and its complete functionality, fostering a seamless and immersive experience.
 3. I want to have control as site administrator so I can remove posts or edit them or even delete users. 
 
-## Features {#structure}
-<!-- {:toc} -->
+## Features <a name="structure"></a>
+
 
 ### Strcuture
 
-#### base.html {#basehtml}
-<!-- {:toc} -->
+#### base.html <a name="basehtml"></a>
+
 
 **base.html** serves as the foundational template for the Healthy Choices web application, providing a structure and consistent design across all pages. This reusable template incorporates essential elements, such as a navigation bar, footer, and login/signup options, to enhance user experience and streamline navigation. **base.html** ensures that each page within the Healthy Choices web application adheres to a consistent and visually appealing design.
 
@@ -151,8 +153,8 @@ The **footer** presents essential copyright information and credits the creative
 ![image of footer with social links and copyright info](./readme-images/Screenshot%202023-08-01%20at%2000-01-14%20Recipe%20Collection.png)
 
 
-#### home.html {#homehtm}
-<!-- {:toc} -->
+#### home.html <a name="homehtml"></a>
+
 
 The home page prompts new visitors to **create an account**, enabling them to access exclusive features, such as recipe creation and interaction with the community. Authenticated users can log in and out securely, ensuring a personalized and protected environment.
 
@@ -172,47 +174,46 @@ Advanced **search functionality** empowers users to find recipes based on specif
 
 The **hero image** on the Home page has an interactive effect, dynamically scaling upon user interaction. The effect, implemented using JavaScript and the Intersection Observer API, creates, I hope, an eye-catching visual element.
 
-#### My profile page {#my-profile-page}
-<!-- {:toc} -->
+#### My profile page <a name="my-profile-page"></a>
+
 
 Once **logged in**, users can access their personalized profile pages, where they have the freedom to change their profile bio, making their presence unique and identifiable. On the profile page users also have the buttons and links to update their profile, change or reset their passwords, and access their posted recipes. This enables users to use the website as an electronic paperless recipe-database.
 
-#### Search results page {#search-results-page}
-<!-- {:toc} -->
+#### Search results page <a name="search-results-page"></a>
+
 
 The search functionality is open to both registered and non-registered users. The page itself will present all the recipes that include the key word the user searched for, as well as display the number of results found. The user can then simply click on the link and be redirected to the appropriate recipe. 
 
-#### Signup and login pages {#signup-and-login-pages}
-<!-- {:toc} -->
+#### Signup and login pages <a name="signup-and-login-pages"></a>
+
 
 These pages contains simple responsive forms for registration/logging in. On the registration page is again a small text promoting the app and encouraging users to join- and for ease of registration, users are only required to input a username, email address, and a password. 
 
 ![Image of signup page](./readme-images/Screenshot%202023-08-01%20at%2000-06-28%20Recipe%20Collection.png)
 
-#### Create a new recipe page {#create-a-new-recipe-page}
-<!-- {:toc} -->
+#### Create a new recipe page <a name="create-a-new-recipe-page"></a>
+
 
 This page contains a simple recipe creation form with a headline, description, ingredients, and preparation input boxes (with placeholders so that users know what each input box is for) as well as the requirement to upload a recipe image. Once a user uses the browse button to choose an image, the preview image will show up on the page.
 
-#### Recipe pages {#recipe-pages}
-<!-- {:toc} -->
+#### Recipe pages <a name="recipe-pages"></a>
+
 
 Individual recipe pages contain an image, headline, description, ingredients, preparation instructions, name of the recipe's author, the date and time it was posted and the amount of likes the recipe got. Authenticated users will also see a like button. Authenicated users that authored the recipe will also see a link to edit the recipe, and delete the recipe. 
 
 ![Image of recipe page](./readme-images/Screenshot%202023-08-01%20at%2000-07-58%20Recipe%20Collection.png)
 
-#### Update Recipe page {#update-recipe-page}
-<!-- {:toc} -->
+#### Update Recipe page <a name="update-recipe-page"></a>
 
 The update recipe is only accessible to an authenticated recipe author. They are able to edit the recipe, or change the image. This page will also give them the option to delete the recipe if they wish to do so. If the user chooses to delete the recipe, a modal window will open up requesting confirmation. If nothing had been updated and the user clicked on update, the page will simply reload.
 
-## CRUD functionality {#crud-functionality}
-<!-- {:toc} -->
+## CRUD functionality <a name="crud-functionality"></a>
+
 
 This web application allows registered users to view, create, delete, or update recipes. The updates take place immediately. Site adminidtrators have the 'superpower' the control other users' recipes too in addition to the above mentioned capabilities. 
 
-## Design {#design}
-<!-- {:toc} -->
+## Design <a name="design"></a>
+
 
 The sites are vibrant and visually appealing to all things to do with food and cooking. 
 
@@ -225,8 +226,8 @@ The text colors of #333 and #6c757d feel elegant as users read through the recip
 
 But the True colors of this website are the colorful images of food that accompany each and every recipe. From vibrant fruits and veggies in the hero image, to mouth-watering dessers and savory dishes- hopefully inspire users (and make them hungry). 
 
-### Wireframes {#wireframes}
-<!-- {:toc} -->
+### Wireframes <a name="wireframes"></a>
+
 
 These are some of the general ideas i drew up before building my HTML templates:
 
@@ -246,16 +247,16 @@ These are some of the general ideas i drew up before building my HTML templates:
 ![wireframe for profile page](./readme-images/New%20Wireframe%201(3).png)
 
 ---
-### Colors {#colors}
-<!-- {:toc} -->
+### Colors <a name="colors"></a>
+
 
 ![color palette of usage](https://res.cloudinary.com/dmtxhbwvw/image/upload/v1690813121/Screenshot_2023-07-31_at_16-17-19_Color_wheel_a_color_palette_generator_Adobe_Color_ljismf.png)
 
 I tried to stick to the above colors whenever possible to keep a uniformed look for the app. I believe that even when i used different shades (that aren't listed above), I made every page look like it was part of a system rather than a stand-alone element. That being said, I think a webpage is dynamic and needs to convey a mood- so subtle changes are welcome in my opinion.
 
 
-## Flowcharts {#flowcharts}
-<!-- {:toc} -->
+## Flowcharts <a name="flowcharts"></a>
+
 
 * I did some research on how to create proper code flow charts and I tried to create one for models.py based on: 
 
@@ -292,8 +293,8 @@ M means that there can be many instances on that side of the relationship.
 
 ![HTML flowchart for project](./readme-images/Recipe%20Collection.png)
 
-## Deployment {#heroku-deployment-steps}
-<!-- {:toc} -->
+## Deployment <a name="heroku-deployment-steps"></a>
+
 
 The App was deployed to Heroku using the following steps: 
 
@@ -436,8 +437,8 @@ X_FRAME_OPTIONS = 'SAMEORIGIN'
   * You can choose between "Manual Deploy" and "Automatic Deploy" and choose the correct branch.
   * Once Heroku finalizes the deploy, you can click on "Deploy" and a new tab will open with the deployed app.
 
-## Version Control {#version-control-history}
-<!-- {:toc} -->
+## Version Control <a name="version-control-history"></a>
+
 
 You will find I actually used 2 repositories for this project- Initially I started the project on [Django-Project-One](https://github.com/leverh/Django-Project-One) but found that I made some mistakes during the setup. I decided then to start again for the setup procedure and started a new repository- [Djano4](https://github.com/leverh/django4). Once i had the setup and first deployment working (And Cloudinary which caused most of the issues), I copied and pasted the code I had already created from Django-Project-One into the Django4 respository. 
 
@@ -445,52 +446,52 @@ I used version control on so many occasions in this project to do hard resets du
 
 
 
-## Technologies, tools, and frameworks Used {#technologies-tools-and-frameworks-used}
-<!-- {:toc} -->
+## Technologies, tools, and frameworks Used <a name="technologies-tools-and-frameworks-used"></a>
 
-### Languages: {#languages}
-<!-- {:toc} -->
+
+### Languages: <a name="languages"></a>
+
 * Python
 * JavaScript
 * HTML5
 * CSS3
 
-### Frameworks: {#frameworks}
-<!-- {:toc} -->
+### Frameworks: <a name="languages"></a>{#frameworks}
+
 * [Django](https://www.djangoproject.com/)
 * [Bootstrap](https://getbootstrap.com/)
 
-### Deployment: {#deployment}
-<!-- {:toc} -->
+### Deployment: <a name="deployment"></a>
+
 * [Heroku](https://heroku.com/)
 
-### Version control: {#version-control}
-<!-- {:toc} -->
+### Version control: <a name="version-control"></a>
+
 * [Git](https://github.com/) - version control and respository hub
 
-### IDE's: {#ides}
-<!-- {:toc} -->
+### IDE's: <a name="ides"></a>
+
 * [Gitpod](https://gitpod.io/)
 * Visual Studio Code
 
-### Media and static storage: {#media-and-static-storage}
-<!-- {:toc} -->
+### Media and static storage: <a name="languages"></a>{#media-and-static-storage}
+
 * [Cloudinary](https://cloudinary.com/)
 
-### Tools: {#tools}
-<!-- {:toc} -->
+### Tools: <a name="tools"></a>
+
 * [Google Fonts](https://fonts.google.com/)
 * [Flaticons](https://www.flaticon.com/)
 
-## Agile Work Plans {#agile-work-plans}
-<!-- {:toc} -->
+## Agile Work Plans <a name="agile-work-plans"></a>
+
 
 This project utilized GitHub's Project feature for the planning. Since I was working on this project alone, it was a good way for me to structure my to-do's, return to ongoing issues, and debug. Tou can find the info [here on GitHub Projects](https://github.com/users/leverh/projects/1/views/1). 
 
 I think that I particularly used the **Sprint Development Cycle** of defining clearly the requirements, developing them, and immediately testing and deploying them. 
 
-## Bugs and bug fixes {#bugs-and-fixes}
-<!-- {:toc} -->
+## Bugs and bug fixes <a name="bugs-and-fixes"></a>
+
 As I went along with the project, I realised something very important that I will be more aware of in the next big projects: rather than planning ahead logically, I coded and built my app according to the features and the final result in my head. Coding with the 'feel' rather than the 'logic' can lead to constant bugs, some of which i list below:
 
 * I discovered the following bug:  a modal window opens with the js message at the bottom even if the user has not successfully created an account. the message should appear only if there was an account successfully created. If not, it should provide the user with an error message. after several tries I fixed the functionality, but got a **"Error: SyntaxError: JSON.parse: unexpected character at line 2 column 1 of the JSON data".** I then used log comments to try and figure out the bug: 
@@ -635,16 +636,16 @@ There were many more bugs but I learned to:
 
 
 
-## Testing {#testing}
-<!-- {:toc} -->
+## Testing <a name="testing"></a>
 
-### Manual tests {#manual-tests}
-<!-- {:toc} -->
+
+### Manual tests <a name="manual-tests"></a>
+
 
 I tested all the functionalities of the app and went about fixing all the bugs that arose (a few of which i listed above in the bugs section). I used Firefox developer tools to inspect my pages and console, and my terminal for error logs.
 
 #### The tests: 
-<!-- {:toc} -->
+
 
 | Expected                                      | Test Performed                                | Result  |
 | --------------------------------------------- | --------------------------------------------- | ------- |
@@ -666,8 +667,8 @@ I tested all the functionalities of the app and went about fixing all the bugs t
 
 ---
 ---
-### Automated testing: {#automated-testing}
-<!-- {:toc} -->
+### Automated testing: <a name="automated-testing"></a>
+
 
 * As shown in the bug and bug fixing section, I used automated code testing regularly to try and figure out why things were not working as expected. Here are a couple more instances where I used automated tests:
 
@@ -756,15 +757,15 @@ def test_recipe_search_view(self):
 
 
 
-### Validators {#validators}
-<!-- {:toc} -->
+### Validators <a name="validators"></a>
+
 
 The validator page can be found [here](./READMEVALIDATORS.md).
 
 
 
-## Credits {#credits}
-<!-- {:toc} -->
+## Credits <a name="credits"></a>
+
 
 * Icons: <a href="https://www.flaticon.com/free-icons/radish" title="radish icons">Radish icons created by Futuer - Flaticon</a>
 
