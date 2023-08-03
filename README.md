@@ -2,6 +2,7 @@
 
 The Recipe Collection web application is a comprehensive Django project with a focus on creating a platform for food enthusiasts to explore, share, and discover their favorite recipes. Throughout this project, I have utilized various technologies and implemented key functionalities to create a seamless and engaging user experience.
 
+Link to [**Recipe Collection**](https://recipe-collection-deea6c7fa662.herokuapp.com/) live app website
 # Table of Contents
 
 
@@ -256,7 +257,7 @@ These are some of the general ideas i drew up before building my HTML templates:
 ### Colors <a name="colors"></a>
 
 
-![color palette of usage](https://res.cloudinary.com/dmtxhbwvw/image/upload/v1690813121/Screenshot_2023-07-31_at_16-17-19_Color_wheel_a_color_palette_generator_Adobe_Color_ljismf.png)
+![color palette of usage](./readme-images/Screenshot%202023-08-03%20at%2017-23-40%20Color%20wheel%20a%20color%20palette%20generator%20Adobe%20Color.png)
 
 I tried to stick to the above colors whenever possible to keep a uniformed look for the app. I believe that even when i used different shades (that aren't listed above), I made every page look like it was part of a system rather than a stand-alone element. That being said, I think a webpage is dynamic and needs to convey a mood- so subtle changes are welcome in my opinion.
 
