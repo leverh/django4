@@ -219,21 +219,26 @@ h1, h2, h3, h4, h5 {
   }
 
   .nav-search {
-    margin-right: 1rem;
     display: flex;
+    align-items: stretch;
+    margin-right: 1rem;
   }
 
   .nav-search-btn {
-    font-size: 1.5rem;
+    font-size: 1rem;
     padding: .8rem;
-    border-radius: 5px;
+    border-radius: 0 5px 5px 0;
     flex: 1;
+    padding: .375rem .75rem;
   }
 
   .nav-search-input {
     max-width: 40rem;
-    border-radius: 5px;
     flex: 4;
+    border: 1px solid #ced4da;
+    border-right: none; 
+    border-radius: 5px 0 0 5px; 
+    height: calc(1.5em + .8rem + 2px);
   }
 
   .navbar-brand {
@@ -311,12 +316,10 @@ h1, h2, h3, h4, h5 {
   @media (max-width: 1010px) {
     .nav-search-input {
       max-width: 70%; 
-      max-height: 3rem;
     }
     .nav-search-btn {
       max-width: 30%; 
       font-size: 1rem;
-      max-height: 3rem;
     }
   }
 
@@ -324,17 +327,24 @@ h1, h2, h3, h4, h5 {
     .nav-search {
       flex-direction: row-reverse;
       align-items: flex-start;
-      justify-content: center;
-      
+      justify-content: center;     
     }
+
     .nav-search-btn {
-      border-radius: 5px 0 0 5px;
+      border-radius: 0;
     }
 
     .nav-search-input {
-      padding: 1rem;
       max-width: 100%;
-      border-radius: 0 5px 5px 0;
+      border-radius: 0;
+    }
+  }
+
+  @media (max-width: 460px) {
+    .base-log-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
 
@@ -423,11 +433,6 @@ h1, h2, h3, h4, h5 {
   }
 
 /* HOME */
-
-/* .test-back {
-  background: linear-gradient(to bottom, #FFFFF0, #b3ffcc, #FFFFF0);;
-} */
-
 
  .hero-image {
   position: relative;
@@ -896,14 +901,15 @@ a.btn.btn-dark:hover {
 }
 
   .update-prof-btn {
-    background-color: #175E28;
+    background-color: #28a745;
     border: none;
     border-radius: 5px;
   }
   
   .update-prof-btn:hover {
-    background-color: #2A8A40;
+    background-color: #105f23;
   }
+
 
 /* ABOUT */
 
@@ -1055,15 +1061,14 @@ a.btn.btn-dark:hover {
 
 .signup-form button {
   margin-top: 1rem;
-  background-color: #000;
+  background-color: #175E28;
   color: #FFFFF0;
   border: none;
   border-radius: 4px;
 }
 
 .signup-form button:hover {
-  background-color: #FFFFF0;
-  color: #000;
+  background-color: #2A8A40;
 }
 
 .signup-form #id_username {
@@ -1332,6 +1337,15 @@ ul.messages.pass-change-success li{
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
+}
+
+.update-rec-btn {
+  margin: 0 auto;
+}
+
+.delete-recipe-form {
+  align-self: center;
+  margin: 0 auto;
 }
 
 .update-recipe-form label {

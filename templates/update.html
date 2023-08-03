@@ -2,12 +2,15 @@
 
 {% block content %}
 <div class="update-rec-cont">
-  <h1>Update Recipe</h1>
+  <h2>Update Recipe</h2>
   <form class="update-recipe-form" method="post" action="{% url 'recipe-update' pk=recipe.id %}" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Update" class="btn btn-primary update-rec-btn">
-    <input class="recipe-delete-btn" type="submit" value="Delete Recipe" onclick="return confirm('Are you sure you want to delete this recipe?');">
+  </form>
+  <form class="delete-recipe-form" action="{% url 'recipe-delete' pk=recipe.id %}" method="post">
+    {% csrf_token %}
+    <input type="submit" value="Delete Recipe" class="recipe-delete-btn rec-delete-btn-update" onclick="return confirm('Are you sure you want to delete this recipe?');">
   </form>
 </div>
   
@@ -27,20 +30,6 @@
     /*global $ */
 
     $(document).ready(function() {
-      $('#deleteBtn').on('click', function() {
-        $('#deleteModal').modal('show');
-      });
-
-      $('#confirmDeleteBtn').on('click', function() {
-        $.ajax({
-          url: '/recipe_collection/{{ recipe.id }}/delete',
-          method: 'DELETE',
-          success: function() {
-            window.location.href = '/';
-          }
-        });
-      });
-
       // Get the update message from Django template context
       var updateMessage = "{{ update_message }}";
 

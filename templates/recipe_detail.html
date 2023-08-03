@@ -24,9 +24,9 @@
   {% if user.is_authenticated %}
     {% if user == recipe.posted_by %}
       <a href="{% url 'recipe-update' pk=recipe.pk %}" class="recipe-edit-btn">Edit Recipe</a>
-      <form action="{% url 'recipe-delete' recipe.pk %}" method="POST">
+      <form action="{% url 'recipe-delete' pk=recipe.id %}" method="post">
         {% csrf_token %}
-        <input class="recipe-delete-btn" type="submit" value="Delete Recipe" onclick="return confirm('Are you sure you want to delete this recipe?');">
+        <input type="submit" value="Delete Recipe" class="recipe-delete-btn" onclick="return confirm('Are you sure you want to delete this recipe?');">
       </form>
     {% endif %}
     {% if user in recipe.liked_by.all %}
