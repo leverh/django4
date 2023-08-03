@@ -1100,7 +1100,7 @@ form.signup-form ul {
 }
 
 .results-span {
-  color:#FFA500;
+  color:#B05A00 !important;
   font-weight: 600;
   margin-left: 1rem;
 }
@@ -1115,7 +1115,7 @@ form.signup-form ul {
 }
 
 .result-span {
-  color:#FFA500;
+  color:#B05A00;
 }
 
 .results-cont a {

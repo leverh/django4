@@ -66,18 +66,47 @@
 
 ## Accessibility 
 
-### Contrasts
+**Descriptive Labels** - Aria - are used to provide descriptive labels for form inputs and interactive elements like here:
+```html
+<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+```
+or here: 
+```html
+<img src="{{ recipe.image.url }}" alt="Image of {{ recipe.headline }}" aria-label="Image of {{ recipe.headline }}" class="card-img-top card-img">. 
+```
+and here:
+```html
+<button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1" aria-label="Toggle navigation menu">
+```
+
+**Role definition** is used to clarify the function of an element within a page. For example, to let a user with assistive technology know of an alert:
+```html
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+```
+**Improving navigation** by adding a label to elements such as the search bar:
+
+```html
+<input type="text" name="q" class="form-control" placeholder="Search by keyword" aria-label="Search by keyword">.
+```
+
+**Dynamic** use of jina in aria-labels where content changes on a site like here:
+
+```html
+<img src="{{ recipe.image.url }}" alt="Image of {{ recipe.headline }}" aria-label="Image of {{ recipe.headline }}" class="card-img-top card-img">
+```
+
+Last but not least accessibility validation: for example continous contrast validation as shown below:
+
+### Contrast reports
 
 #### Background and text color
 ![image of contrast validator](./readme-images/Screenshot%202023-08-02%20at%2023-59-51%20WebAIM%20Contrast%20Checker.png)
 
 #### Buttons and background
-![image of contrast validator](./readme-images/Screenshot%202023-08-03%20at%2000-00-31%20WebAIM%20Contrast%20Checker.png)
-Note that i'm only using the greens for a component which passed the WCAG validation
+![image of contrast validator](./readme-images/Screenshot%202023-08-03%20at%2011-30-37%20WebAIM%20Contrast%20Checker.png)
 
-#### Delete button and error messages
-![image of contrast validator](./readme-images/Screenshot%202023-08-03%20at%2000-01-23%20WebAIM%20Contrast%20Checker.png)
+#### Text on buttons and buttons
+![image of contrast validator](./readme-images/Screenshot%202023-08-03%20at%2011-31-25%20WebAIM%20Contrast%20Checker.png)
 
-#### Like button 
-![image of contrast validator](./readme-images/Screenshot%202023-08-03%20at%2000-02-54%20WebAIM%20Contrast%20Checker.png)
-Again contrast passed for component use
+#### Search results 
+![image of contrast validator](./readme-images/Screenshot%202023-08-03%20at%2011-50-41%20WebAIM%20Contrast%20Checker.png)
