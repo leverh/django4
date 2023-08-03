@@ -66,6 +66,7 @@ The Recipe Collection web application is a comprehensive Django project with a f
 * User alerts: I have incorporated Django alerts for various actions: recipe creation, recipe updates, profile updates, etc. 
 
 ![Image of Django user alerts](./readme-images/Screenshot%202023-07-31%20at%2017-12-12%20Recipe%20Collection.png)
+--
 * Search Functionality: To facilitate recipe discovery, I have implemented a search feature. Users can search for recipes based on specific ingredients, cuisines, etc.
 
 ![Image of search results](./readme-images/Screenshot%202023-07-31%20at%2023-48-43%20Recipe%20Collection.png)
@@ -129,7 +130,7 @@ Recipe Collection is designed with the user in mind, offering an enjoyable exper
 
 ### Strcuture
 
-#### base.html <a name="basehtml"></a>
+#### <u>base.html</u> <a name="basehtml"></a>
 
 
 **base.html** serves as the foundational template for the Healthy Choices web application, providing a structure and consistent design across all pages. This reusable template incorporates essential elements, such as a navigation bar, footer, and login/signup options, to enhance user experience and streamline navigation. **base.html** ensures that each page within the Healthy Choices web application adheres to a consistent and visually appealing design.
@@ -153,7 +154,7 @@ The **footer** presents essential copyright information and credits the creative
 ![image of footer with social links and copyright info](./readme-images/Screenshot%202023-08-01%20at%2000-01-14%20Recipe%20Collection.png)
 
 
-#### home.html <a name="homehtml"></a>
+#### <u>home.html</u> <a name="homehtml"></a>
 
 
 The home page prompts new visitors to **create an account**, enabling them to access exclusive features, such as recipe creation and interaction with the community. Authenticated users can log in and out securely, ensuring a personalized and protected environment.
@@ -174,36 +175,36 @@ Advanced **search functionality** empowers users to find recipes based on specif
 
 The **hero image** on the Home page has an interactive effect, dynamically scaling upon user interaction. The effect, implemented using JavaScript and the Intersection Observer API, creates, I hope, an eye-catching visual element.
 
-#### My profile page <a name="my-profile-page"></a>
+#### <u>My profile page </u><a name="my-profile-page"></a>
 
 
 Once **logged in**, users can access their personalized profile pages, where they have the freedom to change their profile bio, making their presence unique and identifiable. On the profile page users also have the buttons and links to update their profile, change or reset their passwords, and access their posted recipes. This enables users to use the website as an electronic paperless recipe-database.
 
-#### Search results page <a name="search-results-page"></a>
+#### <u>Search results page</u> <a name="search-results-page"></a>
 
 
 The search functionality is open to both registered and non-registered users. The page itself will present all the recipes that include the key word the user searched for, as well as display the number of results found. The user can then simply click on the link and be redirected to the appropriate recipe. 
 
-#### Signup and login pages <a name="signup-and-login-pages"></a>
+#### <u>Signup and login pages</u> <a name="signup-and-login-pages"></a>
 
 
 These pages contains simple responsive forms for registration/logging in. On the registration page is again a small text promoting the app and encouraging users to join- and for ease of registration, users are only required to input a username, email address, and a password. 
 
 ![Image of signup page](./readme-images/Screenshot%202023-08-01%20at%2000-06-28%20Recipe%20Collection.png)
 
-#### Create a new recipe page <a name="create-a-new-recipe-page"></a>
+#### <u>Create a new recipe page</u> <a name="create-a-new-recipe-page"></a>
 
 
 This page contains a simple recipe creation form with a headline, description, ingredients, and preparation input boxes (with placeholders so that users know what each input box is for) as well as the requirement to upload a recipe image. Once a user uses the browse button to choose an image, the preview image will show up on the page.
 
-#### Recipe pages <a name="recipe-pages"></a>
+#### <u>Recipe pages</u> <a name="recipe-pages"></a>
 
 
 Individual recipe pages contain an image, headline, description, ingredients, preparation instructions, name of the recipe's author, the date and time it was posted and the amount of likes the recipe got. Authenticated users will also see a like button. Authenicated users that authored the recipe will also see a link to edit the recipe, and delete the recipe. 
 
 ![Image of recipe page](./readme-images/Screenshot%202023-08-01%20at%2000-07-58%20Recipe%20Collection.png)
 
-#### Update Recipe page <a name="update-recipe-page"></a>
+#### <u>Update Recipe page </u><a name="update-recipe-page"></a>
 
 The update recipe is only accessible to an authenticated recipe author. They are able to edit the recipe, or change the image. This page will also give them the option to delete the recipe if they wish to do so. If the user chooses to delete the recipe, a modal window will open up requesting confirmation. If nothing had been updated and the user clicked on update, the page will simply reload.
 
@@ -226,24 +227,29 @@ The text colors of #333 and #6c757d feel elegant as users read through the recip
 
 But the True colors of this website are the colorful images of food that accompany each and every recipe. From vibrant fruits and veggies in the hero image, to mouth-watering dessers and savory dishes- hopefully inspire users (and make them hungry). 
 
-### Wireframes <a name="wireframes"></a>
+### <u>Wireframes</u> <a name="wireframes"></a>
 
 
 These are some of the general ideas i drew up before building my HTML templates:
 
-#### Home.html:
+#### **Home.html:**
 
 ![wireframe for the home.html page](./readme-images/home%20wireframe.png)
 
-#### Login page:
+---
+
+#### **Login page:**
 
 ![wireframe for the login page](./readme-images/New%20Wireframe%201(1).png)
 
-#### Individual Recipe page (guest view):
+---
+#### **Individual Recipe page (guest view):**
 
 ![wireframe for recipe detail page](./readme-images/New%20Wireframe%201(2).png)
 
-#### Profile page:
+---
+
+#### **Profile page:**
 ![wireframe for profile page](./readme-images/New%20Wireframe%201(3).png)
 
 ---
@@ -639,7 +645,7 @@ There were many more bugs but I learned to:
 ## Testing <a name="testing"></a>
 
 
-### Manual tests <a name="manual-tests"></a>
+### <u>Manual tests </u><a name="manual-tests"></a>
 
 
 I tested all the functionalities of the app and went about fixing all the bugs that arose (a few of which i listed above in the bugs section). I used Firefox developer tools to inspect my pages and console, and my terminal for error logs.
@@ -667,7 +673,7 @@ I tested all the functionalities of the app and went about fixing all the bugs t
 
 ---
 ---
-### Automated testing: <a name="automated-testing"></a>
+### <u>Automated testing:</u> <a name="automated-testing"></a>
 
 
 * As shown in the bug and bug fixing section, I used automated code testing regularly to try and figure out why things were not working as expected. Here are a couple more instances where I used automated tests:

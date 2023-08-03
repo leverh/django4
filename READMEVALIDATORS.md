@@ -4,69 +4,69 @@
 
 ### All issues displayed by the linter have been resolved:
 
-#### Forms.py
+#### **Forms.py**
 ![Image of linter test](./readme-images/PyLinter%20forms.png)
 
-#### Urls.py
+#### **Urls.py**
 ![Image of linter test](./readme-images/PyLinter%20urls.png)
 
-#### views.py
+#### **views.py**
 ![Image of linter test](./readme-images/PyLinter%20views.png)
 
-#### models.py
+#### **models.py**
 ![Image of linter test](./readme-images/PyLinter%20models.png)
 
-## JavaScript
+## **JavaScript**
 
-#### Update Page
+#### **Update Page**
 ![image of JSHint validator results](./readme-images/JSHint%20update%20page.png)
 
-#### Sign Up
+#### **Sign Up**
 ![image of JSHint validator results](./readme-images/JSHint%20signup%20page.png)
 
-#### Profile Update Page
+#### **Profile Update Page**
 ![image of JSHint validator results](./readme-images/JSHint%20profile%20update%20page.png)
 
 
-#### Create Page
+#### **Create Page**
 ![image of JSHint validator results](./readme-images/JSHint%20create%20page.png)
 
-#### Main script.js file
+#### **Main script.js file**
 ![image of JSHint validator results](./readme-images/JShint%20script%20file.png)
 
-## CSS
+## **CSS**
 
 ![image of CSS validator results](./readme-images/validator%20css.png)
 
-## HTML
+## **HTML**
 
-#### base.html
+#### **base.html**
 ![image of html validator results](./readme-images/Screenshot%202023-07-28%20at%2010-59-14%20Showing%20results%20for%20contents%20of%20text-input%20area%20-%20Nu%20Html%20Checker.png)
 
-#### home.html
+#### **home.html**
 ![image of html validator results](./readme-images/validator%20home.png)
 
-#### Password Reset Page
+#### **Password Reset Page**
 ![image of html validator results](./readme-images/validator%20password%20reset.png)
 
-#### Profile Page 
+#### **Profile Page**
 ![image of html validator results](./readme-images/validator%20profile.png)
 
-#### About Page
+#### **About Page**
 ![image of html validator results](./readme-images/validator%20about.png)
 
-#### Login Page
+#### **Login Page**
 ![image of html validator results](./readme-images/validator%20login.png)
 
-#### Recipe Page
+#### **Recipe Page**
 ![image of html validator results](./readme-images/validator%20recipe%20detail.png)
 
-#### Logged In Home and Base pages
+#### **Logged In Home and Base pages**
 ![image of html validator results](./readme-images/validator-%20home%20+%20base.png)
 
-## Accessibility 
+## **Accessibility**
 
-**Descriptive Labels** - Aria - are used to provide descriptive labels for form inputs and interactive elements like here:
+**Descriptive Labels** - **Aria** - are used to provide descriptive labels for form inputs and interactive elements like in the following:
 ```html
 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 ```
@@ -89,24 +89,24 @@ and here:
 <input type="text" name="q" class="form-control" placeholder="Search by keyword" aria-label="Search by keyword">.
 ```
 
-**Dynamic** use of jina in aria-labels where content changes on a site like here:
+**Dynamic** use of jinja in aria-labels where content changes on a site like here:
 
 ```html
 <img src="{{ recipe.image.url }}" alt="Image of {{ recipe.headline }}" aria-label="Image of {{ recipe.headline }}" class="card-img-top card-img">
 ```
 
-Last but not least accessibility validation: for example continous contrast validation as shown below:
+Last but not least, the accessibility validation for contrasts as shown below:
 
-### Contrast reports
+### **Contrast reports**
 
-#### Background and text color
+#### **Background and text color**
 ![image of contrast validator](./readme-images/Screenshot%202023-08-02%20at%2023-59-51%20WebAIM%20Contrast%20Checker.png)
 
-#### Buttons and background
+#### **Buttons and background**
 ![image of contrast validator](./readme-images/Screenshot%202023-08-03%20at%2011-30-37%20WebAIM%20Contrast%20Checker.png)
 
-#### Text on buttons and buttons
+#### **Text on buttons and buttons**
 ![image of contrast validator](./readme-images/Screenshot%202023-08-03%20at%2011-31-25%20WebAIM%20Contrast%20Checker.png)
 
-#### Search results 
+#### **Search results** 
 ![image of contrast validator](./readme-images/Screenshot%202023-08-03%20at%2011-50-41%20WebAIM%20Contrast%20Checker.png)
