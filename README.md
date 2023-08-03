@@ -1,8 +1,12 @@
 # Recipe Collection
 
+![Image of App in various screen sizes](./readme-images/My%20project-1(1).png)
+
 The Recipe Collection web application is a comprehensive Django project with a focus on creating a platform for food enthusiasts to explore, share, and discover their favorite recipes. Throughout this project, I have utilized various technologies and implemented key functionalities to create a seamless and engaging user experience.
 
-Link to [**Recipe Collection**](https://recipe-collection-deea6c7fa662.herokuapp.com/) live app website
+### <u>Link to [**Recipe Collection**](https://recipe-collection-deea6c7fa662.herokuapp.com/) live app website</u>
+
+
 # Table of Contents
 
 
