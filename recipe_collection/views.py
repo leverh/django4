@@ -8,7 +8,8 @@ from django.views.generic import (
 )
 from .models import Recipe, Profile
 from django.contrib.auth.views import (
-    PasswordChangeView, PasswordResetCompleteView, PasswordResetConfirmView, PasswordResetView
+    PasswordChangeView, PasswordResetCompleteView, PasswordResetConfirmView,
+    PasswordResetView
 )
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy, reverse
@@ -31,15 +32,19 @@ from math import ceil
 # Create your views here.
 
 
+# Recipe List View: Displays a paginated list of all recipes,
+# ordered by their IDs
 class RecipeListView(ListView):
     model = Recipe
     template_name = 'home.html'
     context_object_name = 'recipes'
     paginate_by = 12
 
+# Get the query set of recipes, ordering them by their IDs
     def get_queryset(self):
         return Recipe.objects.order_by('-id')
 
+# Get the context data including pagination information
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         paginator = context['paginator']
@@ -55,11 +60,13 @@ class RecipeListView(ListView):
         return context
 
 
+# Recipe Detail View: Displays detailed information about a specific recipe
 class RecipeDetailView(DetailView):
     model = Recipe
     template_name = 'recipe_detail.html'
     context_object_name = 'recipe'
 
+# Get the context data including likes count and author information
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         recipe = self.get_object()
@@ -67,22 +74,26 @@ class RecipeDetailView(DetailView):
         context['author'] = recipe.posted_by
         return context
 
+# Get the specific recipe object or raise a 404 error if not found
     def get_object(self, queryset=None):
         recipe = super().get_object(queryset=queryset)
         return get_object_or_404(Recipe, pk=recipe.pk)
 
 
+# Recipe Create View: Provides the functionality to create a new recipe
 class RecipeCreateView(LoginRequiredMixin, CreateView):
     model = Recipe
     form_class = RecipeForm
     template_name = 'create.html'
     success_url = '/'
 
+# Ensure user is authenticated before proceeding with the request
     def dispatch(self, request, *args, **kwargs):
         if not request.user.is_authenticated:
             return self.handle_no_permission()
         return super().dispatch(request, *args, **kwargs)
 
+# Validate and save the recipe form, displaying a success message
     def form_valid(self, form):
         form.instance.posted_by = self.request.user
         form.instance.image = form.cleaned_data['image']
@@ -90,9 +101,11 @@ class RecipeCreateView(LoginRequiredMixin, CreateView):
                                        'Thank you for your contribution!')
         return super().form_valid(form)
 
+# Define the URL to redirect to upon successful recipe creation
     def get_success_url(self):
         return self.success_url
 
+# Render the response, handling AJAX requests if needed
     def render_to_response(self, context, **response_kwargs):
         response = super().render_to_response(context, **response_kwargs)
         if self.request.POST and self.request.is_ajax():
@@ -107,12 +120,14 @@ class FormInvalidRedirectMixin:
         return redirect('home')
 
 
+# Recipe Update View: Provides the functionality to update an existing recipe
 class RecipeUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Recipe
     form_class = RecipeForm
     template_name = 'update.html'
     success_url = reverse_lazy('home')
 
+# Helper function to check if the form has any changes
     def has_form_changed(self, form):
         # Helper function to check if the form has any changes
         for field_name, field_value in form.cleaned_data.items():
@@ -120,6 +135,7 @@ class RecipeUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
                 return True
         return False
 
+# Handle the POST request for the update view
     def post(self, request, *args, **kwargs):
         self.object = self.get_object()
         form = self.get_form()
@@ -128,6 +144,7 @@ class RecipeUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
                 return self.form_valid(form)
         return self.form_invalid(form)
 
+# Validate and save the updated recipe form
     def form_valid(self, form):
         form.instance.posted_by = self.request.user
         recipe = self.get_object()
@@ -144,18 +161,21 @@ class RecipeUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         messages.success(self.request, 'Recipe has been updated successfully!')
         return super().form_valid(form)
 
+# Test function to check if the logged-in user is the author of the recipe
     def test_func(self):
         recipe = self.get_object()
         if self.request.user == recipe.posted_by:
             return True
         return False
 
+# Modify the form class to exclude the 'posted_by' field
     def get_form_class(self):
         form_class = super().get_form_class()
         form_class.exclude = ['posted_by']
         return form_class
 
 
+# Recipe Delete View: Provides the functionality to delete a recipe
 class RecipeDeleteView(LoginRequiredMixin, UserPassesTestMixin,
                        SuccessMessageMixin, DeleteView):
     model = Recipe
@@ -163,10 +183,12 @@ class RecipeDeleteView(LoginRequiredMixin, UserPassesTestMixin,
     success_url = '/'
     success_message = "Recipe deleted successfully."
 
+# Test function to check if the logged-in user is the author of the recipe
     def test_func(self):
         recipe = self.get_object()
         return self.request.user == recipe.posted_by
 
+# Delete the recipe and redirect to the success URL
     def delete(self, request, *args, **kwargs):
         self.object = self.get_object()
         success_url = self.get_success_url()
@@ -175,6 +197,7 @@ class RecipeDeleteView(LoginRequiredMixin, UserPassesTestMixin,
         return HttpResponseRedirect(success_url)
 
 
+# Login view function: Handles user authentication and login
 def login_view(request):
     error_message = None
     if request.method == 'POST':
@@ -190,12 +213,14 @@ def login_view(request):
                   {'error_message': error_message})
 
 
+# Logout view function: Logs out the user and redirects to the login page
 def logout_view(request):
     logout(request)
     return redirect('login')
 # return render(request, 'recipe_collection/logout.html')
 
 
+# Register view function: Handles user registration
 def register(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
@@ -209,11 +234,13 @@ def register(request):
     return render(request, 'registration/signup.html', {'form': form})
 
 
+# Custom Password Change View: allows users to change their password
 class CustomPasswordChangeView(SuccessMessageMixin, PasswordChangeView):
     template_name = 'registration/password_change_form.html'
     success_url = reverse_lazy('login')
     success_message = "Your password has been changed successfully!"
 
+# Save the updated password and log out the user
     def form_valid(self, form):
         form.save()
         messages.info(
@@ -225,12 +252,14 @@ class CustomPasswordChangeView(SuccessMessageMixin, PasswordChangeView):
         return super().form_valid(form)
 
 
+# Custom Password Reset View: start the password reset process
 class CustomPasswordResetView(PasswordResetView):
     template_name = 'registration/password_reset.html'
     email_template_name = 'registration/password_reset_email.html'
     success_url = reverse_lazy('password_reset_done')
 
 
+# Custom Password Reset Confirm View: handles password reset confirmation
 class CustomPasswordResetConfirmView(PasswordResetConfirmView):
     template_name = 'registration/password_reset_confirm.html'
     success_url = reverse_lazy('password_reset_complete')
@@ -245,6 +274,8 @@ class CustomPasswordResetConfirmView(PasswordResetConfirmView):
         return super().form_invalid(form)
 
 
+# Custom Password Reset Complete View: displays success message
+# for password reset
 class CustomPasswordResetCompleteView(PasswordResetCompleteView):
     template_name = 'registration/password_reset_complete.html'
 
@@ -260,6 +291,7 @@ class CustomPasswordResetCompleteView(PasswordResetCompleteView):
 #     return render(request, 'recipe_collection/signup.html', {'form': form})
 
 
+# Signup view function: handles user registration with JSON response
 def signup_view(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
@@ -285,6 +317,7 @@ def signup_view(request):
     return render(request, 'signup.html', {'form': form})
 
 
+# Profile Update View: allows users to update their profile information
 class ProfileUpdateView(LoginRequiredMixin, UpdateView):
     model = Profile
     form_class = ProfileForm
@@ -306,12 +339,14 @@ class ProfileUpdateView(LoginRequiredMixin, UpdateView):
         return super().form_valid(form)
 
 
+# Profile Detail View: Displays detailed user profile
 @method_decorator(login_required, name='dispatch')
 class ProfileDetailView(LoginRequiredMixin, DetailView):
     model = Profile
     template_name = 'profile.html'
     context_object_name = 'profile'
 
+# Add user's recipes
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         profile = self.get_object()
@@ -320,6 +355,7 @@ class ProfileDetailView(LoginRequiredMixin, DetailView):
         return context
 
 
+# Recipe Search View: lets users search for recipes
 class RecipeSearchView(ListView):
     model = Recipe
     template_name = 'search_results.html'
@@ -353,6 +389,7 @@ class RecipeSearchView(ListView):
             return Recipe.objects.none()
 
 
+# Like View: allows users to like or unlike a recipe
 class LikeView(LoginRequiredMixin, View):
     def post(self, request, pk):
         recipe = get_object_or_404(Recipe, pk=pk)
@@ -363,10 +400,12 @@ class LikeView(LoginRequiredMixin, View):
         return redirect('recipe-detail', pk=pk)
 
 
+# 404 Error page
 def error_404(request, exception):
     return render(request, '404.html', status=404)
 
 
+# 500 Error page
 def error_500(request):
     return render(request, '500.html', status=500)
 
