@@ -8,8 +8,9 @@
   <form method="post" enctype="multipart/form-data" class="update-form">
     {% csrf_token %}
     {{ form.as_p }}
+    
     <img id="image-preview" src="{% if profile.profile_image %}{{ profile.profile_image.url }}{% endif %}" alt="Profile Image Preview" style="max-width: 200px; max-height: 200px;">
-    <button type="submit" class="btn btn-primary update-prof-btn">Update</button>
+    <button type="submit" class="btn btn-primary update-prof-btn" aria-label="Update Profile Information">Update</button>
   </form>
 </div>
 <script>

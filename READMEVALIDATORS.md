@@ -68,4 +68,16 @@
 
 ### Contrasts
 
-## Like button 
+#### Background and text color
+![image of contrast validator](./readme-images/Screenshot%202023-08-02%20at%2023-59-51%20WebAIM%20Contrast%20Checker.png)
+
+#### Buttons and background
+![image of contrast validator](./readme-images/Screenshot%202023-08-03%20at%2000-00-31%20WebAIM%20Contrast%20Checker.png)
+Note that i'm only using the greens for a component which passed the WCAG validation
+
+#### Delete button and error messages
+![image of contrast validator](./readme-images/Screenshot%202023-08-03%20at%2000-01-23%20WebAIM%20Contrast%20Checker.png)
+
+#### Like button 
+![image of contrast validator](./readme-images/Screenshot%202023-08-03%20at%2000-02-54%20WebAIM%20Contrast%20Checker.png)
+Again contrast passed for component use

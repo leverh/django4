@@ -27,7 +27,7 @@
 
   {% if user.is_authenticated and user == profile.user %}
     <div class="prof-buttons">
-    <a href="{% url 'profile-update' pk=profile.user.pk %}" class="btn btn-primary prof-button">Update Profile</a>
+    <a href="{% url 'profile-update' pk=profile.user.pk %}" class="btn btn-primary prof-button" aria-label="Update Profile for {{ profile.user.username }}">Update Profile</a>
     <a href="{% url 'password_change' %}" class="btn btn-primary prof-button">Change Password</a>
     <a href="{% url 'password_reset' %}" class="btn btn-primary prof-button">Reset Password</a>
   </div>
@@ -37,7 +37,7 @@
   <h2>Created Recipes</h2>
   <ul>
     {% for recipe in profile.user.recipes.all %}
-      <li><a href="{% url 'recipe-detail' pk=recipe.pk %}">{{ recipe.headline }}</a></li>
+      <li><a href="{% url 'recipe-detail' pk=recipe.pk %}" aria-label="View Recipe: {{ recipe.headline }}">{{ recipe.headline }}</a></li>
     {% empty %}
       <li>No recipes found.</li>
     {% endfor %}

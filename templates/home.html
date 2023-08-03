@@ -14,7 +14,7 @@
 <section>
 <div class="container text-center hero-container">
   <div class="hero-image-cont">
-    <img src="https://res.cloudinary.com/dmtxhbwvw/image/upload/v1689691374/jacopo-maia--gOUx23DNks-unsplash-resized_hzhgqr.jpg" id="zoom-image" class="hero-image" alt="image of a market stall with many different colourful vegetables and fruits">
+    <img src="https://res.cloudinary.com/dmtxhbwvw/image/upload/v1689691374/jacopo-maia--gOUx23DNks-unsplash-resized_hzhgqr.jpg" id="zoom-image" class="hero-image" alt="Colorful vegetables and fruits at a market stall">
   </div>
     <div class="py-4 px-3 hero-content">
         <h1 class="display-1 fw-bold hero-title">Make Healthy<br>Choices</h1>
@@ -56,7 +56,7 @@
           <div class="card rec-card">
             {% if recipe.image %}
               <a href="{% url 'recipe-detail' recipe.id %}">
-                <img src="{{ recipe.image.url }}" alt="Recipe Image" class="card-img-top card-img">
+                <img src="{{ recipe.image.url }}" alt="Image of {{ recipe.headline }}" aria-label="Image of {{ recipe.headline }}" class="card-img-top card-img">
               </a>
             {% endif %}
             <div class="card-body cardy-texty">
@@ -86,13 +86,13 @@
 <div class="pagination justify-content-center" id="pagination-links">
   <span class="step-links">
     {% if recipes.has_previous %}
-      <a href="?page=1">&laquo; first</a>
+      <a href="?page=1" aria-label="First page">&laquo; first</a>
       <a href="?page={{ recipes.previous_page_number }}">previous</a>
     {% endif %}
 
     {% for page_num in page_range %}
       {% if recipes.number == page_num %}
-        <a href="?page={{ page_num }}" class="current-page">{{ page_num }}</a>
+        <a href="?page={{ page_num }}" class="current-page" aria-label="Page {{ page_num }}">{{ page_num }}</a>
       {% else %}
         <a href="?page={{ page_num }}">{{ page_num }}</a>
       {% endif %}
@@ -112,7 +112,7 @@
     <h3 class="mb-4">Search Recipes</h3>
     <form action="{% url 'recipe-search' %}" method="GET">
       <div class="input-group mb-3">
-        <input type="text" name="q" class="form-control" placeholder="Search by keyword">
+        <input type="text" name="q" class="form-control" placeholder="Search by keyword" aria-label="Search by keyword">
         <button type="submit" class="btn btn-primary search-sub-btn">Search</button>
       </div>
     </form>
