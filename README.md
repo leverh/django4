@@ -805,6 +805,8 @@ The validator page can be found [here](./READMEVALIDATORS.md).
 
 * Photo by <a href="https://unsplash.com/@dosejuice?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Dose Juice</a> on <a href="https://unsplash.com/images/food?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
 
+* [Favicon](https://favicon.io/favicon-generator/) for the Favicon
+
 ### Last But Not Least
 
 * [Code Institue](https://codeinstitute.net/) Django Walkthrough for project setup and deployment.
@@ -822,7 +824,7 @@ and,
 
 * Sarah who calmed me down when everything seemed to fail!
 
-  <p>
+<p>
 <a href="http://jigsaw.w3.org/css-validator/check/referer">
     <img style="border:0;width:88px;height:31px"
         src="http://jigsaw.w3.org/css-validator/images/vcss-blue"
