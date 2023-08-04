@@ -46,21 +46,6 @@ h1, h2, h3, h4, h5 {
   font-family: 'Roboto', sans-serif !important;
   color: #333;
 }
- 
-/*  GENERAL BUTTON RULES:
-
-    font-size: 1.5rem;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    background-color: #28a745;
-    color: #FFFFF0;
-    border: none;
-    border-radius: 5px;
-    padding: .8rem;
-
-    hover 
-    background-color: #105f23;
-*/
 
 /* MODAL STYLES */
 
@@ -322,12 +307,13 @@ h1, h2, h3, h4, h5 {
       max-width: 30%; 
       font-size: 1rem;
     }
+    .base-log-btn {
+      font-size: 1.2rem;
+    }
   }
 
   @media (max-width: 760px) {
     .nav-search {
-      flex-direction: row-reverse;
-      align-items: flex-start;
       justify-content: center;     
     }
 
@@ -346,6 +332,12 @@ h1, h2, h3, h4, h5 {
       display: flex;
       align-items: center;
       justify-content: center;
+      font-size: 1rem;
+      padding: .4rem;
+    }
+
+    .nav-search-btn {
+      max-width: 100%;
     }
   }
 
@@ -684,9 +676,11 @@ a.btn.btn-dark:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
+  max-width: 95%;
+  margin: 0 auto;
  }
 
- .results-cont h2 {
+ .results-cont h3 {
   text-align: center;
   font-family: 'Roboto', sans-serif;
  }
@@ -705,7 +699,6 @@ a.btn.btn-dark:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* background: linear-gradient(to bottom, #FFFFF0, #e9f8e4, #FFFFF0); */
   color: #333;
   }
 
@@ -892,12 +885,15 @@ a.btn.btn-dark:hover {
     margin-bottom: 1rem;
   }
 
-  @media (max-width: 382px) {
+  @media (max-width: 500px) {
   .update-form input[type="text"],
   .update-form input[type="email"],
   .update-form textarea {
     width: 100%;
     box-sizing: border-box;
+  }
+  .update-form {
+    align-items: center;
   }
 }
 
@@ -1239,6 +1235,12 @@ form.signup-form ul {
 
 .rec-details-cont a:active {
   color: #FF6347;
+}
+
+@media (max-width: 500px) {
+  .rec-details-cont h2 {
+    font-size: 3rem;
+  }
 }
 
 /* PROFILE*/
