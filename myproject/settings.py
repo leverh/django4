@@ -39,7 +39,8 @@ DEBUG = False
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 ALLOWED_HOSTS = ["recipe-collection-deea6c7fa662.herokuapp.com",
-                 '8000-leverh-django4-rtbo3accjom.ws-eu102.gitpod.io']
+                 '8000-leverh-django4-rtbo3accjom.ws-eu102.gitpod.io',
+                 '.onrender.com']
 
 LOGIN_URL = 'login'
 
