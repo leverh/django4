@@ -405,17 +405,6 @@ http://scrollmagic.io/docs/
 
 * [Code Institue](https://codeinstitute.net/) Django Walkthrough for project setup and deployment.
 
-### Acknoledgements
-
-[Code Institue](https://codeinstitute.net/) tutors: 
-* Alan that always has patience for even the silliest of questions, 
-
-and,
-
-* Oisin for figuring out in less than one minute an error in the code. 
-
-* Gemma for sorting out more gitpod hours! 
-
 Photo by <a href="https://unsplash.com/@dosejuice?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Dose Juice</a> on <a href="https://unsplash.com/images/food?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
   
 
